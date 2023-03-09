@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+footer{
+    background-color: #EEAD2D;
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.icons{
+    width: 40px;
+    height: 40px;
+}
+
+.footer-icons{
+    width: 200px;
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
