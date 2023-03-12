@@ -1,9 +1,0 @@
-INDEX VERSION 1.131+C:\fiap\DomainDrivenDesign\api\.metadata\.plugins\org.eclipse.jdt.core
-3548313971.index
-4084090256.index
-2886833473.index
-3359668754.index
-2579627822.index
-1865797976.index
-2574394481.index
-2208433477.index
