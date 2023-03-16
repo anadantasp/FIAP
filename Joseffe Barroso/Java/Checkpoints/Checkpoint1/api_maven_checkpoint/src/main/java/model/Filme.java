@@ -34,15 +34,31 @@ public class Filme {
 	}
 	
 	int idComentario;
-	public void addComentario(int idComentario, String nomeUsuario, String comentarioUsuario) {
+	public void addComentario(String nomeUsuario, String comentarioUsuario) {
 		
 		Comentario comentario = new Comentario();
 		
-		comentario.setId(idComentario);
+		int id;
+		int maiorID = 0;
+		
+		if(comentarios.size() == 0) {
+			id = 1;
+		}else {
+			for(Integer i: comentarios.keySet()) {
+				if(i > maiorID) {
+					maiorID = i;
+				}
+			}
+			
+			id = maiorID + 1;
+
+		}
+		
+		comentario.setId(id);
 		comentario.setComentario(comentarioUsuario);
 		comentario.setNomeUsuario(nomeUsuario);
 		
-		comentarios.put(idComentario, comentario);	
+		comentarios.put(id, comentario);	
 		
 	}
 	
@@ -55,15 +71,9 @@ public class Filme {
      	   System.out.printf("Comentario não encontrado!");
 	}
 	
-	public void exibirIdComentario() {
+	public void exibirComentario() {
 		comentarios.forEach((chave, valor) -> {
-            System.out.println("ID: " + chave + " - " + valor.getComentario());
-          });
-	}
-	
-	public void exibirComentarioCompleto() {
-		comentarios.forEach((chave, valor) -> {
-            System.out.println("ID: " + chave + " - " + valor.getComentario() + " - feito por: " + valor.getNomeUsuario());
+            System.out.printf("\nID: " + chave + " - Comentário: " + valor.getComentario() + " - feito por: " + valor.getNomeUsuario() + valor.getId());
           });
 	}
 	

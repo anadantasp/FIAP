@@ -16,7 +16,7 @@ public class Programa {
 		Scanner scn = new Scanner(System.in);
 
 		int opcao = 0;
-		int idFilme, idComentario, novoComentario=0;
+		int idFilme, idComentario;
 		String nome;
 		String comentario;
 
@@ -25,16 +25,16 @@ public class Programa {
 
 		do {
 
-			System.out.println("---------- Lista dos filmes em cartaz ----------\n\n");
-			for (Integer f : filmes.keySet()) {
-				System.out.println(filmes.get(f).getId() + " - " + filmes.get(f).getNome());
+			System.out.printf("\n---------- Lista dos filmes em cartaz ----------\n\n");
+			for (Integer filme : filmes.keySet()) {
+				System.out.println(filmes.get(filme).getId() + " - " + filmes.get(filme).getNome());
 			}
 
 			System.out.printf("\n---------- MENU ----------\n\n");
 			System.out.printf("1 - Ver detalhes do filme" + "\n2 - Fazer um comentário do filme"
 					+ "\n3 - Excluir um comentário" + "\n4 - Sair\n\n");
 			
-			System.out.println("Digite uma opcao: ");
+			System.out.printf("Digite uma opcao: ");
 			opcao = scn.nextInt();
 
 			if (opcao == 1) {
@@ -42,16 +42,16 @@ public class Programa {
 				System.out.printf("Digite o ID do filme: ");
 				idFilme = scn.nextInt();
 				
-				for(Integer f: filmes.keySet()) {
-					if(idFilme == filmes.get(f).getId()) {
-						System.out.println("Filme: " + filmes.get(f).getNome() 
-								+"\nSinopse: " + filmes.get(f).getSinopse());
+				for(Integer filme: filmes.keySet()) {
+					if(idFilme == filmes.get(filme).getId()) {
+						System.out.printf("Filme: " + filmes.get(filme).getNome() 
+								+"\nSinopse: " + filmes.get(filme).getSinopse());
 						
-						if(filmes.get(f).getComentarios().size() != 0) {
-							System.out.println("\nCOMENTÁRIOS: ");
-							filmes.get(f).exibirComentarioCompleto();
+						if(filmes.get(filme).getComentarios().size() != 0) {
+							System.out.printf("\nCOMENTÁRIOS: ");
+							filmes.get(filme).exibirComentario();
 						}else {
-							System.out.println("Este filme ainda não possui comentários.");
+							System.out.printf("\nEste filme ainda não possui comentários.\n\n");
 						}
 						break;
 					}
@@ -59,16 +59,15 @@ public class Programa {
 			}else if(opcao == 2) {
 				System.out.printf("Digite o ID do filme: ");
 				idFilme = scn.nextInt();
-				System.out.println("Digite o seu nome: ");
+				System.out.printf("Digite o seu nome: ");
 				nome = scn.next();
-				System.out.println("Digite o seu comentario: ");
+				System.out.printf("Digite o seu comentario: ");
 				comentario = scn.next();
-				
-				novoComentario++;
-				for(Integer f: filmes.keySet()) {
-					if(idFilme == filmes.get(f).getId()) {
-						filmes.get(f).addComentario(novoComentario,nome, comentario);
-						System.out.println("Comentário adicionado com sucesso!");
+
+				for(Integer filme: filmes.keySet()) {
+					if(idFilme == filmes.get(filme).getId()) {
+						filmes.get(filme).addComentario(nome, comentario);
+						System.out.printf("\nComentário adicionado com sucesso!\n");
 						break;
 					}
 				}
@@ -77,20 +76,20 @@ public class Programa {
 				System.out.printf("Digite o ID do filme: ");
 				idFilme = scn.nextInt();
 				
-				for(Integer f: filmes.keySet()) {
-					if(idFilme == filmes.get(f).getId()) {
-						System.out.println("Filme: " + filmes.get(f).getNome());
+				for(Integer filme: filmes.keySet()) {
+					if(idFilme == filmes.get(filme).getId()) {
+						System.out.printf("Filme: " + filmes.get(filme).getNome());
 						
-						if(filmes.get(f).getComentarios() != null) {
-							System.out.println("COMENTÁRIOS: ");
-							filmes.get(f).exibirComentarioCompleto();
+						if(filmes.get(filme).getComentarios() != null) {
+							System.out.printf("\nCOMENTÁRIOS: ");
+							filmes.get(filme).exibirComentario();;
 							
-							System.out.println("Digite o ID do comentário que gostaria de excluir: ");
+							System.out.printf("\nDigite o ID do comentário que gostaria de excluir: ");
 							idComentario = scn.nextInt();
 							
-							filmes.get(f).deletarComentario(idComentario);
+							filmes.get(filme).deletarComentario(idComentario);
 						}else {
-							System.out.println("Filme sem comentários!");
+							System.out.printf("\nFilme sem comentários!");
 						}
 						break;
 					}
