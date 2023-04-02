@@ -27,7 +27,7 @@ public class Programa {
 public static void main(String[] args) throws ParseException, IOException {
 		
 		/*
-		 * Programa já possui dois usuários administradores cadastrados:
+		 * Programa jï¿½ possui dois usuï¿½rios administradores cadastrados:
 		 * 
 		 * email:ana@email.com.br
 		 * senha: senha123
@@ -88,14 +88,14 @@ public static void main(String[] args) throws ParseException, IOException {
 		usuarios.add(admin2);
 
 		do {
-			System.out.printf("--------------- BEM-VINDO AO DEVZILLA ---------------\n\n");
+			System.out.printf("--------------- BEM-VINDO AO INVESTIUM ---------------\n\n");
 			System.out.printf("1 - Fazer login\n" + "2 - Fazer cadastro\n" + "3 - Continuar sem logar\n"
 					+ "4 - Esqueci a senha\n" + "5 - Sair do sistema\n");
-			System.out.printf("Informe a opção desejada: ");
+			System.out.printf("Informe a opï¿½ï¿½o desejada: ");
 			opcao = scn.nextInt();
 
 			while (opcao != 1 && opcao != 2 && opcao != 3 && opcao != 5) {
-				System.out.printf("\nOpção Inválida!\n");
+				System.out.printf("\nOpï¿½ï¿½o Invï¿½lida!\n");
 				System.out.printf("Digite novamente: ");
 				opcao = scn.nextInt();
 			}
@@ -111,7 +111,7 @@ public static void main(String[] args) throws ParseException, IOException {
 				indexUsuarioLogado = -1;
 				for (Usuario u : usuarios) {
 					if ((u.getEmail().equals(email)) && (u.getSenha().equals(senha))) {
-						System.out.printf("\nUsuário logado com sucesso!\n\n");
+						System.out.printf("\nUsuï¿½rio logado com sucesso!\n\n");
 						indexUsuarioLogado = usuarios.indexOf(u);
 						break;
 					}
@@ -125,17 +125,17 @@ public static void main(String[] args) throws ParseException, IOException {
 						if (usuarioLogado.getPapel().equals("comum")) {
 							System.out.printf("--------------- MENU ---------------\n\n");
 							System.out.printf("1 - Acessar Blog\n" + "2 - Acessar empresas\n" + "19 - Sair\n");
-							System.out.printf("Digite a opção desejada: ");
+							System.out.printf("Digite a opï¿½ï¿½o desejada: ");
 							opcao = scn.nextInt();
 
 							while (opcao != 1 && opcao != 2 && opcao != 19) {
-								System.out.printf("\nOpção Inválida!\n");
+								System.out.printf("\nOpï¿½ï¿½o Invï¿½lida!\n");
 								System.out.printf("Digite novamente: ");
 								opcao = scn.nextInt();
 							}
 
 							if (opcao == 1) {
-								System.out.println("Valores diários das taxas:\n");
+								System.out.println("Valores diï¿½rios das taxas:\n");
 								taxas.forEach((key, value) -> {
 						            System.out.println(key + ": " + value + "%");
 						          });
@@ -159,8 +159,8 @@ public static void main(String[] args) throws ParseException, IOException {
 										post = postagens.get(indexPostagemGeral);
 										System.out.printf(
 												"\n-------------------------------------------------------------------------------------------\n");
-										System.out.printf("\n\nTítulo: " + post.getTitulo() + "\t\t\tCriada por: "
-												+ post.getUsuario().getNome() + "\n\nConteúdo: " + post.getConteudo()
+										System.out.printf("\n\nTï¿½tulo: " + post.getTitulo() + "\t\t\tCriada por: "
+												+ post.getUsuario().getNome() + "\n\nConteï¿½do: " + post.getConteudo()
 												+ "\n\nImagem URL: " + post.getImgUrl() + "\n\nData: "
 												+ sdf.format(post.getDate()) + "\tCategoria: " + post.getCategoria()
 												+ "\t\t\tLikes: " + post.getLikes());
@@ -168,7 +168,7 @@ public static void main(String[] args) throws ParseException, IOException {
 												"\n-------------------------------------------------------------------------------------------\n");
 
 										if (post.getComentarios() != null && post.getComentarios().size() > 0) {
-											System.out.printf("Comentários:\n\n");
+											System.out.printf("Comentï¿½rios:\n\n");
 											for (Comentario c : post.getComentarios()) {
 												System.out.printf(c.getUsuario().getNome() + ": " + c.getConteudo()
 														+ "\t\tData: " + sdf.format(c.getData()) + "\n");
@@ -181,7 +181,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -194,7 +194,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -209,21 +209,21 @@ public static void main(String[] args) throws ParseException, IOException {
 												comentario.setId(1);
 											}
 
-											System.out.printf("Entre com o seu comentário: ");
+											System.out.printf("Entre com o seu comentï¿½rio: ");
 											comentario.setConteudo(scn.next());
 											comentario.setData(new Date());
 											comentario.setUsuario(usuarioLogado);
 
 											post.addComentario(comentario);
-											System.out.println("Comentário realizado com sucesso!\n\n");
+											System.out.println("Comentï¿½rio realizado com sucesso!\n\n");
 										}
 
 									} else {
-										System.out.printf("Postagem não encontrada\n\n");
+										System.out.printf("Postagem nï¿½o encontrada\n\n");
 									}
 								} else {
 									System.out.printf(
-											"Infelizmente não temos postagens no blog! Nos desculpe pelo transtorno!\n\n");
+											"Infelizmente nï¿½o temos postagens no blog! Nos desculpe pelo transtorno!\n\n");
 								}
 
 								System.in.read();
@@ -234,12 +234,12 @@ public static void main(String[] args) throws ParseException, IOException {
 								System.out.printf("1 - Consultar Empresas\n" + "2 - Consultar IPOs\n"
 										+ "3 - Listar Empresas Salvas\n" + "4 - Editar Empresas Salvas\n"
 										+ "19 - Sair\n");
-								System.out.printf("Digite a opção desejada: ");
+								System.out.printf("Digite a opï¿½ï¿½o desejada: ");
 								opcao = scn.nextInt();
 
 								while ((opcao != 1) && (opcao != 2) && (opcao != 3) && (opcao != 4) && (opcao != 19)
 										&& (opcao != 15)) {
-									System.out.printf("Opção inválida!");
+									System.out.printf("Opï¿½ï¿½o invï¿½lida!");
 									System.out.printf("Digite novamente: ");
 									opcao = scn.nextInt();
 								}
@@ -261,7 +261,7 @@ public static void main(String[] args) throws ParseException, IOException {
 											resposta = scn.next().toUpperCase().charAt(0);
 
 											while (resposta != 'S' && resposta != 'N') {
-												System.out.printf("Utilizar padrão S/N!\n");
+												System.out.printf("Utilizar padrï¿½o S/N!\n");
 												System.out.printf("Digite novamente: ");
 												resposta = scn.next().toUpperCase().charAt(0);
 											}
@@ -293,9 +293,9 @@ public static void main(String[] args) throws ParseException, IOException {
 
 															if (emp.getGovernancas().size() > 0) {
 																System.out.printf(
-																		"\n\n--------------- GOVERNANÇA ---------------\n\n");
+																		"\n\n--------------- GOVERNANï¿½A ---------------\n\n");
 																for (Governanca c : emp.getGovernancas()) {
-																	System.out.printf("Perído: "
+																	System.out.printf("Perï¿½do: "
 																			+ sdf.format(c.getDtInicio()) + "\t\t"
 																			+ sdf.format(c.getDtFim()) + "\n\n");
 																	System.out.printf("Presidentes: ");
@@ -308,7 +308,7 @@ public static void main(String[] args) throws ParseException, IOException {
 																		System.out.printf(s + " |\t");
 																	}
 
-																	System.out.printf("\nComitê: ");
+																	System.out.printf("\nComitï¿½: ");
 																	for (String s : c.getComites()) {
 																		System.out.printf(s + " |\t");
 																	}
@@ -335,7 +335,7 @@ public static void main(String[] args) throws ParseException, IOException {
 																}
 															} else {
 																System.out.printf(
-																		"\nNão existe uma governança cadastrada para essa empresa ainda!");
+																		"\nNï¿½o existe uma governanï¿½a cadastrada para essa empresa ainda!");
 															}
 
 															if (emp.getValores().size() > 0) {
@@ -343,19 +343,19 @@ public static void main(String[] args) throws ParseException, IOException {
 																		"\n\n--------------- VALORES ---------------\n\n");
 																for (Valores v : emp.getValores()) {
 																	System.out.printf(
-																			"Valor: " + v.getNome() + "\nDescrição: "
+																			"Valor: " + v.getNome() + "\nDescriï¿½ï¿½o: "
 																					+ v.getDescricao() + "\n\n");
 																}
 															} else {
 																System.out.printf(
-																		"\nNão existe valores cadastrados para essa empresa ainda!");
+																		"\nNï¿½o existe valores cadastrados para essa empresa ainda!");
 															}
 
 															if (emp.getBalancos().size() > 0) {
 																System.out.printf(
-																		"\n\n--------------- BALANÇOS ---------------\n\n");
+																		"\n\n--------------- BALANï¿½OS ---------------\n\n");
 																for (Balanco b : emp.getBalancos()) {
-																	System.out.printf("Período: "
+																	System.out.printf("Perï¿½odo: "
 																			+ sdf.format(b.getDtInicio()) + "\t\t"
 																			+ sdf.format(b.getDtFinal()) + "\n\n");
 																	System.out.printf("\n\nAtivos: \n");
@@ -375,19 +375,19 @@ public static void main(String[] args) throws ParseException, IOException {
 
 																	System.out.printf(
 																			"\n-------------------------------------------------------------------------------------------\n");
-																	System.out.printf("Patrimônio líquido: R$"
+																	System.out.printf("Patrimï¿½nio lï¿½quido: R$"
 																			+ b.getPatrimonioLiquido());
 																}
 															} else {
 																System.out.printf(
-																		"\nNão existe balanços cadastrados para essa empresa ainda!");
+																		"\nNï¿½o existe balanï¿½os cadastrados para essa empresa ainda!");
 															}
 
 															if (emp.getAtivoIpo()) {
 																System.out.printf(
 																		"\n\n--------------- IPO ---------------\n\n");
 																System.out.printf(
-																		"Descrição:" + emp.getIpo().getDescricao()
+																		"Descriï¿½ï¿½o:" + emp.getIpo().getDescricao()
 																				+ "\tValor Inicial: "
 																				+ emp.getIpo().getValorInicial());
 															}
@@ -397,7 +397,7 @@ public static void main(String[] args) throws ParseException, IOException {
 															resposta = scn.next().toUpperCase().charAt(0);
 
 															while (resposta != 'S' && resposta != 'N') {
-																System.out.printf("Utilizar padrão S/N!\n");
+																System.out.printf("Utilizar padrï¿½o S/N!\n");
 																System.out.printf("Digite novamente: ");
 																resposta = scn.next().toUpperCase().charAt(0);
 															}
@@ -417,15 +417,15 @@ public static void main(String[] args) throws ParseException, IOException {
 																			"Empresa adicionada com sucesso!\n\n");
 																} else {
 																	System.out.println(
-																			"Empresa já consta na sua lista de favoritos!\n\n");
+																			"Empresa jï¿½ consta na sua lista de favoritos!\n\n");
 																}
 															}
 														} else {
-															System.out.printf("\nEmpresa não encontrada!\n\n");
+															System.out.printf("\nEmpresa nï¿½o encontrada!\n\n");
 														}
 
 													} else {
-														System.out.printf("Empresa não encontrada!\n\n");
+														System.out.printf("Empresa nï¿½o encontrada!\n\n");
 													}
 
 													System.out.printf(
@@ -434,7 +434,7 @@ public static void main(String[] args) throws ParseException, IOException {
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
@@ -442,15 +442,15 @@ public static void main(String[] args) throws ParseException, IOException {
 											}
 										} else {
 											System.out.printf(
-													"Infelizmente no momento não possuímos empresas cadastradas!\n\n");
+													"Infelizmente no momento nï¿½o possuï¿½mos empresas cadastradas!\n\n");
 										}
 
 										System.in.read();
 
 									} else if (opcao == 2) {
 										
-										System.out.printf("\n--------------- ATENÇÃO ---------------\n\n");
-										System.out.printf("Segue as datas em que a bolsa não opera: \n");
+										System.out.printf("\n--------------- ATENï¿½ï¿½O ---------------\n\n");
+										System.out.printf("Segue as datas em que a bolsa nï¿½o opera: \n");
 										
 										feriados.forEach((chave, valor) -> {
 								            System.out.println(chave + ": " + valor);
@@ -468,11 +468,11 @@ public static void main(String[] args) throws ParseException, IOException {
 
 										if (count > 0) {
 											System.out.printf(
-													"\nEssas são as empresas que possuem IPOs ativos no momento. Gostaria de ver alguma com mais detalhes? ");
+													"\nEssas sï¿½o as empresas que possuem IPOs ativos no momento. Gostaria de ver alguma com mais detalhes? ");
 											resposta = scn.next().toUpperCase().charAt(0);
 
 											while (resposta != 'S' && resposta != 'N') {
-												System.out.printf("Utilizar padrão S/N!\n");
+												System.out.printf("Utilizar padrï¿½o S/N!\n");
 												System.out.printf("Digite novamente: ");
 												resposta = scn.next().toUpperCase().charAt(0);
 											}
@@ -504,9 +504,9 @@ public static void main(String[] args) throws ParseException, IOException {
 
 															if (emp.getGovernancas().size() > 0) {
 																System.out.printf(
-																		"\n\n--------------- GOVERNANÇA ---------------\n\n");
+																		"\n\n--------------- GOVERNANï¿½A ---------------\n\n");
 																for (Governanca c : emp.getGovernancas()) {
-																	System.out.printf("Perído: "
+																	System.out.printf("Perï¿½do: "
 																			+ sdf.format(c.getDtInicio()) + "\t\t"
 																			+ sdf.format(c.getDtFim()) + "\n\n");
 																	System.out.printf("Presidentes: ");
@@ -519,7 +519,7 @@ public static void main(String[] args) throws ParseException, IOException {
 																		System.out.printf(s + " |\t");
 																	}
 
-																	System.out.printf("\nComitê: ");
+																	System.out.printf("\nComitï¿½: ");
 																	for (String s : c.getComites()) {
 																		System.out.printf(s + " |\t");
 																	}
@@ -546,7 +546,7 @@ public static void main(String[] args) throws ParseException, IOException {
 																}
 															} else {
 																System.out.printf(
-																		"\nNão existe uma governança cadastrada para essa empresa ainda!");
+																		"\nNï¿½o existe uma governanï¿½a cadastrada para essa empresa ainda!");
 															}
 
 															if (emp.getValores().size() > 0) {
@@ -554,19 +554,19 @@ public static void main(String[] args) throws ParseException, IOException {
 																		"\n\n--------------- VALORES ---------------\n\n");
 																for (Valores v : emp.getValores()) {
 																	System.out.printf(
-																			"Valor: " + v.getNome() + "\nDescrição: "
+																			"Valor: " + v.getNome() + "\nDescriï¿½ï¿½o: "
 																					+ v.getDescricao() + "\n\n");
 																}
 															} else {
 																System.out.printf(
-																		"\nNão existe valores cadastrados para essa empresa ainda!");
+																		"\nNï¿½o existe valores cadastrados para essa empresa ainda!");
 															}
 
 															if (emp.getBalancos().size() > 0) {
 																System.out.printf(
-																		"\n\n--------------- BALANÇOS ---------------\n\n");
+																		"\n\n--------------- BALANï¿½OS ---------------\n\n");
 																for (Balanco b : emp.getBalancos()) {
-																	System.out.printf("Período: "
+																	System.out.printf("Perï¿½odo: "
 																			+ sdf.format(b.getDtInicio()) + "\t\t"
 																			+ sdf.format(b.getDtFinal()) + "\n\n");
 																	System.out.printf("\n\nAtivos: \n");
@@ -586,19 +586,19 @@ public static void main(String[] args) throws ParseException, IOException {
 
 																	System.out.printf(
 																			"\n-------------------------------------------------------------------------------------------\n");
-																	System.out.printf("Patrimônio líquido: R$"
+																	System.out.printf("Patrimï¿½nio lï¿½quido: R$"
 																			+ b.getPatrimonioLiquido());
 																}
 															} else {
 																System.out.printf(
-																		"\nNão existe balanços cadastrados para essa empresa ainda!");
+																		"\nNï¿½o existe balanï¿½os cadastrados para essa empresa ainda!");
 															}
 
 															if (emp.getAtivoIpo()) {
 																System.out.printf(
 																		"\n\n--------------- IPO ---------------\n\n");
 																System.out.printf(
-																		"Descrição:" + emp.getIpo().getDescricao()
+																		"Descriï¿½ï¿½o:" + emp.getIpo().getDescricao()
 																				+ "\tValor Inicial: "
 																				+ emp.getIpo().getValorInicial());
 															}
@@ -608,7 +608,7 @@ public static void main(String[] args) throws ParseException, IOException {
 															resposta = scn.next().toUpperCase().charAt(0);
 
 															while (resposta != 'S' && resposta != 'N') {
-																System.out.printf("Utilizar padrão S/N!\n");
+																System.out.printf("Utilizar padrï¿½o S/N!\n");
 																System.out.printf("Digite novamente: ");
 																resposta = scn.next().toUpperCase().charAt(0);
 															}
@@ -628,7 +628,7 @@ public static void main(String[] args) throws ParseException, IOException {
 																			"Empresa adicionada com sucesso!\n\n");
 																} else {
 																	System.out.println(
-																			"Empresa já consta na sua lista de favoritos!\n\n");
+																			"Empresa jï¿½ consta na sua lista de favoritos!\n\n");
 																}
 															}
 														} else {
@@ -636,21 +636,21 @@ public static void main(String[] args) throws ParseException, IOException {
 														}
 
 													} else {
-														System.out.printf("Empresa não encontrada!\n\n");
+														System.out.printf("Empresa nï¿½o encontrada!\n\n");
 													}
 
 													System.out.printf("\n\nGostaria de ver outra empresa?");
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
 												} while (resposta == 'S');
 											}
 										} else {
-											System.out.printf("Não encontramos empresas com IPOs abertos!\n\n");
+											System.out.printf("Nï¿½o encontramos empresas com IPOs abertos!\n\n");
 										}
 
 										System.in.read();
@@ -666,7 +666,7 @@ public static void main(String[] args) throws ParseException, IOException {
 											resposta = scn.next().toUpperCase().charAt(0);
 
 											while (resposta != 'S' && resposta != 'N') {
-												System.out.printf("Utilizar padrão S/N!\n");
+												System.out.printf("Utilizar padrï¿½o S/N!\n");
 												System.out.printf("Digite novamente: ");
 												resposta = scn.next().toUpperCase().charAt(0);
 											}
@@ -694,9 +694,9 @@ public static void main(String[] args) throws ParseException, IOException {
 
 														if (emp.getGovernancas().size() > 0) {
 															System.out.printf(
-																	"\n\n--------------- GOVERNANÇA ---------------\n\n");
+																	"\n\n--------------- GOVERNANï¿½A ---------------\n\n");
 															for (Governanca c : emp.getGovernancas()) {
-																System.out.printf("Perído: "
+																System.out.printf("Perï¿½do: "
 																		+ sdf.format(c.getDtInicio()) + "\t\t"
 																		+ sdf.format(c.getDtFim()) + "\n\n");
 																System.out.printf("Presidentes: ");
@@ -709,7 +709,7 @@ public static void main(String[] args) throws ParseException, IOException {
 																	System.out.printf(s + " |\t");
 																}
 
-																System.out.printf("\nComitê: ");
+																System.out.printf("\nComitï¿½: ");
 																for (String s : c.getComites()) {
 																	System.out.printf(s + " |\t");
 																}
@@ -736,7 +736,7 @@ public static void main(String[] args) throws ParseException, IOException {
 															}
 														} else {
 															System.out.printf(
-																	"\nNão existe uma governança cadastrada para essa empresa ainda!");
+																	"\nNï¿½o existe uma governanï¿½a cadastrada para essa empresa ainda!");
 														}
 
 														if (emp.getValores().size() > 0) {
@@ -744,18 +744,18 @@ public static void main(String[] args) throws ParseException, IOException {
 																	"\n\n--------------- VALORES ---------------\n\n");
 															for (Valores v : emp.getValores()) {
 																System.out.printf("Valor: " + v.getNome()
-																		+ "\nDescrição: " + v.getDescricao() + "\n\n");
+																		+ "\nDescriï¿½ï¿½o: " + v.getDescricao() + "\n\n");
 															}
 														} else {
 															System.out.printf(
-																	"\nNão existe valores cadastrados para essa empresa ainda!");
+																	"\nNï¿½o existe valores cadastrados para essa empresa ainda!");
 														}
 
 														if (emp.getBalancos().size() > 0) {
 															System.out.printf(
-																	"\n\n--------------- BALANÇOS ---------------\n\n");
+																	"\n\n--------------- BALANï¿½OS ---------------\n\n");
 															for (Balanco b : emp.getBalancos()) {
-																System.out.printf("Período: "
+																System.out.printf("Perï¿½odo: "
 																		+ sdf.format(b.getDtInicio()) + "\t\t"
 																		+ sdf.format(b.getDtFinal()) + "\n\n");
 																System.out.printf("\n\nAtivos: \n");
@@ -775,38 +775,38 @@ public static void main(String[] args) throws ParseException, IOException {
 
 																System.out.printf(
 																		"\n-------------------------------------------------------------------------------------------\n");
-																System.out.printf("Patrimônio líquido: R$"
+																System.out.printf("Patrimï¿½nio lï¿½quido: R$"
 																		+ b.getPatrimonioLiquido());
 															}
 														} else {
 															System.out.printf(
-																	"\nNão existe balanços cadastrados para essa empresa ainda!");
+																	"\nNï¿½o existe balanï¿½os cadastrados para essa empresa ainda!");
 														}
 
 														if (emp.getAtivoIpo()) {
 															System.out.printf(
 																	"\n\n--------------- IPO ---------------\n\n");
-															System.out.printf("Descrição:" + emp.getIpo().getDescricao()
+															System.out.printf("Descriï¿½ï¿½o:" + emp.getIpo().getDescricao()
 																	+ "\tValor Inicial: "
 																	+ emp.getIpo().getValorInicial());
 														}
 
 													} else {
-														System.out.printf("Empresa não encontrada!\n\n");
+														System.out.printf("Empresa nï¿½o encontrada!\n\n");
 													}
 
 													System.out.printf("\n\nGostaria de ver outra empresa?");
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
 												} while (resposta == 'S');
 											}
 										} else {
-											System.out.printf("Você não possui nenhuma empresa salva!\n\n");
+											System.out.printf("Vocï¿½ nï¿½o possui nenhuma empresa salva!\n\n");
 										}
 
 										System.in.read();
@@ -822,7 +822,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -842,7 +842,7 @@ public static void main(String[] args) throws ParseException, IOException {
 												usuarioLogado.getEmpresas().remove(indexEmpresa);
 												System.out.printf("Empresa removida com sucesso!\n\n");
 											} else {
-												System.out.printf("Empresa não encontrada!\n\n");
+												System.out.printf("Empresa nï¿½o encontrada!\n\n");
 											}
 										}
 
@@ -850,7 +850,7 @@ public static void main(String[] args) throws ParseException, IOException {
 									}
 
 								} else {
-									System.out.println("Ainda não possuímos empresas cadastradas\n\n");
+									System.out.println("Ainda nï¿½o possuï¿½mos empresas cadastradas\n\n");
 								}
 
 							}
@@ -860,16 +860,16 @@ public static void main(String[] args) throws ParseException, IOException {
 							System.out.printf("1 - Cadastrar postagem\n" + "2 - Atualizar postagem\n"
 									+ "3 - Excluir postagem\n" + "4 - Listar postagens\n" + "5 - Criar categoria\n"
 									+ "6 - Atualizar categoria\n" + "7 - Excluir categoria\n"
-									+ "8 - Listar categorias\n" + "9 - Listar comentários\n"
-									+ "10 - Excluir comentário\n\n");
+									+ "8 - Listar categorias\n" + "9 - Listar comentï¿½rios\n"
+									+ "10 - Excluir comentï¿½rio\n\n");
 							System.out.printf("--------------- EMPRESAS ---------------\n");
 							System.out.printf("11 - Cadastrar empresa\n" + "12 - Atulaizar dados da empresa\n"
 									+ "13 - Excluir empresa\n" + "14 - Listar empresas\n\n");
 							System.out.printf("--------------- USUARIOS ---------------\n");
-							System.out.printf("15 - Listar usuários\n" + "16 - Editar usuário admin\n"
-									+ "17 - Excluir usuários\n" + "18 - Cadastrar usuário administrativo\n");
+							System.out.printf("15 - Listar usuï¿½rios\n" + "16 - Editar usuï¿½rio admin\n"
+									+ "17 - Excluir usuï¿½rios\n" + "18 - Cadastrar usuï¿½rio administrativo\n");
 							System.out.printf("19 - Sair\n");
-							System.out.printf("Informe a opção desejada: ");
+							System.out.printf("Informe a opï¿½ï¿½o desejada: ");
 							opcao = scn.nextInt();
 
 							if (opcao == 1) { // CRIAR POSTAGEM
@@ -883,9 +883,9 @@ public static void main(String[] args) throws ParseException, IOException {
 									}
 
 									System.out.printf("\n------- CADASTRO DE POSTAGEM --------\n\n");
-									System.out.printf("Título da postagem: ");
+									System.out.printf("Tï¿½tulo da postagem: ");
 									postagem.setTitulo(scn.next());
-									System.out.printf("Conteúdo da postagem: ");
+									System.out.printf("Conteï¿½do da postagem: ");
 									postagem.setConteudo(scn.next());
 									System.out.printf("URL da imagem: ");
 									postagem.setImgUrl(scn.next());
@@ -894,7 +894,7 @@ public static void main(String[] args) throws ParseException, IOException {
 
 									do {
 										System.out
-												.printf("\nEscolha uma das categorias válidas (ITEM OBRIGATÓRIO)\n\n");
+												.printf("\nEscolha uma das categorias vï¿½lidas (ITEM OBRIGATï¿½RIO)\n\n");
 										for (Categoria c : categorias) {
 											System.out.printf(
 													"ID: " + c.getId() + "\tCategoria: " + c.getDescricao() + "\n");
@@ -929,8 +929,8 @@ public static void main(String[] args) throws ParseException, IOException {
 
 									
 								} else {
-									System.out.println("É obrigatório que toda postagem tenha uma categoria!"
-											+ " Mas não encontramos nenhuma categoria cadastrada. Cadastre uma categoria antes de cadastrar uma postagem!\n\n");
+									System.out.println("ï¿½ obrigatï¿½rio que toda postagem tenha uma categoria!"
+											+ " Mas nï¿½o encontramos nenhuma categoria cadastrada. Cadastre uma categoria antes de cadastrar uma postagem!\n\n");
 								}
 
 								System.in.read();
@@ -958,9 +958,9 @@ public static void main(String[] args) throws ParseException, IOException {
 										usu = post.getUsuario();
 										categoriaAntiga = post.getCategoria();
 
-										System.out.printf("Digite o novo título: ");
+										System.out.printf("Digite o novo tï¿½tulo: ");
 										post.setTitulo(scn.next());
-										System.out.printf("Digite o novo conteúdo: ");
+										System.out.printf("Digite o novo conteï¿½do: ");
 										post.setConteudo(scn.next());
 										System.out.printf("Digite a nova url da imagem: ");
 										post.setImgUrl(scn.next());
@@ -969,7 +969,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!");
+											System.out.printf("Utilizar padrï¿½o S/N!");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -978,7 +978,7 @@ public static void main(String[] args) throws ParseException, IOException {
 											indexCategoria = -1;
 											do {
 												System.out.printf(
-														"Escolha uma das categorias válidas! (ITEM OBRIGATÓRIO)\n\n");
+														"Escolha uma das categorias vï¿½lidas! (ITEM OBRIGATï¿½RIO)\n\n");
 												for (Categoria c : categorias) {
 													System.out.printf("ID: " + c.getId() + "\tCategoria: "
 															+ c.getDescricao() + "\n");
@@ -1042,10 +1042,10 @@ public static void main(String[] args) throws ParseException, IOException {
 
 										
 									} else {
-										System.out.printf("Postagem não encontrada\n\n");
+										System.out.printf("Postagem nï¿½o encontrada\n\n");
 									}
 								} else {
-									System.out.printf("Não temos postagens cadastradas para atualizar!\n\n");
+									System.out.printf("Nï¿½o temos postagens cadastradas para atualizar!\n\n");
 								}
 
 								System.in.read();
@@ -1098,13 +1098,13 @@ public static void main(String[] args) throws ParseException, IOException {
 										usu.getPostagens().remove(indexPostagemUsuario);
 										cat.getPostagens().remove(indexPostagemCat);
 										postagens.remove(indexPostagemGeral);
-										System.out.printf("Postagem excluída com sucesso\n\n");
+										System.out.printf("Postagem excluï¿½da com sucesso\n\n");
 
 									} else {
-										System.out.printf("Postagem não encontrada\n\n");
+										System.out.printf("Postagem nï¿½o encontrada\n\n");
 									}
 								} else {
-									System.out.printf("Não temos postagens cadastradas para serem excluídas!\n\n");
+									System.out.printf("Nï¿½o temos postagens cadastradas para serem excluï¿½das!\n\n");
 								}
 
 								System.in.read();
@@ -1119,7 +1119,7 @@ public static void main(String[] args) throws ParseException, IOException {
 									resposta = scn.next().toUpperCase().charAt(0);
 
 									while (resposta != 'S' && resposta != 'N') {
-										System.out.printf("Utilizar padrão S/N!\n");
+										System.out.printf("Utilizar padrï¿½o S/N!\n");
 										System.out.printf("Deseja ver uma postagem com mais detalhe?(S/N)");
 										resposta = scn.next().toUpperCase().charAt(0);
 									}
@@ -1139,8 +1139,8 @@ public static void main(String[] args) throws ParseException, IOException {
 											post = postagens.get(indexPostagemGeral);
 											System.out.printf(
 													"\n-------------------------------------------------------------------------------------------\n");
-											System.out.printf("\n\nTítulo: " + post.getTitulo() + "\t\t\tCriada por: "
-													+ post.getUsuario().getNome() + "\n\nConteúdo: "
+											System.out.printf("\n\nTï¿½tulo: " + post.getTitulo() + "\t\t\tCriada por: "
+													+ post.getUsuario().getNome() + "\n\nConteï¿½do: "
 													+ post.getConteudo() + "\n\nImagem URL: " + post.getImgUrl()
 													+ "\n\nData: " + sdf.format(post.getDate()) + "\tCategoria: "
 													+ post.getCategoria() + "\t\t\tLikes: " + post.getLikes());
@@ -1148,11 +1148,11 @@ public static void main(String[] args) throws ParseException, IOException {
 													"\n-------------------------------------------------------------------------------------------\n");
 
 										} else {
-											System.out.printf("Postagem não encontrada\n\n");
+											System.out.printf("Postagem nï¿½o encontrada\n\n");
 										}
 									}
 								} else {
-									System.out.printf("Não temos postagens cadastradas no momento!\n\n");
+									System.out.printf("Nï¿½o temos postagens cadastradas no momento!\n\n");
 								}
 
 								System.in.read();
@@ -1182,7 +1182,7 @@ public static void main(String[] args) throws ParseException, IOException {
 									categorias.add(categoria);
 									System.out.printf("Categoria criada com sucesso!\n\n");
 								} else {
-									System.out.printf("Categoria já existente\n\n");
+									System.out.printf("Categoria jï¿½ existente\n\n");
 								}
 
 								System.in.read();
@@ -1246,14 +1246,14 @@ public static void main(String[] args) throws ParseException, IOException {
 											System.out.printf("Categoria atualizada com sucesso!\n\n");
 
 										} else {
-											System.out.printf("Categoria já existente\n\n");
+											System.out.printf("Categoria jï¿½ existente\n\n");
 										}
 
 									} else {
-										System.out.printf("Categoria não encontrada!\n\n");
+										System.out.printf("Categoria nï¿½o encontrada!\n\n");
 									}
 								} else {
-									System.out.printf("Não temos categorias cadastradas para serem atualizadas!\n\n");
+									System.out.printf("Nï¿½o temos categorias cadastradas para serem atualizadas!\n\n");
 								}
 
 								System.in.read();
@@ -1287,17 +1287,17 @@ public static void main(String[] args) throws ParseException, IOException {
 
 										if (categoriaComPostagens == 'N') {
 											categorias.remove(indexCategoria);
-											System.out.printf("Categoria excluída com sucesso!\n\n");
+											System.out.printf("Categoria excluï¿½da com sucesso!\n\n");
 										} else {
 											System.out.printf(
-													"Essa categoria possui postagens associadas à ela! Por favor, atualize as postagens com outra categoria pra que essa possa ser removida\n\n");
+													"Essa categoria possui postagens associadas ï¿½ ela! Por favor, atualize as postagens com outra categoria pra que essa possa ser removida\n\n");
 										}
 
 									} else {
-										System.out.printf("Categoria não encontrada\n\n");
+										System.out.printf("Categoria nï¿½o encontrada\n\n");
 									}
 								} else {
-									System.out.printf("Não temos categorias cadastradas para serem excluídas!\n\n");
+									System.out.printf("Nï¿½o temos categorias cadastradas para serem excluï¿½das!\n\n");
 								}
 
 								System.in.read();
@@ -1309,13 +1309,13 @@ public static void main(String[] args) throws ParseException, IOException {
 										System.out.println("ID: " + c.getId() + "\tCategoria: " + c.getDescricao());
 									}
 
-									System.out.printf("Gostaria de ver as postagens associadas à alguma categoria?");
+									System.out.printf("Gostaria de ver as postagens associadas ï¿½ alguma categoria?");
 									resposta = scn.next().toUpperCase().charAt(0);
 
 									while (resposta != 'S' && resposta != 'N') {
-										System.out.printf("Utilizar padrão S/N!\n");
+										System.out.printf("Utilizar padrï¿½o S/N!\n");
 										System.out
-												.printf("Gostaria de ver as postagens associadas à alguma categoria?");
+												.printf("Gostaria de ver as postagens associadas ï¿½ alguma categoria?");
 										resposta = scn.next().toUpperCase().charAt(0);
 									}
 
@@ -1343,15 +1343,15 @@ public static void main(String[] args) throws ParseException, IOException {
 												}
 											} else {
 												System.out.printf(
-														"Não existe postagens relacionadas a essa categoria!\n\n");
+														"Nï¿½o existe postagens relacionadas a essa categoria!\n\n");
 											}
 
 										} else {
-											System.out.printf("Categoria não encontrada!\n\n");
+											System.out.printf("Categoria nï¿½o encontrada!\n\n");
 										}
 									}
 								} else {
-									System.out.printf("Não temos categorias cadastradas!\n\n");
+									System.out.printf("Nï¿½o temos categorias cadastradas!\n\n");
 								}
 
 								System.in.read();
@@ -1365,7 +1365,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										}
 
 										System.out.printf(
-												"Informe o ID da postagem que deseja visualizar os comentários: ");
+												"Informe o ID da postagem que deseja visualizar os comentï¿½rios: ");
 										id = scn.nextInt();
 
 										indexPostagemGeral = -1;
@@ -1383,18 +1383,18 @@ public static void main(String[] args) throws ParseException, IOException {
 													System.out.printf(c.exibirComentario());
 												}
 											} else {
-												System.out.printf("Essa postagem ainda não possui comentários!\n\n");
+												System.out.printf("Essa postagem ainda nï¿½o possui comentï¿½rios!\n\n");
 											}
 										} else {
-											System.out.printf("Postagem não encontrada!\n\n");
+											System.out.printf("Postagem nï¿½o encontrada!\n\n");
 										}
 
-										System.out.print("Deseja ver os comentários de outra postagem?");
+										System.out.print("Deseja ver os comentï¿½rios de outra postagem?");
 										resposta = scn.next().toUpperCase().charAt(0);
 
 									} while (resposta != 'N');
 								} else {
-									System.out.printf("Não temos postagens cadastradas no momento!\n\n");
+									System.out.printf("Nï¿½o temos postagens cadastradas no momento!\n\n");
 								}
 
 								System.in.read();
@@ -1404,7 +1404,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										System.out.printf("ID: " + p.getId() + "\tPostagem: " + p.getTitulo() + "\n");
 									}
 
-									System.out.printf("Informe o ID da postagem que deseja excluir um comentário: ");
+									System.out.printf("Informe o ID da postagem que deseja excluir um comentï¿½rio: ");
 									id = scn.nextInt();
 
 									indexPostagemGeral = -1;
@@ -1433,7 +1433,7 @@ public static void main(String[] args) throws ParseException, IOException {
 												System.out.printf(c.exibirComentario());
 											}
 
-											System.out.printf("Informe o ID do comentário que deseja excluir: ");
+											System.out.printf("Informe o ID do comentï¿½rio que deseja excluir: ");
 											id = scn.nextInt();
 
 											indexComentario = -1;
@@ -1453,19 +1453,19 @@ public static void main(String[] args) throws ParseException, IOException {
 											if (indexComentario != -1) {
 												// postUsuario.getComentarios().remove(indexComentarioUsuario);
 												post.getComentarios().remove(indexComentario);
-												System.out.printf("Comentário excluído com sucesso!\n\n");
+												System.out.printf("Comentï¿½rio excluï¿½do com sucesso!\n\n");
 											} else {
-												System.out.printf("Comentário não encontrado!\n\n");
+												System.out.printf("Comentï¿½rio nï¿½o encontrado!\n\n");
 											}
 
 										} else {
-											System.out.printf("Essa postagem ainda não possui comentários!\n\n");
+											System.out.printf("Essa postagem ainda nï¿½o possui comentï¿½rios!\n\n");
 										}
 									} else {
-										System.out.printf("Postagem não encontrada!\n\n");
+										System.out.printf("Postagem nï¿½o encontrada!\n\n");
 									}
 								} else {
-									System.out.printf("Não temos postagens cadastradas no momento!\n\n");
+									System.out.printf("Nï¿½o temos postagens cadastradas no momento!\n\n");
 								}
 
 								System.in.read();
@@ -1487,7 +1487,7 @@ public static void main(String[] args) throws ParseException, IOException {
 								resposta = scn.next().toUpperCase().charAt(0);
 
 								while (resposta != 'S' && resposta != 'N') {
-									System.out.printf("Utilizar padrão S/N!\n");
+									System.out.printf("Utilizar padrï¿½o S/N!\n");
 									System.out.printf("Digite novamente: ");
 									resposta = scn.next().toUpperCase().charAt(0);
 								}
@@ -1510,7 +1510,7 @@ public static void main(String[] args) throws ParseException, IOException {
 
 									System.out.printf("Informe o valor inicial do IPO: ");
 									ipo.setValorInicial(scn.nextDouble());
-									System.out.printf("Informe o descrição do IPO: ");
+									System.out.printf("Informe o descriï¿½ï¿½o do IPO: ");
 									ipo.setDescricao(scn.next());
 
 									ipos.add(ipo);
@@ -1518,11 +1518,11 @@ public static void main(String[] args) throws ParseException, IOException {
 
 								}
 
-								System.out.printf("Gostaria de cadastrar a governança da empresa agora?");
+								System.out.printf("Gostaria de cadastrar a governanï¿½a da empresa agora?");
 								resposta = scn.next().toUpperCase().charAt(0);
 
 								while (resposta != 'S' && resposta != 'N') {
-									System.out.printf("Utilizar padrão S/N!\n");
+									System.out.printf("Utilizar padrï¿½o S/N!\n");
 									System.out.printf("Digite novamente: ");
 									resposta = scn.next().toUpperCase().charAt(0);
 								}
@@ -1544,7 +1544,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -1557,7 +1557,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -1570,7 +1570,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -1584,7 +1584,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -1598,7 +1598,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -1612,7 +1612,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -1626,17 +1626,17 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
 									} while (resposta == 'S');
 
 									System.out.printf(
-											"Informe a data de início da vigência dessa governança(DD/MM/YYYY): ");
+											"Informe a data de inï¿½cio da vigï¿½ncia dessa governanï¿½a(DD/MM/YYYY): ");
 									governanca.setDtInicio(sdf.parse(scn.next()));
 									System.out.printf(
-											"Informe a data de final da vigência dessa governança(DD/MM/YYYY): ");
+											"Informe a data de final da vigï¿½ncia dessa governanï¿½a(DD/MM/YYYY): ");
 									governanca.setDtFim(sdf.parse(scn.next()));
 
 									empresa.addGovernanca(governanca);
@@ -1647,7 +1647,7 @@ public static void main(String[] args) throws ParseException, IOException {
 								resposta = scn.next().toUpperCase().charAt(0);
 
 								while (resposta != 'S' && resposta != 'N') {
-									System.out.printf("Utilizar padrão S/N!\n");
+									System.out.printf("Utilizar padrï¿½o S/N!\n");
 									System.out.printf("Digite novamente: ");
 									resposta = scn.next().toUpperCase().charAt(0);
 								}
@@ -1667,7 +1667,7 @@ public static void main(String[] args) throws ParseException, IOException {
 
 										System.out.printf("Digite um nome para o valor: ");
 										valor.setNome(scn.next());
-										System.out.printf("Digite uma descrição para o valor: ");
+										System.out.printf("Digite uma descriï¿½ï¿½o para o valor: ");
 										valor.setDescricao(scn.next());
 
 										empresa.addValores(valor);
@@ -1676,7 +1676,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -1685,11 +1685,11 @@ public static void main(String[] args) throws ParseException, IOException {
 
 								}
 
-								System.out.printf("Gostaria de cadastrar o balanço da empresa agora?");
+								System.out.printf("Gostaria de cadastrar o balanï¿½o da empresa agora?");
 								resposta = scn.next().toUpperCase().charAt(0);
 
 								while (resposta != 'S' && resposta != 'N') {
-									System.out.printf("Utilizar padrão S/N!\n");
+									System.out.printf("Utilizar padrï¿½o S/N!\n");
 									System.out.printf("Digite novamente: ");
 									resposta = scn.next().toUpperCase().charAt(0);
 								}
@@ -1705,9 +1705,9 @@ public static void main(String[] args) throws ParseException, IOException {
 										balanco.setId(1);
 									}
 
-									System.out.printf("Informe a data inicial do balanço(DD/MM/YYYY): ");
+									System.out.printf("Informe a data inicial do balanï¿½o(DD/MM/YYYY): ");
 									balanco.setDtInicio(sdf.parse(scn.next()));
-									System.out.printf("Informe a data final do balanço(DD/MM/YYYY): ");
+									System.out.printf("Informe a data final do balanï¿½o(DD/MM/YYYY): ");
 									balanco.setDtFinal(sdf.parse(scn.next()));
 
 									do {
@@ -1723,7 +1723,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										System.out.printf("\n---------------- CADASTRO DE ATIVOS ----------------\n\n");
 										System.out.printf("Informe o tipo de entrada: ");
 										ativo.setTipo(scn.next());
-										System.out.printf("Informe a descrição da entrada: ");
+										System.out.printf("Informe a descriï¿½ï¿½o da entrada: ");
 										ativo.setDescricao(scn.next());
 										System.out.printf("Informe o valor da entrada: ");
 										ativo.setValor(scn.nextDouble());
@@ -1734,7 +1734,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -1754,18 +1754,18 @@ public static void main(String[] args) throws ParseException, IOException {
 
 										System.out
 												.printf("\n---------------- CADASTRO DE PASSIVOS ----------------\n\n");
-										System.out.printf("Informe a descrição da saída: ");
+										System.out.printf("Informe a descriï¿½ï¿½o da saï¿½da: ");
 										passivo.setDescricao(scn.next());
-										System.out.printf("Informe o valor da saída: ");
+										System.out.printf("Informe o valor da saï¿½da: ");
 										passivo.setValor(scn.nextDouble());
 
 										balanco.getPassivos().add(passivo);
 
-										System.out.printf("Gostaria de adicionar mais uma saída?");
+										System.out.printf("Gostaria de adicionar mais uma saï¿½da?");
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -1783,7 +1783,7 @@ public static void main(String[] args) throws ParseException, IOException {
 								System.out.printf("Empresa cadastrada com sucesso!\n\n");
 
 								System.in.read();
-							} else if (opcao == 12) { // ATUALIZAÇÃO EMPRESA
+							} else if (opcao == 12) { // ATUALIZAï¿½ï¿½O EMPRESA
 								if (empresas.size() > 0) {
 									for (Empresa e : empresas) {
 										System.out.println("ID: " + e.getId() + "\tEmpresa: " + e.getNome());
@@ -1813,7 +1813,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -1834,7 +1834,7 @@ public static void main(String[] args) throws ParseException, IOException {
 
 											System.out.printf("Informe o valor inicial do IPO: ");
 											ipo.setValorInicial(scn.nextDouble());
-											System.out.printf("Informe o descrição do IPO: ");
+											System.out.printf("Informe o descriï¿½ï¿½o do IPO: ");
 											ipo.setDescricao(scn.next());
 
 											ipos.add(ipo);
@@ -1842,11 +1842,11 @@ public static void main(String[] args) throws ParseException, IOException {
 
 										}
 
-										System.out.printf("Gostaria de atualizar os dados de governança?");
+										System.out.printf("Gostaria de atualizar os dados de governanï¿½a?");
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -1855,11 +1855,11 @@ public static void main(String[] args) throws ParseException, IOException {
 
 											if (emp.getGovernancas().size() > 0) {
 												for (Governanca g : emp.getGovernancas()) {
-													System.out.printf("ID: " + g.getId() + "\tPeríodo: "
+													System.out.printf("ID: " + g.getId() + "\tPerï¿½odo: "
 															+ sdf.format(g.getDtInicio()) + "\t\t" + sdf.format(g.getDtFim())  + "\n");
 												}
 
-												System.out.printf("Informe o id da governança que deseja atualizar");
+												System.out.printf("Informe o id da governanï¿½a que deseja atualizar");
 												idGovernanca = scn.nextInt();
 
 												indexGovernanca = -1;
@@ -1881,7 +1881,7 @@ public static void main(String[] args) throws ParseException, IOException {
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
@@ -1896,7 +1896,7 @@ public static void main(String[] args) throws ParseException, IOException {
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
@@ -1911,7 +1911,7 @@ public static void main(String[] args) throws ParseException, IOException {
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
@@ -1927,7 +1927,7 @@ public static void main(String[] args) throws ParseException, IOException {
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
@@ -1943,7 +1943,7 @@ public static void main(String[] args) throws ParseException, IOException {
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
@@ -1959,7 +1959,7 @@ public static void main(String[] args) throws ParseException, IOException {
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
@@ -1975,21 +1975,21 @@ public static void main(String[] args) throws ParseException, IOException {
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
 													} while (resposta == 'S');
 
 													System.out.printf(
-															"Informe a data de início da vigência dessa governança atualizada(DD/MM/YYYY): ");
+															"Informe a data de inï¿½cio da vigï¿½ncia dessa governanï¿½a atualizada(DD/MM/YYYY): ");
 													gov.setDtInicio(sdf.parse(scn.next()));
 													System.out.printf(
-															"Informe a data de final da vigência dessa governança atualizada(DD/MM/YYYY): ");
+															"Informe a data de final da vigï¿½ncia dessa governanï¿½a atualizada(DD/MM/YYYY): ");
 													gov.setDtFim(sdf.parse(scn.next()));
 
 												} else {
-													System.out.printf("Governança não encontrada!\n\n");
+													System.out.printf("Governanï¿½a nï¿½o encontrada!\n\n");
 												}
 											} else {
 												Governanca governanca = new Governanca();
@@ -2008,7 +2008,7 @@ public static void main(String[] args) throws ParseException, IOException {
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
@@ -2022,7 +2022,7 @@ public static void main(String[] args) throws ParseException, IOException {
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
@@ -2036,7 +2036,7 @@ public static void main(String[] args) throws ParseException, IOException {
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
@@ -2050,7 +2050,7 @@ public static void main(String[] args) throws ParseException, IOException {
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
@@ -2065,7 +2065,7 @@ public static void main(String[] args) throws ParseException, IOException {
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
@@ -2080,7 +2080,7 @@ public static void main(String[] args) throws ParseException, IOException {
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
@@ -2094,17 +2094,17 @@ public static void main(String[] args) throws ParseException, IOException {
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
 												} while (resposta == 'S');
 
 												System.out.printf(
-														"Informe a data de início da vigência dessa governança(DD/MM/YYYY): ");
+														"Informe a data de inï¿½cio da vigï¿½ncia dessa governanï¿½a(DD/MM/YYYY): ");
 												governanca.setDtInicio(sdf.parse(scn.next()));
 												System.out.printf(
-														"Informe a data de final da vigência dessa governança(DD/MM/YYYY): ");
+														"Informe a data de final da vigï¿½ncia dessa governanï¿½a(DD/MM/YYYY): ");
 												governanca.setDtFim(sdf.parse(scn.next()));
 
 												emp.addGovernanca(governanca);
@@ -2116,7 +2116,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -2147,11 +2147,11 @@ public static void main(String[] args) throws ParseException, IOException {
 														System.out.printf("Digite um nome atualizado para o valor: ");
 														var.setNome(scn.next());
 														System.out.printf(
-																"Digite uma descrição atualizada para o valor: ");
+																"Digite uma descriï¿½ï¿½o atualizada para o valor: ");
 														var.setDescricao(scn.next());
 
 													} else {
-														System.out.printf("Valor não encontrado!\n\n");
+														System.out.printf("Valor nï¿½o encontrado!\n\n");
 													}
 												} else {
 													do {
@@ -2167,7 +2167,7 @@ public static void main(String[] args) throws ParseException, IOException {
 
 														System.out.printf("Digite um nome para o valor: ");
 														valor.setNome(scn.next());
-														System.out.printf("Digite uma descrição para o valor: ");
+														System.out.printf("Digite uma descriï¿½ï¿½o para o valor: ");
 														valor.setDescricao(scn.next());
 
 														emp.addValores(valor);
@@ -2177,7 +2177,7 @@ public static void main(String[] args) throws ParseException, IOException {
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
@@ -2191,7 +2191,7 @@ public static void main(String[] args) throws ParseException, IOException {
 												resposta = scn.next().toUpperCase().charAt(0);
 
 												while (resposta != 'S' && resposta != 'N') {
-													System.out.printf("Utilizar padrão S/N!\n");
+													System.out.printf("Utilizar padrï¿½o S/N!\n");
 													System.out.printf("Digite novamente: ");
 													resposta = scn.next().toUpperCase().charAt(0);
 												}
@@ -2199,11 +2199,11 @@ public static void main(String[] args) throws ParseException, IOException {
 											} while (resposta == 'S');
 										}
 
-										System.out.printf("Gostaria de atualizar os dados de balanços?");
+										System.out.printf("Gostaria de atualizar os dados de balanï¿½os?");
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -2211,12 +2211,12 @@ public static void main(String[] args) throws ParseException, IOException {
 										if (resposta == 'S') {
 											if (emp.getBalancos().size() > 0) {
 												for (Balanco b : emp.getBalancos()) {
-													System.out.printf("ID: " + b.getId() + "Período: "
+													System.out.printf("ID: " + b.getId() + "Perï¿½odo: "
 															+ sdf.format(b.getDtInicio()) + "\t\t"
 															+ sdf.format(b.getDtFinal()));
 												}
 
-												System.out.printf("Digite o ID do balanço que deseja atualizar: ");
+												System.out.printf("Digite o ID do balanï¿½o que deseja atualizar: ");
 												idBalanco = scn.nextInt();
 
 												indexBalanco = -1;
@@ -2230,10 +2230,10 @@ public static void main(String[] args) throws ParseException, IOException {
 													bal = emp.getBalancos().get(indexBalanco);
 
 													System.out.printf(
-															"Informe a data inicial do balanço atualizada(DD/MM/YYYY): ");
+															"Informe a data inicial do balanï¿½o atualizada(DD/MM/YYYY): ");
 													bal.setDtInicio(sdf.parse(scn.next()));
 													System.out.printf(
-															"Informe a data final do balanço atualizada(DD/MM/YYYY): ");
+															"Informe a data final do balanï¿½o atualizada(DD/MM/YYYY): ");
 													bal.setDtFinal(sdf.parse(scn.next()));
 
 													bal.getAtivos().clear();
@@ -2248,10 +2248,10 @@ public static void main(String[] args) throws ParseException, IOException {
 														}
 
 														System.out.printf(
-																"\n---------------- ATUALIZAÇÃO DE ATIVOS ----------------\n\n");
+																"\n---------------- ATUALIZAï¿½ï¿½O DE ATIVOS ----------------\n\n");
 														System.out.printf("Informe o tipo de entrada: ");
 														ativo.setTipo(scn.next());
-														System.out.printf("Informe a descrição da entrada: ");
+														System.out.printf("Informe a descriï¿½ï¿½o da entrada: ");
 														ativo.setDescricao(scn.next());
 														System.out.printf("Informe o valor da entrada: ");
 														ativo.setValor(scn.nextDouble());
@@ -2262,7 +2262,7 @@ public static void main(String[] args) throws ParseException, IOException {
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
@@ -2281,19 +2281,19 @@ public static void main(String[] args) throws ParseException, IOException {
 														}
 
 														System.out.printf(
-																"\n---------------- ATUALIZAÇÃO DE PASSIVOS ----------------\n\n");
-														System.out.printf("Informe a descrição da saída: ");
+																"\n---------------- ATUALIZAï¿½ï¿½O DE PASSIVOS ----------------\n\n");
+														System.out.printf("Informe a descriï¿½ï¿½o da saï¿½da: ");
 														passivo.setDescricao(scn.next());
-														System.out.printf("Informe o valor da saída: ");
+														System.out.printf("Informe o valor da saï¿½da: ");
 														passivo.setValor(scn.nextDouble());
 
 														bal.getPassivos().add(passivo);
 
-														System.out.printf("Gostaria de adicionar mais uma saída?");
+														System.out.printf("Gostaria de adicionar mais uma saï¿½da?");
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
@@ -2303,7 +2303,7 @@ public static void main(String[] args) throws ParseException, IOException {
 													bal.setPatrimonioLiquido(bal.getAtivos(), bal.getPassivos());
 
 												} else {
-													System.out.printf("Balanço não encontrado!\n\n");
+													System.out.printf("Balanï¿½o nï¿½o encontrado!\n\n");
 												}
 											} else {
 												Balanco balanco = new Balanco();
@@ -2316,9 +2316,9 @@ public static void main(String[] args) throws ParseException, IOException {
 													balanco.setId(1);
 												}
 
-												System.out.printf("Informe a data inicial do balanço(DD/MM/YYYY): ");
+												System.out.printf("Informe a data inicial do balanï¿½o(DD/MM/YYYY): ");
 												balanco.setDtInicio(sdf.parse(scn.next()));
-												System.out.printf("Informe a data final do balanço(DD/MM/YYYY): ");
+												System.out.printf("Informe a data final do balanï¿½o(DD/MM/YYYY): ");
 												balanco.setDtFinal(sdf.parse(scn.next()));
 
 												do {
@@ -2335,7 +2335,7 @@ public static void main(String[] args) throws ParseException, IOException {
 															"\n---------------- CADASTRO DE ATIVOS ----------------\n\n");
 													System.out.printf("Informe o tipo de entrada: ");
 													ativo.setTipo(scn.next());
-													System.out.printf("Informe a descrição da entrada: ");
+													System.out.printf("Informe a descriï¿½ï¿½o da entrada: ");
 													ativo.setDescricao(scn.next());
 													System.out.printf("Informe o valor da entrada: ");
 													ativo.setValor(scn.nextDouble());
@@ -2346,7 +2346,7 @@ public static void main(String[] args) throws ParseException, IOException {
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
@@ -2365,18 +2365,18 @@ public static void main(String[] args) throws ParseException, IOException {
 
 													System.out.printf(
 															"\n---------------- CADASTRO DE PASSIVOS ----------------\n\n");
-													System.out.printf("Informe a descrição da saída: ");
+													System.out.printf("Informe a descriï¿½ï¿½o da saï¿½da: ");
 													passivo.setDescricao(scn.next());
-													System.out.printf("Informe o valor da saída: ");
+													System.out.printf("Informe o valor da saï¿½da: ");
 													passivo.setValor(scn.nextDouble());
 
 													balanco.getPassivos().add(passivo);
 
-													System.out.printf("Gostaria de adicionar mais uma saída?");
+													System.out.printf("Gostaria de adicionar mais uma saï¿½da?");
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
@@ -2394,7 +2394,7 @@ public static void main(String[] args) throws ParseException, IOException {
 												resposta = scn.next().toUpperCase().charAt(0);
 
 												while (resposta != 'S' && resposta != 'N') {
-													System.out.printf("Utilizar padrão S/N!\n");
+													System.out.printf("Utilizar padrï¿½o S/N!\n");
 													System.out.printf("Digite novamente: ");
 													resposta = scn.next().toUpperCase().charAt(0);
 												}
@@ -2402,7 +2402,7 @@ public static void main(String[] args) throws ParseException, IOException {
 												if (resposta == 'S') {
 													System.out.printf("Informe o valor inicial do IPO atualizado: ");
 													emp.getIpo().setValorInicial(scn.nextDouble());
-													System.out.printf("Informe a descrição do IPO atualizada: ");
+													System.out.printf("Informe a descriï¿½ï¿½o do IPO atualizada: ");
 													emp.getIpo().setDescricao(scn.next());
 												}
 
@@ -2412,7 +2412,7 @@ public static void main(String[] args) throws ParseException, IOException {
 
 										}
 
-										// ATUALIZAR EMPRESA SE TIVER NA LISTA DE FAVORITOS DE ALGUM USUÁRIO
+										// ATUALIZAR EMPRESA SE TIVER NA LISTA DE FAVORITOS DE ALGUM USUï¿½RIO
 										indexEmpresaUsuario = -1;
 										for (Usuario u : usuarios) {
 											if (u.getEmpresas().size() > 0) {
@@ -2437,15 +2437,15 @@ public static void main(String[] args) throws ParseException, IOException {
 										System.out.printf("Empresa atualizada com sucesso!\n\n");
 
 									} else {
-										System.out.printf("Empresa não encontrada!\n\n");
+										System.out.printf("Empresa nï¿½o encontrada!\n\n");
 									}
 
 								} else {
-									System.out.printf("Não existe empresas cadastradas para serem atualizadas\n\n");
+									System.out.printf("Nï¿½o existe empresas cadastradas para serem atualizadas\n\n");
 								}
 
 								System.in.read();
-							} else if (opcao == 13) { // EXCLUSÃO EMPRESA
+							} else if (opcao == 13) { // EXCLUSï¿½O EMPRESA
 								if (empresas.size() > 0) {
 									for (Empresa e : empresas) {
 										System.out.println("ID: " + e.getId() + "\tEmpresa: " + e.getNome());
@@ -2480,12 +2480,12 @@ public static void main(String[] args) throws ParseException, IOException {
 										}
 
 										empresas.remove(indexEmpresa);
-										System.out.printf("Empresa excluída com sucesso!\n\n");
+										System.out.printf("Empresa excluï¿½da com sucesso!\n\n");
 									} else {
-										System.out.printf("Empresa não encontrada!\n\n");
+										System.out.printf("Empresa nï¿½o encontrada!\n\n");
 									}
 								} else {
-									System.out.println("Não existe empresas cadastradas para serem excluídas\n\n");
+									System.out.println("Nï¿½o existe empresas cadastradas para serem excluï¿½das\n\n");
 								}
 
 								System.in.read();
@@ -2499,7 +2499,7 @@ public static void main(String[] args) throws ParseException, IOException {
 									resposta = scn.next().toUpperCase().charAt(0);
 
 									while (resposta != 'S' && resposta != 'N') {
-										System.out.printf("Utilizar padrão S/N!\n");
+										System.out.printf("Utilizar padrï¿½o S/N!\n");
 										System.out.printf("Digite novamente: ");
 										resposta = scn.next().toUpperCase().charAt(0);
 									}
@@ -2527,9 +2527,9 @@ public static void main(String[] args) throws ParseException, IOException {
 
 												if (emp.getGovernancas().size() > 0) {
 													System.out.printf(
-															"\n\n--------------- GOVERNANÇA ---------------\n\n");
+															"\n\n--------------- GOVERNANï¿½A ---------------\n\n");
 													for (Governanca c : emp.getGovernancas()) {
-														System.out.printf("Perído: " + sdf.format(c.getDtInicio())
+														System.out.printf("Perï¿½do: " + sdf.format(c.getDtInicio())
 																+ "\t\t" + sdf.format(c.getDtFim()) + "\n\n");
 														System.out.printf("Presidentes: ");
 														for (String s : c.getPresidente()) {
@@ -2541,7 +2541,7 @@ public static void main(String[] args) throws ParseException, IOException {
 															System.out.printf(s + " |\t");
 														}
 
-														System.out.printf("\nComitê: ");
+														System.out.printf("\nComitï¿½: ");
 														for (String s : c.getComites()) {
 															System.out.printf(s + " |\t");
 														}
@@ -2568,26 +2568,26 @@ public static void main(String[] args) throws ParseException, IOException {
 													}
 												} else {
 													System.out.printf(
-															"Não existe uma governança cadastrada para essa empresa ainda!\n");
+															"Nï¿½o existe uma governanï¿½a cadastrada para essa empresa ainda!\n");
 												}
 
 												if (emp.getValores().size() > 0) {
 													System.out
 															.printf("\n\n--------------- VALORES ---------------\n\n");
 													for (Valores v : emp.getValores()) {
-														System.out.printf("Valor: " + v.getNome() + "\nDescrição: "
+														System.out.printf("Valor: " + v.getNome() + "\nDescriï¿½ï¿½o: "
 																+ v.getDescricao() + "\n\n");
 													}
 												} else {
 													System.out.printf(
-															"Não existe valores cadastrados para essa empresa ainda!\n");
+															"Nï¿½o existe valores cadastrados para essa empresa ainda!\n");
 												}
 
 												if (emp.getBalancos().size() > 0) {
 													System.out
-															.printf("\n\n--------------- BALANÇOS ---------------\n\n");
+															.printf("\n\n--------------- BALANï¿½OS ---------------\n\n");
 													for (Balanco b : emp.getBalancos()) {
-														System.out.printf("Período: " + sdf.format(b.getDtInicio())
+														System.out.printf("Perï¿½odo: " + sdf.format(b.getDtInicio())
 																+ "\t\t" + sdf.format(b.getDtFinal()) + "\n\n");
 														System.out.printf("Ativos: \n");
 														for (Ativo a : b.getAtivos()) {
@@ -2606,28 +2606,28 @@ public static void main(String[] args) throws ParseException, IOException {
 														System.out.printf(
 																"\n-------------------------------------------------------------------------------------------\n");
 														System.out.printf(
-																"Patrimônio líquido: R$" + b.getPatrimonioLiquido());
+																"Patrimï¿½nio lï¿½quido: R$" + b.getPatrimonioLiquido());
 													}
 												} else {
 													System.out.printf(
-															"Não existe balanços cadastrados para essa empresa ainda!\n");
+															"Nï¿½o existe balanï¿½os cadastrados para essa empresa ainda!\n");
 												}
 
 												if (emp.getAtivoIpo()) {
 													System.out.printf("\n\n--------------- IPO ---------------\n\n");
-													System.out.printf("Descrição:" + emp.getIpo().getDescricao()
+													System.out.printf("Descriï¿½ï¿½o:" + emp.getIpo().getDescricao()
 															+ "\tValor Inicial: " + emp.getIpo().getValorInicial());
 												}
 
 											} else {
-												System.out.printf("Empresa não encontrada!\n\n");
+												System.out.printf("Empresa nï¿½o encontrada!\n\n");
 											}
 
 											System.out.printf("\n\nGostaria de ver outra empresa?");
 											resposta = scn.next().toUpperCase().charAt(0);
 
 											while (resposta != 'S' && resposta != 'N') {
-												System.out.printf("Utilizar padrão S/N!\n");
+												System.out.printf("Utilizar padrï¿½o S/N!\n");
 												System.out.printf("Digite novamente");
 												resposta = scn.next().toUpperCase().charAt(0);
 											}
@@ -2636,11 +2636,11 @@ public static void main(String[] args) throws ParseException, IOException {
 									}
 
 								} else {
-									System.out.println("Não existe empresas cadastradas!\n\n");
+									System.out.println("Nï¿½o existe empresas cadastradas!\n\n");
 								}
 
 								System.in.read();
-							} else if (opcao == 15) { // LISTAR USUÁRIOS
+							} else if (opcao == 15) { // LISTAR USUï¿½RIOS
 								if (usuarios.size() > 0) {
 									for (Usuario u : usuarios) {
 										System.out.println("ID: " + u.getId() + "\tNome: " + u.getNome() + "\tEmail: "
@@ -2649,11 +2649,11 @@ public static void main(String[] args) throws ParseException, IOException {
 									}
 
 								} else {
-									System.out.printf("Não existe usuários cadastrados!\n\n");
+									System.out.printf("Nï¿½o existe usuï¿½rios cadastrados!\n\n");
 								}
 
 								System.in.read();
-							} else if (opcao == 16) { // EDITAR USUÁRIO
+							} else if (opcao == 16) { // EDITAR USUï¿½RIO
 								indexUsuarioLogado = -1;
 								for (Usuario u : usuarios) {
 									if (u.getId() == usuarioLogado.getId()) {
@@ -2661,11 +2661,11 @@ public static void main(String[] args) throws ParseException, IOException {
 									}
 								}
 
-								System.out.printf("Gostaria de editar o seu usuário?");
+								System.out.printf("Gostaria de editar o seu usuï¿½rio?");
 								resposta = scn.next().toUpperCase().charAt(0);
 
 								while (resposta != 'S' && resposta != 'N') {
-									System.out.printf("Utilizar padrão S/N!\n");
+									System.out.printf("Utilizar padrï¿½o S/N!\n");
 									System.out.printf("Digite novamente: ");
 									resposta = scn.next().toUpperCase().charAt(0);
 								}
@@ -2689,7 +2689,7 @@ public static void main(String[] args) throws ParseException, IOException {
 									}
 
 									if (emailJaExistente == 'S') {
-										System.out.printf("Esse e-mail já está sendo utilizado em algum cadastro!\n\n");
+										System.out.printf("Esse e-mail jï¿½ estï¿½ sendo utilizado em algum cadastro!\n\n");
 									} else {
 										usu.setEmail(email);
 									}
@@ -2697,7 +2697,7 @@ public static void main(String[] args) throws ParseException, IOException {
 									System.out.printf("Informe a sua data de nascimento atualizada: ");
 									usu.setDtNascimento(sdf.parse(scn.next()));
 
-									System.out.printf("Usuário atualizado com sucesso!\n\n");
+									System.out.printf("Usuï¿½rio atualizado com sucesso!\n\n");
 
 									for (Postagem e : usu.getPostagens()) {
 										if (e.getUsuario().getNome() == nome) {
@@ -2715,11 +2715,11 @@ public static void main(String[] args) throws ParseException, IOException {
 									}
 								}
 
-								System.out.printf("Gostaria de excluir o seu usuário?");
+								System.out.printf("Gostaria de excluir o seu usuï¿½rio?");
 								resposta = scn.next().toUpperCase().charAt(0);
 
 								while (resposta != 'S' && resposta != 'N') {
-									System.out.printf("Utilizar padrão S/N!\n");
+									System.out.printf("Utilizar padrï¿½o S/N!\n");
 									System.out.printf("Digite novamente: ");
 									resposta = scn.next().toUpperCase().charAt(0);
 								}
@@ -2727,7 +2727,7 @@ public static void main(String[] args) throws ParseException, IOException {
 								if (resposta == 'S') {
 									usuarios.remove(indexUsuarioLogado);
 									usuarioLogado = null;
-									System.out.printf("Usuário excluído com sucesso!\n\n");
+									System.out.printf("Usuï¿½rio excluï¿½do com sucesso!\n\n");
 								}
 
 								System.in.read();
@@ -2764,9 +2764,9 @@ public static void main(String[] args) throws ParseException, IOException {
 
 									usuarios.add(usuario);
 
-									System.out.printf("Usuário cadastrado com sucesso!\n\n");
+									System.out.printf("Usuï¿½rio cadastrado com sucesso!\n\n");
 								} else {
-									System.out.println("E-mail já cadastrado no sistema!\n\n");
+									System.out.println("E-mail jï¿½ cadastrado no sistema!\n\n");
 								}
 
 								System.in.read();
@@ -2774,7 +2774,7 @@ public static void main(String[] args) throws ParseException, IOException {
 						} // FIM MENU ADMINISTRATIVO
 
 					} else {
-						System.out.printf("Login ou senha inválidos!\n\n");
+						System.out.printf("Login ou senha invï¿½lidos!\n\n");
 						break;
 					}
 
@@ -2815,9 +2815,9 @@ public static void main(String[] args) throws ParseException, IOException {
 
 					usuarios.add(usuario);
 
-					System.out.printf("Usuário cadastrado com sucesso!\n\n");
+					System.out.printf("Usuï¿½rio cadastrado com sucesso!\n\n");
 				} else {
-					System.out.println("E-mail já cadastrado no sistema!\n\n");
+					System.out.println("E-mail jï¿½ cadastrado no sistema!\n\n");
 				}
 
 				System.in.read();
@@ -2825,18 +2825,18 @@ public static void main(String[] args) throws ParseException, IOException {
 				do {
 					System.out.printf("--------------- MENU ---------------\n\n");
 					System.out.printf("1 - Acessar Blog\n" + "2 - Acessar empresas\n" + "3 - Sair\n");
-					System.out.printf("Digite a opção desejada: ");
+					System.out.printf("Digite a opï¿½ï¿½o desejada: ");
 					opcao = scn.nextInt();
 
 					while (opcao != 1 && opcao != 2 && opcao != 3) {
-						System.out.printf("\nOpção Inválida!\n");
+						System.out.printf("\nOpï¿½ï¿½o Invï¿½lida!\n");
 						System.out.printf("Digite novamente: ");
 						opcao = scn.nextInt();
 					}
 
 					if (opcao == 1) {
 						
-						System.out.println("Valores diários das taxas:\n");
+						System.out.println("Valores diï¿½rios das taxas:\n");
 						taxas.forEach((key, value) -> {
 				            System.out.println(key + ": " + value + "%\n");
 				          });
@@ -2860,8 +2860,8 @@ public static void main(String[] args) throws ParseException, IOException {
 								post = postagens.get(indexPostagemGeral);
 								System.out.printf(
 										"\n-------------------------------------------------------------------------------------------\n");
-								System.out.printf("\n\nTítulo: " + post.getTitulo() + "\t\t\tCriada por: "
-										+ post.getUsuario().getNome() + "\n\nConteúdo: " + post.getConteudo()
+								System.out.printf("\n\nTï¿½tulo: " + post.getTitulo() + "\t\t\tCriada por: "
+										+ post.getUsuario().getNome() + "\n\nConteï¿½do: " + post.getConteudo()
 										+ "\n\nImagem URL: " + post.getImgUrl() + "\n\nData: "
 										+ sdf.format(post.getDate()) + "\tCategoria: " + post.getCategoria()
 										+ "\t\t\tLikes: " + post.getLikes());
@@ -2869,7 +2869,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										"\n-------------------------------------------------------------------------------------------\n");
 
 								if (post.getComentarios() != null && post.getComentarios().size() > 0) {
-									System.out.printf("Comentários:\n\n");
+									System.out.printf("Comentï¿½rios:\n\n");
 									for (Comentario c : post.getComentarios()) {
 										System.out.printf(c.getUsuario().getNome() + ": " + c.getConteudo()
 												+ "\t\tData: " + sdf.format(c.getData()) + "\n");
@@ -2878,22 +2878,22 @@ public static void main(String[] args) throws ParseException, IOException {
 											"\n-------------------------------------------------------------------------------------------\n\n");
 								}
 
-								System.out.printf("Para curtir e comentar é necessário estar logado!\n");
+								System.out.printf("Para curtir e comentar ï¿½ necessï¿½rio estar logado!\n");
 								System.out.printf("Gostaria de realizar o login/cadastro?(S/N)");
 								resposta = scn.next().toUpperCase().charAt(0);
 
 								while (resposta != 'S' && resposta != 'N') {
-									System.out.printf("Utilizar padrão S/N!\n");
+									System.out.printf("Utilizar padrï¿½o S/N!\n");
 									System.out.printf("Digite novamente: ");
 									resposta = scn.next().toUpperCase().charAt(0);
 								}
 
 								if (resposta == 'S') {
-									System.out.printf("Já possui conta?(S/N)");
+									System.out.printf("Jï¿½ possui conta?(S/N)");
 									resposta = scn.next().toUpperCase().charAt(0);
 
 									while (resposta != 'S' && resposta != 'N') {
-										System.out.printf("Utilizar padrão S/N!\n");
+										System.out.printf("Utilizar padrï¿½o S/N!\n");
 										System.out.printf("Digite novamente: ");
 										resposta = scn.next().toUpperCase().charAt(0);
 									}
@@ -2907,7 +2907,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										indexUsuarioLogado = -1;
 										for (Usuario u : usuarios) {
 											if ((u.getEmail().equals(email)) && (u.getSenha().equals(senha))) {
-												System.out.printf("Usuário logado com sucesso!\n");
+												System.out.printf("Usuï¿½rio logado com sucesso!\n");
 												indexUsuarioLogado = usuarios.indexOf(u);
 												break;
 											}
@@ -2920,7 +2920,7 @@ public static void main(String[] args) throws ParseException, IOException {
 											resposta = scn.next().toUpperCase().charAt(0);
 
 											while (resposta != 'S' && resposta != 'N') {
-												System.out.printf("Utilizar padrão S/N!\n");
+												System.out.printf("Utilizar padrï¿½o S/N!\n");
 												System.out.printf("Digite novamente: ");
 												resposta = scn.next().toUpperCase().charAt(0);
 											}
@@ -2934,7 +2934,7 @@ public static void main(String[] args) throws ParseException, IOException {
 											resposta = scn.next().toUpperCase().charAt(0);
 
 											while (resposta != 'S' && resposta != 'N') {
-												System.out.printf("Utilizar padrão S/N!\n");
+												System.out.printf("Utilizar padrï¿½o S/N!\n");
 												System.out.printf("Digite novamente: ");
 												resposta = scn.next().toUpperCase().charAt(0);
 											}
@@ -2949,16 +2949,16 @@ public static void main(String[] args) throws ParseException, IOException {
 													comentario.setId(1);
 												}
 
-												System.out.printf("Entre com o seu comentário: ");
+												System.out.printf("Entre com o seu comentï¿½rio: ");
 												comentario.setConteudo(scn.next());
 												comentario.setData(new Date());
 												comentario.setUsuario(usuarioLogado);
 
 												post.addComentario(comentario);
-												System.out.println("Comentário realizado com sucesso!");
+												System.out.println("Comentï¿½rio realizado com sucesso!");
 											}
 										} else {
-											System.out.printf("Usuário não encontrado");
+											System.out.printf("Usuï¿½rio nï¿½o encontrado");
 										}
 									} else {
 										Usuario usuario = new Usuario();
@@ -2993,9 +2993,9 @@ public static void main(String[] args) throws ParseException, IOException {
 
 											usuarios.add(usuario);
 
-											System.out.printf("Usuário cadastrado com sucesso!\n\n");
+											System.out.printf("Usuï¿½rio cadastrado com sucesso!\n\n");
 										} else {
-											System.out.println("E-mail já cadastrado no sistema!\n\n");
+											System.out.println("E-mail jï¿½ cadastrado no sistema!\n\n");
 										}
 
 										System.out.printf("Informe o seu e-mail: ");
@@ -3006,7 +3006,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										indexUsuarioLogado = -1;
 										for (Usuario u : usuarios) {
 											if ((u.getEmail().equals(email)) && (u.getSenha().equals(senha))) {
-												System.out.printf("Usuário logado com sucesso!\n");
+												System.out.printf("Usuï¿½rio logado com sucesso!\n");
 												indexUsuarioLogado = usuarios.indexOf(u);
 												break;
 											}
@@ -3019,7 +3019,7 @@ public static void main(String[] args) throws ParseException, IOException {
 											resposta = scn.next().toUpperCase().charAt(0);
 
 											while (resposta != 'S' && resposta != 'N') {
-												System.out.printf("Utilizar padrão S/N!\n");
+												System.out.printf("Utilizar padrï¿½o S/N!\n");
 												System.out.printf("Digite novamente: ");
 												resposta = scn.next().toUpperCase().charAt(0);
 											}
@@ -3033,7 +3033,7 @@ public static void main(String[] args) throws ParseException, IOException {
 											resposta = scn.next().toUpperCase().charAt(0);
 
 											while (resposta != 'S' && resposta != 'N') {
-												System.out.printf("Utilizar padrão S/N!\n");
+												System.out.printf("Utilizar padrï¿½o S/N!\n");
 												System.out.printf("Digite novamente: ");
 												resposta = scn.next().toUpperCase().charAt(0);
 											}
@@ -3048,23 +3048,23 @@ public static void main(String[] args) throws ParseException, IOException {
 													comentario.setId(1);
 												}
 
-												System.out.printf("Entre com o seu comentário: ");
+												System.out.printf("Entre com o seu comentï¿½rio: ");
 												comentario.setConteudo(scn.next());
 												comentario.setData(new Date());
 												comentario.setUsuario(usuarioLogado);
 
 												post.addComentario(comentario);
-												System.out.println("Comentário realizado com sucesso!");
+												System.out.println("Comentï¿½rio realizado com sucesso!");
 											}
 										} else {
-											System.out.printf("Usuário não encontrado");
+											System.out.printf("Usuï¿½rio nï¿½o encontrado");
 										}
 
 									}
 								}
 							}
 						} else {
-							System.out.printf("Não existem postagens cadastradas!\n\n");
+							System.out.printf("Nï¿½o existem postagens cadastradas!\n\n");
 						}
 
 						System.in.read();
@@ -3074,11 +3074,11 @@ public static void main(String[] args) throws ParseException, IOException {
 							do {
 								System.out.printf("--------------- MENU ---------------\n\n");
 								System.out.printf("1 - Empresas\n" + "2 - IPOs\n" + "3 - Sair\n");
-								System.out.printf("Digite a opção desejada: ");
+								System.out.printf("Digite a opï¿½ï¿½o desejada: ");
 								opcao = scn.nextInt();
 
 								while (opcao != 1 && opcao != 2 && opcao != 3) {
-									System.out.printf("\nOpção Inválida!\n");
+									System.out.printf("\nOpï¿½ï¿½o Invï¿½lida!\n");
 									System.out.printf("Digite novamente: ");
 									opcao = scn.nextInt();
 								}
@@ -3098,7 +3098,7 @@ public static void main(String[] args) throws ParseException, IOException {
 										resposta = scn.next().toUpperCase().charAt(0);
 
 										while (resposta != 'S' && resposta != 'N') {
-											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Utilizar padrï¿½o S/N!\n");
 											System.out.printf("Digite novamente: ");
 											resposta = scn.next().toUpperCase().charAt(0);
 										}
@@ -3126,9 +3126,9 @@ public static void main(String[] args) throws ParseException, IOException {
 
 													if (emp.getGovernancas().size() > 0) {
 														System.out.printf(
-																"\n\n--------------- GOVERNANÇA ---------------\n\n");
+																"\n\n--------------- GOVERNANï¿½A ---------------\n\n");
 														for (Governanca c : emp.getGovernancas()) {
-															System.out.printf("Perído: " + sdf.format(c.getDtInicio())
+															System.out.printf("Perï¿½do: " + sdf.format(c.getDtInicio())
 																	+ "\t\t" + sdf.format(c.getDtFim()) + "\n\n");
 															System.out.printf("Presidentes: ");
 															for (String s : c.getPresidente()) {
@@ -3140,7 +3140,7 @@ public static void main(String[] args) throws ParseException, IOException {
 																System.out.printf(s + " |\t");
 															}
 
-															System.out.printf("\nComitê: ");
+															System.out.printf("\nComitï¿½: ");
 															for (String s : c.getComites()) {
 																System.out.printf(s + " |\t");
 															}
@@ -3167,26 +3167,26 @@ public static void main(String[] args) throws ParseException, IOException {
 														}
 													} else {
 														System.out.printf(
-																"\nNão existe uma governança cadastrada para essa empresa ainda!");
+																"\nNï¿½o existe uma governanï¿½a cadastrada para essa empresa ainda!");
 													}
 
 													if (emp.getValores().size() > 0) {
 														System.out.printf(
 																"\n\n--------------- VALORES ---------------\n\n");
 														for (Valores v : emp.getValores()) {
-															System.out.printf("Valor: " + v.getNome() + "\nDescrição: "
+															System.out.printf("Valor: " + v.getNome() + "\nDescriï¿½ï¿½o: "
 																	+ v.getDescricao() + "\n\n");
 														}
 													} else {
 														System.out.printf(
-																"\nNão existe valores cadastrados para essa empresa ainda!");
+																"\nNï¿½o existe valores cadastrados para essa empresa ainda!");
 													}
 
 													if (emp.getBalancos().size() > 0) {
 														System.out.printf(
-																"\n\n--------------- BALANÇOS ---------------\n\n");
+																"\n\n--------------- BALANï¿½OS ---------------\n\n");
 														for (Balanco b : emp.getBalancos()) {
-															System.out.printf("Período: " + sdf.format(b.getDtInicio())
+															System.out.printf("Perï¿½odo: " + sdf.format(b.getDtInicio())
 																	+ "\t\t" + sdf.format(b.getDtFinal()) + "\n\n");
 															System.out.printf("\n\nAtivos: \n");
 															for (Ativo a : b.getAtivos()) {
@@ -3204,38 +3204,38 @@ public static void main(String[] args) throws ParseException, IOException {
 
 															System.out.printf(
 																	"\n-------------------------------------------------------------------------------------------\n");
-															System.out.printf("Patrimônio líquido: R$"
+															System.out.printf("Patrimï¿½nio lï¿½quido: R$"
 																	+ b.getPatrimonioLiquido());
 														}
 													} else {
 														System.out.printf(
-																"\nNão existe balanços cadastrados para essa empresa ainda!");
+																"\nNï¿½o existe balanï¿½os cadastrados para essa empresa ainda!");
 													}
 
 													if (emp.getAtivoIpo()) {
 														System.out
 																.printf("\n\n--------------- IPO ---------------\n\n");
-														System.out.printf("Descrição:" + emp.getIpo().getDescricao()
+														System.out.printf("Descriï¿½ï¿½o:" + emp.getIpo().getDescricao()
 																+ "\tValor Inicial: " + emp.getIpo().getValorInicial());
 													}
 
 													System.out.printf(
-															"\n\nPara salvar uma empresa na sua lista de favoritos é necessário estar logado!\n");
+															"\n\nPara salvar uma empresa na sua lista de favoritos ï¿½ necessï¿½rio estar logado!\n");
 													System.out.printf("Gostaria de realizar o login/cadastro?(S/N)");
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
 
 													if (resposta == 'S') {
-														System.out.printf("Já possui conta?(S/N)");
+														System.out.printf("Jï¿½ possui conta?(S/N)");
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
@@ -3250,7 +3250,7 @@ public static void main(String[] args) throws ParseException, IOException {
 															for (Usuario u : usuarios) {
 																if ((u.getEmail().equals(email))
 																		&& (u.getSenha().equals(senha))) {
-																	System.out.printf("Usuário logado com sucesso!\n");
+																	System.out.printf("Usuï¿½rio logado com sucesso!\n");
 																	indexUsuarioLogado = usuarios.indexOf(u);
 																	break;
 																}
@@ -3273,11 +3273,11 @@ public static void main(String[] args) throws ParseException, IOException {
 																			"Empresa adicionada com sucesso!\n\n");
 																} else {
 																	System.out.println(
-																			"Empresa já consta na sua lista de favoritos!\n\n");
+																			"Empresa jï¿½ consta na sua lista de favoritos!\n\n");
 																}
 
 															} else {
-																System.out.printf("Usuário não encontrado");
+																System.out.printf("Usuï¿½rio nï¿½o encontrado");
 															}
 														} else {
 															Usuario usuario = new Usuario();
@@ -3315,10 +3315,10 @@ public static void main(String[] args) throws ParseException, IOException {
 																usuarios.add(usuario);
 
 																System.out
-																		.printf("Usuário cadastrado com sucesso!\n\n");
+																		.printf("Usuï¿½rio cadastrado com sucesso!\n\n");
 															} else {
 																System.out.println(
-																		"E-mail já cadastrado no sistema!\n\n");
+																		"E-mail jï¿½ cadastrado no sistema!\n\n");
 															}
 
 															System.out.printf("Informe o seu e-mail: ");
@@ -3330,7 +3330,7 @@ public static void main(String[] args) throws ParseException, IOException {
 															for (Usuario u : usuarios) {
 																if ((u.getEmail().equals(email))
 																		&& (u.getSenha().equals(senha))) {
-																	System.out.printf("Usuário logado com sucesso!\n");
+																	System.out.printf("Usuï¿½rio logado com sucesso!\n");
 																	indexUsuarioLogado = usuarios.indexOf(u);
 																	break;
 																}
@@ -3353,17 +3353,17 @@ public static void main(String[] args) throws ParseException, IOException {
 																			"Empresa adicionada com sucesso!\n\n");
 																} else {
 																	System.out.println(
-																			"Empresa já consta na sua lista de favoritos!\n\n");
+																			"Empresa jï¿½ consta na sua lista de favoritos!\n\n");
 																}
 															} else {
-																System.out.printf("Usuário não encontrado");
+																System.out.printf("Usuï¿½rio nï¿½o encontrado");
 															}
 
 														}
 													}
 
 												} else {
-													System.out.printf("Empresa não encontrada!\n\n");
+													System.out.printf("Empresa nï¿½o encontrada!\n\n");
 												}
 
 												System.out.printf(
@@ -3372,7 +3372,7 @@ public static void main(String[] args) throws ParseException, IOException {
 												resposta = scn.next().toUpperCase().charAt(0);
 
 												while (resposta != 'S' && resposta != 'N') {
-													System.out.printf("Utilizar padrão S/N!\n");
+													System.out.printf("Utilizar padrï¿½o S/N!\n");
 													System.out.printf("Digite novamente: ");
 													resposta = scn.next().toUpperCase().charAt(0);
 												}
@@ -3380,13 +3380,13 @@ public static void main(String[] args) throws ParseException, IOException {
 										}
 									} else {
 										System.out.printf(
-												"Infelizmente no momento não possuímos empresas cadastradas!\n\n");
+												"Infelizmente no momento nï¿½o possuï¿½mos empresas cadastradas!\n\n");
 									}
 
 									System.in.read();
 								} else if (opcao == 2) {
-									System.out.printf("\n--------------- ATENÇÃO ---------------\n\n");
-									System.out.printf("Segue as datas em que a bolsa não opera: \n");
+									System.out.printf("\n--------------- ATENï¿½ï¿½O ---------------\n\n");
+									System.out.printf("Segue as datas em que a bolsa nï¿½o opera: \n");
 									
 									feriados.forEach((chave, valor) -> {
 							            System.out.println(chave + ": " + valor);
@@ -3413,11 +3413,11 @@ public static void main(String[] args) throws ParseException, IOException {
 
 										if (count > 0) {
 											System.out.printf(
-													"\nEssas são as empresas que possuem IPOs ativos no momento. Gostaria de ver alguma com mais detalhes? ");
+													"\nEssas sï¿½o as empresas que possuem IPOs ativos no momento. Gostaria de ver alguma com mais detalhes? ");
 											resposta = scn.next().toUpperCase().charAt(0);
 
 											while (resposta != 'S' && resposta != 'N') {
-												System.out.printf("Utilizar padrão S/N!\n");
+												System.out.printf("Utilizar padrï¿½o S/N!\n");
 												System.out.printf("Digite novamente: ");
 												resposta = scn.next().toUpperCase().charAt(0);
 											}
@@ -3445,9 +3445,9 @@ public static void main(String[] args) throws ParseException, IOException {
 
 														if (emp.getGovernancas().size() > 0) {
 															System.out.printf(
-																	"\n\n--------------- GOVERNANÇA ---------------\n\n");
+																	"\n\n--------------- GOVERNANï¿½A ---------------\n\n");
 															for (Governanca c : emp.getGovernancas()) {
-																System.out.printf("Perído: "
+																System.out.printf("Perï¿½do: "
 																		+ sdf.format(c.getDtInicio()) + "\t\t"
 																		+ sdf.format(c.getDtFim()) + "\n\n");
 																System.out.printf("Presidentes: ");
@@ -3460,7 +3460,7 @@ public static void main(String[] args) throws ParseException, IOException {
 																	System.out.printf(s + " |\t");
 																}
 
-																System.out.printf("\nComitê: ");
+																System.out.printf("\nComitï¿½: ");
 																for (String s : c.getComites()) {
 																	System.out.printf(s + " |\t");
 																}
@@ -3487,7 +3487,7 @@ public static void main(String[] args) throws ParseException, IOException {
 															}
 														} else {
 															System.out.printf(
-																	"\nNão existe uma governança cadastrada para essa empresa ainda!");
+																	"\nNï¿½o existe uma governanï¿½a cadastrada para essa empresa ainda!");
 														}
 
 														if (emp.getValores().size() > 0) {
@@ -3495,18 +3495,18 @@ public static void main(String[] args) throws ParseException, IOException {
 																	"\n\n--------------- VALORES ---------------\n\n");
 															for (Valores v : emp.getValores()) {
 																System.out.printf("Valor: " + v.getNome()
-																		+ "\nDescrição: " + v.getDescricao() + "\n\n");
+																		+ "\nDescriï¿½ï¿½o: " + v.getDescricao() + "\n\n");
 															}
 														} else {
 															System.out.printf(
-																	"\nNão existe valores cadastrados para essa empresa ainda!");
+																	"\nNï¿½o existe valores cadastrados para essa empresa ainda!");
 														}
 
 														if (emp.getBalancos().size() > 0) {
 															System.out.printf(
-																	"\n\n--------------- BALANÇOS ---------------\n\n");
+																	"\n\n--------------- BALANï¿½OS ---------------\n\n");
 															for (Balanco b : emp.getBalancos()) {
-																System.out.printf("Período: "
+																System.out.printf("Perï¿½odo: "
 																		+ sdf.format(b.getDtInicio()) + "\t\t"
 																		+ sdf.format(b.getDtFinal()) + "\n\n");
 																System.out.printf("\n\nAtivos: \n");
@@ -3526,40 +3526,40 @@ public static void main(String[] args) throws ParseException, IOException {
 
 																System.out.printf(
 																		"\n-------------------------------------------------------------------------------------------\n");
-																System.out.printf("Patrimônio líquido: R$"
+																System.out.printf("Patrimï¿½nio lï¿½quido: R$"
 																		+ b.getPatrimonioLiquido());
 															}
 														} else {
 															System.out.printf(
-																	"\nNão existe balanços cadastrados para essa empresa ainda!");
+																	"\nNï¿½o existe balanï¿½os cadastrados para essa empresa ainda!");
 														}
 
 														if (emp.getAtivoIpo()) {
 															System.out.printf(
 																	"\n\n--------------- IPO ---------------\n\n");
-															System.out.printf("Descrição:" + emp.getIpo().getDescricao()
+															System.out.printf("Descriï¿½ï¿½o:" + emp.getIpo().getDescricao()
 																	+ "\tValor Inicial: "
 																	+ emp.getIpo().getValorInicial());
 														}
 
 														System.out.printf(
-																"\n\nPara salvar uma empresa na sua lista de favoritos é necessário estar logado!\n");
+																"\n\nPara salvar uma empresa na sua lista de favoritos ï¿½ necessï¿½rio estar logado!\n");
 														System.out
 																.printf("Gostaria de realizar o login/cadastro?(S/N)");
 														resposta = scn.next().toUpperCase().charAt(0);
 
 														while (resposta != 'S' && resposta != 'N') {
-															System.out.printf("Utilizar padrão S/N!\n");
+															System.out.printf("Utilizar padrï¿½o S/N!\n");
 															System.out.printf("Digite novamente: ");
 															resposta = scn.next().toUpperCase().charAt(0);
 														}
 
 														if (resposta == 'S') {
-															System.out.printf("Já possui conta?(S/N)");
+															System.out.printf("Jï¿½ possui conta?(S/N)");
 															resposta = scn.next().toUpperCase().charAt(0);
 
 															while (resposta != 'S' && resposta != 'N') {
-																System.out.printf("Utilizar padrão S/N!\n");
+																System.out.printf("Utilizar padrï¿½o S/N!\n");
 																System.out.printf("Digite novamente: ");
 																resposta = scn.next().toUpperCase().charAt(0);
 															}
@@ -3575,7 +3575,7 @@ public static void main(String[] args) throws ParseException, IOException {
 																	if ((u.getEmail().equals(email))
 																			&& (u.getSenha().equals(senha))) {
 																		System.out.printf(
-																				"Usuário logado com sucesso!\n");
+																				"Usuï¿½rio logado com sucesso!\n");
 																		indexUsuarioLogado = usuarios.indexOf(u);
 																		break;
 																	}
@@ -3598,11 +3598,11 @@ public static void main(String[] args) throws ParseException, IOException {
 																				"Empresa adicionada com sucesso!\n\n");
 																	} else {
 																		System.out.println(
-																				"Empresa já consta na sua lista de favoritos!\n\n");
+																				"Empresa jï¿½ consta na sua lista de favoritos!\n\n");
 																	}
 
 																} else {
-																	System.out.printf("Usuário não encontrado");
+																	System.out.printf("Usuï¿½rio nï¿½o encontrado");
 																}
 															} else {
 																Usuario usuario = new Usuario();
@@ -3641,10 +3641,10 @@ public static void main(String[] args) throws ParseException, IOException {
 																	usuarios.add(usuario);
 
 																	System.out.printf(
-																			"Usuário cadastrado com sucesso!\n\n");
+																			"Usuï¿½rio cadastrado com sucesso!\n\n");
 																} else {
 																	System.out.println(
-																			"E-mail já cadastrado no sistema!\n\n");
+																			"E-mail jï¿½ cadastrado no sistema!\n\n");
 																}
 
 																System.out.printf("Informe o seu e-mail: ");
@@ -3657,7 +3657,7 @@ public static void main(String[] args) throws ParseException, IOException {
 																	if ((u.getEmail().equals(email))
 																			&& (u.getSenha().equals(senha))) {
 																		System.out.printf(
-																				"Usuário logado com sucesso!\n");
+																				"Usuï¿½rio logado com sucesso!\n");
 																		indexUsuarioLogado = usuarios.indexOf(u);
 																		break;
 																	}
@@ -3680,36 +3680,36 @@ public static void main(String[] args) throws ParseException, IOException {
 																				"Empresa adicionada com sucesso!\n\n");
 																	} else {
 																		System.out.println(
-																				"Empresa já consta na sua lista de favoritos!\n\n");
+																				"Empresa jï¿½ consta na sua lista de favoritos!\n\n");
 																	}
 																} else {
-																	System.out.printf("Usuário não encontrado");
+																	System.out.printf("Usuï¿½rio nï¿½o encontrado");
 																}
 
 															}
 														}
 
 													} else {
-														System.out.printf("Empresa não encontrada!\n\n");
+														System.out.printf("Empresa nï¿½o encontrada!\n\n");
 													}
 
 													System.out.printf("\n\nGostaria de ver outra empresa?");
 													resposta = scn.next().toUpperCase().charAt(0);
 
 													while (resposta != 'S' && resposta != 'N') {
-														System.out.printf("Utilizar padrão S/N!\n");
+														System.out.printf("Utilizar padrï¿½o S/N!\n");
 														System.out.printf("Digite novamente: ");
 														resposta = scn.next().toUpperCase().charAt(0);
 													}
 												} while (resposta == 'S');
 											}
 										} else {
-											System.out.printf("Não encontramos empresas com IPOs abertos!\n\n");
+											System.out.printf("Nï¿½o encontramos empresas com IPOs abertos!\n\n");
 										}
 
 									} else {
 										System.out.printf(
-												"Infelizmente no momento não possuímos empresas cadastradas!\n\n");
+												"Infelizmente no momento nï¿½o possuï¿½mos empresas cadastradas!\n\n");
 									}
 
 									System.in.read();
@@ -3717,7 +3717,7 @@ public static void main(String[] args) throws ParseException, IOException {
 
 							} while (opcao >= 1 && opcao <= 2);
 						} else {
-							System.out.println("Não possuímos empresas cadastradas no momento\n\n");
+							System.out.println("Nï¿½o possuï¿½mos empresas cadastradas no momento\n\n");
 						}
 
 					}
@@ -3744,7 +3744,7 @@ public static void main(String[] args) throws ParseException, IOException {
 					System.out.printf("Senha atualizada com sucesso!\n\n");
 
 				} else {
-					System.out.println("Usuário não cadastrado no sistema!\n\n");
+					System.out.println("Usuï¿½rio nï¿½o cadastrado no sistema!\n\n");
 				}
 
 				System.in.read();
