@@ -1,5 +1,7 @@
 //EXERCÍCIO 1 - OK
-const escola = [
+
+//A - Crie um método tela aluno estudando e apresente na tela
+const alunos = [
     {curso: "análise e desenvolvimento de sistemas",
     aluno: "ana carolina",
     professor: "wellington cidade",
@@ -18,14 +20,18 @@ const escola = [
 ]
 
 
-function telaAlunoEstudando(escola){
+function telaAlunoEstudando(alunos){
     document.write(`LISTA DE ALUNOS<br><br>`)
-    escola.forEach(element => document.write(`Curso: ${element.curso}<br>
+    alunos.forEach(element => document.write(`Curso: ${element.curso}<br>
     Aluno: ${element.aluno}<br>
     Professor: ${element.professor}<br>
     Turma: ${element.turma}<br>
     Período: ${element.periodo}<br><br>`))
 }
 
-telaAlunoEstudando(escola)
+telaAlunoEstudando(alunos)
+
+//B -  busque um aluno usando o método find e apresente na tela 
+const aluno = alunos.find(aluno => aluno.aluno === "diego")
+document.write(`O aluno buscado foi: ${aluno.aluno}`)
 
