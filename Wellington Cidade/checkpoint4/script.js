@@ -130,6 +130,19 @@ const valorTotalDescontos = funcionarios.reduce((preVal, elem ) => preVal + elem
 
 document.write(`<br><br>O valor total dos descontos é R$ ${valorTotalDescontos}`)
 
+//EXERCICIO 3
+function somaTradicional(a, b, c){
+    return (a + b)/c
+}
+
+console.log(somaTradicional(7,3,2))
+
+const somaArrowFunction = (a, b, c) => {
+    return (a + b)/c
+}
+
+console.log(somaArrowFunction(7,3,2))
+
 
 
 
