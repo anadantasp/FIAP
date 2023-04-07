@@ -143,6 +143,23 @@ const somaArrowFunction = (a, b, c) => {
 
 console.log(somaArrowFunction(7,3,2))
 
+//EXERCÍCIO 4
+let cliques = 0
+
+function contaCliquesTradicional(){
+    updateDisplay(++cliques)
+    console.log(cliques)
+}
+
+const contaCliquesArrowFunction = () => {
+    updateDisplay(++cliques)
+    console.log(cliques)
+}
+
+function updateDisplay(val) {
+    document.getElementById("counter-label").innerHTML = val;
+}
+
 
 
 
