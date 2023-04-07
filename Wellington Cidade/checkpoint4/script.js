@@ -160,6 +160,26 @@ function updateDisplay(val) {
     document.getElementById("counter-label").innerHTML = val;
 }
 
+//EXERCICIO 5
+
+function calculaMedia(nota1, nota2, nota3, nota4, nota5, nota6, nota7){
+    let media = (nota1 + nota2 + nota3 + nota4 + nota5 + nota6 + nota7)/7
+
+    if(media < 6){
+        console.log("Aluno REPROVADO")
+    }else{
+        console.log("Aluno APROVADO")
+    }
+}
+
+calculaMedia(3,7,4,8,8,5,9)
+
+
+
+
+
+
+
 
 
 
