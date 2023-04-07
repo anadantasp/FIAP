@@ -206,6 +206,18 @@ valorIdade = parseInt(idade.value)
     }
 }
 
+//EXERCÍCIO 8
+numero = document.getElementById("calcParImpar")
+
+function calcularNumero(){
+    valorNumero = parseInt(numero.value)
+
+    if(valorNumero % 2 == "0"){
+        alert("Este número é par")
+    }else{
+        alert("Este número é impar")
+    }
+}
 
 
 
