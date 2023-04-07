@@ -186,6 +186,26 @@ function logar(){
     }
 }
 
+//EXERCICIO 7
+idade = document.getElementById("idade")
+
+function calcularIdade(){
+
+//console.log(idade.value)
+valorIdade = parseInt(idade.value)
+//console.log(valorIdade)
+
+    if(valorIdade <= 12){
+        alert("Criança")
+    }else if(valorIdade >= 13 && valorIdade <= 18){
+        alert("Adolescente")
+    }else if(valorIdade >= 19 && valorIdade <= 60){
+        alert("Adulto")
+    }else{
+        alert("Idoso")
+    }
+}
+
 
 
 
