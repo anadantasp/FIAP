@@ -20,7 +20,7 @@ const alunos = [
 
 
 function telaAlunoEstudando(alunos){
-    document.write(`LISTA DE ALUNOS<br><br>`)
+    document.write(`<br><br>LISTA DE ALUNOS<br><br>`)
     alunos.forEach(element => document.write(`Curso: ${element.curso}<br>
     Aluno: ${element.aluno}<br>
     Professor: ${element.professor}<br>
@@ -174,7 +174,17 @@ function calculaMedia(nota1, nota2, nota3, nota4, nota5, nota6, nota7){
 
 calculaMedia(3,7,4,8,8,5,9)
 
+//EXERCICIO 6
+usuario = document.getElementById("usuario")
+senha = document.getElementById("senha")
 
+function logar(){
+    if(usuario.value == "adm" && senha.value == "1234"){
+        alert("Usuário logado com sucesso!")
+    }else{
+        alert("Usuario inválido")
+    }
+}
 
 
 
