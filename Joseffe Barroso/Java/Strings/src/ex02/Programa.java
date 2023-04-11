@@ -23,7 +23,7 @@ public class Programa {
 				
 				Cliente cliente = new Cliente();
 				
-				cliente.setNome(dadosCliente[0].substring(0,dadosCliente[0].length()));
+				cliente.setNome(dadosCliente[0].substring(1,dadosCliente[0].length()));
 				cliente.setIdade(Integer.parseInt(dadosCliente[1]));
 				cliente.setCidade(dadosCliente[2]);
 				
@@ -33,7 +33,7 @@ public class Programa {
 				
 				Produto produto = new Produto();
 				
-				produto.setNome(dadosProduto[0].substring(0, dadosProduto[0].length()));
+				produto.setNome(dadosProduto[0].substring(1, dadosProduto[0].length()));
 				produto.setQuantidadeEstoque(Integer.parseInt(dadosProduto[1]));
 				produto.setPreco(Double.parseDouble(dadosProduto[2]));
 				
