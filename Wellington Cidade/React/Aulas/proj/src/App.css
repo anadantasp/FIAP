@@ -1,0 +1,27 @@
+body{
+  background: linear-gradient(#e66465, #9198e5);
+}
+
+h1{
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+}
+
+p{
+  text-align: center;
+}
+
+input{
+  height: 30px;
+  width: 25%;
+  font-size: 20px;
+  margin-left: 45%;
+}
+
+button{
+  height: 30px;
+  width: 15%;
+  font-size: 20px;
+  margin-left: 50%;
+}
