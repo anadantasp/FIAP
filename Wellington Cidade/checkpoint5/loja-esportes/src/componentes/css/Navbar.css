@@ -1,0 +1,20 @@
+div{
+    width: 100%;
+    height: 90px;
+    background-color:  rgb(92, 150, 237);
+    text-align: center;
+    line-height: 90px;
+}
+
+div ul{
+    margin: 0;
+    padding: 0;
+}
+
+div ul li{
+    list-style: none;
+    display: inline;
+    color: white;
+    padding: 20px;
+
+}
