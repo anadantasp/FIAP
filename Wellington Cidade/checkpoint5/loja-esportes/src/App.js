@@ -1,14 +1,22 @@
 import Home from './componentes/Home'
-import Navbar from './componentes/Navbar'
-import Footer from './componentes/Footer'
+import Login from './componentes/Login'
+import { useState } from 'react';
+
 function App() {
+
+    const [user, setUser] = useState([])
+
   return (
     <div>
-      <Navbar/>
-      <Home/>
-      <Footer/>
+      {
+          !user.length > 0
+          ? <Login setUser={setUser} />
+          : <Home user={user} setUser={setUser}/>
+      }
     </div>
+    
   );
+  
 }
 
 export default App;

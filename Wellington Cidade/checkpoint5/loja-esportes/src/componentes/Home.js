@@ -1,8 +1,15 @@
 import './css/Home.css'
 
-function Home(){
+function Home({user, setUser}){
+
+    const handleLogout = () => {
+        setUser([])
+    }
+
     return(
         <>
+            <h2>{user}</h2>
+            <button onClick={handleLogout}>Encerrar sessão</button>
             <h3>Produtos mais vendidos</h3>
             <section>
                 <article>
