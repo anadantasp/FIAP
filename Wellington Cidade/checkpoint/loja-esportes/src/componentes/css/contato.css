@@ -1,0 +1,17 @@
+.contato{
+    width: 100%;
+    height: 600px;
+    background-color: white;
+}
+
+.condicional{
+    width: 100%;
+    height: 90px;
+    border: 1px solid red;
+    background-color: pink;
+    
+}
+
+p{
+    margin: 0;
+}
