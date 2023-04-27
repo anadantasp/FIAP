@@ -1,14 +1,15 @@
 import './css/navbar.css'
+import {Link} from 'react-router-dom'
 
 function Nav(){
     return(
         <div>
             <ul>
                 <li>
-                    HOME
+                    <Link to="/">HOME</Link>
                 </li>
                 <li>
-                    FALE CONOSCO
+                    <Link to="/contato">FALE CONOSCO</Link>
                 </li>
             </ul>
         </div>

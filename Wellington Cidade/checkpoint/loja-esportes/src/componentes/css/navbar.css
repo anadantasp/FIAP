@@ -14,7 +14,12 @@ div ul{
 div ul li{
     list-style: none;
     display: inline;
-    color: white;
     padding: 20px;
+
+}
+
+div ul li a{
+    text-decoration: none;
+    color: white;
 
 }
