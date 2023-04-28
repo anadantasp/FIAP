@@ -1,11 +1,12 @@
 import './css/home.css'
+import Contador from './contador'
 
 function Home(){
 
     return(
         <>
             <h3 className='titulo'>PRODUTOS MAIS VENDIDOS</h3>
-            <section>
+            <section className='cards'>
                 <article>
                     <img src="https://decathlonpro.vtexassets.com/arquivos/ids/2763414-588-752/segunda-pele-simple-warm-feminina-wedze-preto-m2.jpg?v=637544696247830000" alt='imagem'></img>
                     <p>BLUSA TÉRMICA</p>
@@ -48,6 +49,7 @@ function Home(){
                 </article>
 
             </section>
+            <Contador/>
         </>
     )
 }
