@@ -7,11 +7,37 @@
 .condicional{
     width: 100%;
     height: 90px;
-    border: 1px solid red;
-    background-color: pink;
+    background-color: rgb(160, 94, 105);
+    color: white;
+    font-size: 14px;
     
+}
+
+h3{
+    color: rgb(45, 44, 44);
 }
 
 p{
     margin: 0;
+}
+
+input{
+    border: 1px solid rgb(131, 126, 126);
+    border-radius: 5px;
+    width: 300px;
+    height: 20px;
+}
+
+textarea{
+    width: 350px;
+    border: 1px solid rgb(131, 126, 126);
+    border-radius: 5px;
+}
+
+.botao{
+    background-color: rgb(92, 150, 237);
+    border: none;
+    width: 150px;
+    height: 40px;
+    color: white;
 }

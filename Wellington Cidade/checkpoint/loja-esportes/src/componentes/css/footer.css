@@ -3,10 +3,18 @@ footer{
     height: 90px;
     background-color:  rgb(92, 150, 237);
     line-height: 50px;
+    margin-top: 30px;
     
 }
 
 .rsocial{
-    left: 100PX;
+    text-align: end;
     color: white;
+    font-size: 20px;
+    
+}
+
+footer p{
+    color: white;
+
 }

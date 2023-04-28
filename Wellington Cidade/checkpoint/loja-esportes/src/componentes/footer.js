@@ -16,7 +16,7 @@ function Footer(){
                 </li>
             </ul>
 
-        AnaPrado@2023
+        <p>ANA PRADO - 2023</p>
         
         </footer>
     )
