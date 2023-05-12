@@ -1,0 +1,44 @@
+.contato{
+    width: 100%;
+    height: 570px;
+    background-color: white;
+}
+
+.condicional{
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    color: rgb(47, 46, 46);
+    font-size: 14px;
+    margin-bottom: 0;
+    
+}
+
+h3{
+    color: rgb(45, 44, 44);
+}
+
+p{
+    margin: 0;
+}
+
+input{
+    border: 1px solid rgb(131, 126, 126);
+    border-radius: 5px;
+    width: 300px;
+    height: 20px;
+}
+
+textarea{
+    width: 350px;
+    border: 1px solid rgb(131, 126, 126);
+    border-radius: 5px;
+}
+
+.botao{
+    background-color: rgb(92, 150, 237);
+    border: none;
+    width: 150px;
+    height: 40px;
+    color: white;
+}
