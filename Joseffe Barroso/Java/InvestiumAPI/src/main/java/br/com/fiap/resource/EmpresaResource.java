@@ -18,7 +18,6 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
 import br.com.fiap.bo.EmpresaBo;
-import br.com.fiap.model.Categoria;
 import br.com.fiap.model.Empresa;
 
 @Path("/empresa")

@@ -20,7 +20,7 @@ import javax.ws.rs.core.UriInfo;
 import br.com.fiap.bo.GovernancaBo;
 import br.com.fiap.model.Governanca;
 
-@Path("/categoria")
+@Path("/governanca")
 public class GovernancaResource {
 
 	private GovernancaBo governancaBo = new GovernancaBo();

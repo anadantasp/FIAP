@@ -52,7 +52,7 @@ public class EmpresaDao {
 		ArrayList<Empresa> list = null;
 		
 		try {
-            String query = "SELECT * FROM empresa ORDER BY id";
+            String query = "SELECT * FROM empresa ORDER BY id_empresa";
             
             statement = conn.createStatement();
            
@@ -104,22 +104,22 @@ public class EmpresaDao {
             rs = statement.executeQuery(query);
            
             while(rs.next()){
-            	Empresa e = new Empresa();
-            	e.setId(rs.getInt("id_empresa"));
-            	e.setNome(rs.getString("nome"));
-            	e.setDescricao(rs.getString("descricao_empresa"));
+            	empresa = new Empresa();
+            	empresa.setId(rs.getInt("id_empresa"));
+            	empresa.setNome(rs.getString("nome"));
+            	empresa.setDescricao(rs.getString("descricao_empresa"));
             	
             	String ativo = rs.getString("ativo_ipo");
-            	e.setAtivoIpo(ativo.contentEquals("S") ? true : false);
+            	empresa.setAtivoIpo(ativo.contentEquals("S") ? true : false);
             	
-            	e.setValorInicialIpo(rs.getDouble("valor_inicial_ipo"));
-            	e.setDescricaoIpo(rs.getString("descricao_ipo"));
-            	e.setLinkEmpresa(rs.getString("link_empresa"));
-            	e.setLinkProspecto(rs.getString("link_prospecto"));
-            	e.setImagem(rs.getString("img_empresa"));
+            	empresa.setValorInicialIpo(rs.getDouble("valor_inicial_ipo"));
+            	empresa.setDescricaoIpo(rs.getString("descricao_ipo"));
+            	empresa.setLinkEmpresa(rs.getString("link_empresa"));
+            	empresa.setLinkProspecto(rs.getString("link_prospecto"));
+            	empresa.setImagem(rs.getString("img_empresa"));
             	
             	Setor s = sdao.getSetor(rs.getInt("fk_setor"));
-            	e.setSetor(s);
+            	empresa.setSetor(s);
             }
         }catch (Exception e){
             System.out.println("Erro ao exibir as empresas! - " + e);
@@ -157,9 +157,8 @@ public class EmpresaDao {
         	//"convertendo" o boolean da empresa pra char
         	String ativoIPO = empresa.getAtivoIpo() ? "S" : "N";
         	
-            String query = String.format("UPDATE empresa "
-            		+ "SET nome = '%s', descricao_empresa = '%s',"
-            		+ "ativo_ipo = '%s', valor_inicial_ipo = %s"
+            String query = String.format("update empresa set nome = '%s', descricao_empresa = '%s',"
+            		+ "ativo_ipo = '%s', valor_inicial_ipo = %s,"
             		+ "descricao_ipo = '%s', link_empresa = '%s',"
             		+ "link_prospecto = '%s', img_empresa = '%s',"
             		+ "fk_setor = %s"
@@ -167,7 +166,8 @@ public class EmpresaDao {
             		empresa.getNome(), empresa.getDescricao(), 
             		ativoIPO, empresa.getValorInicialIpo(), empresa.getDescricaoIpo(),
             		empresa.getLinkEmpresa(), empresa.getLinkProspecto(),
-            		empresa.getImagem(), empresa.getSetor().getId());
+            		empresa.getImagem(), empresa.getSetor().getId(), empresa.getId());
+            
            
             statement = conn.createStatement();          
             statement.executeUpdate(query);
