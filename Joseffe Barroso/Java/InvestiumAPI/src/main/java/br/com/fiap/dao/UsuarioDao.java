@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import br.com.fiap.connection.ConnectionFactory;
 import br.com.fiap.model.Usuario;
+import br.com.fiap.model.UsuarioIpo;
 import br.com.fiap.model.UsuarioPostagem;
 
 public class UsuarioDao {
@@ -160,6 +161,25 @@ public class UsuarioDao {
             statement.executeUpdate(query);
         }catch (Exception e){
             System.out.println("Erro ao salvar postagem! - " + e);
+        }
+        finally {
+        	conn.close();
+        }
+		
+	}
+
+	public void salvarIpo(UsuarioIpo usuarioIpo) throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+        Statement statement;
+        
+       
+        try {
+            String query = String.format("insert into explora values(%s, '%s')", usuarioIpo.getIdEmpresa(), usuarioIpo.getEmailUsuario());
+           
+            statement = conn.createStatement();          
+            statement.executeUpdate(query);
+        }catch (Exception e){
+            System.out.println("Erro ao salvar empresa/ipo! - " + e);
         }
         finally {
         	conn.close();

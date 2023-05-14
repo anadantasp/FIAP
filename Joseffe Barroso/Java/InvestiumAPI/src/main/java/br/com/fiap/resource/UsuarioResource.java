@@ -18,6 +18,7 @@ import javax.ws.rs.core.UriInfo;
 
 import br.com.fiap.bo.UsuarioBo;
 import br.com.fiap.model.Usuario;
+import br.com.fiap.model.UsuarioIpo;
 import br.com.fiap.model.UsuarioPostagem;
 
 @Path("/usuario")
@@ -72,6 +73,15 @@ public class UsuarioResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(UsuarioPostagem usuarioPostagem) throws SQLException{
 		usuarioBo.salvarPostagem(usuarioPostagem);;
+		return Response.status(Response.Status.CREATED).build();
+	}
+	
+	@POST
+	@Path("/salvarempresa")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response cadastrar(UsuarioIpo usuarioIpo) throws SQLException{
+		usuarioBo.salvarIpo(usuarioIpo);;
 		return Response.status(Response.Status.CREATED).build();
 	}
 	

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import br.com.fiap.dao.UsuarioDao;
 import br.com.fiap.model.Usuario;
+import br.com.fiap.model.UsuarioIpo;
 import br.com.fiap.model.UsuarioPostagem;
 
 public class UsuarioBo {
@@ -38,5 +39,9 @@ public class UsuarioBo {
 	
 	public void salvarPostagem(UsuarioPostagem usuarioPostagem) throws SQLException{
 		usuarioDao.salvarPostagem(usuarioPostagem);
+	}
+	
+	public void salvarIpo(UsuarioIpo usuarioIpo) throws SQLException{
+		usuarioDao.salvarIpo(usuarioIpo);
 	}
 }
