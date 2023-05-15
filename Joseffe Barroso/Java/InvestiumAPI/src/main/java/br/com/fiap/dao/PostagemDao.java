@@ -55,7 +55,7 @@ public class PostagemDao {
 			while (rs.next()) {
 				Postagem p = new Postagem();
 				p.setId(Integer.parseInt(rs.getString("id_post")));
-				p.setDate(sdf.parse(rs.getString("data")));
+				p.setDate(rs.getDate("data"));
 				p.setTitulo(rs.getString("titulo"));
 				p.setConteudo(rs.getString("texto"));
 				p.setImgUrl(rs.getString("img_url"));
@@ -92,7 +92,7 @@ public class PostagemDao {
 			postagem = new Postagem();
 			while (rs.next()) {
 				postagem.setId(Integer.parseInt(rs.getString("id_post")));
-				postagem.setDate(sdf.parse(rs.getString("data")));
+				postagem.setDate(rs.getDate("data"));
 				postagem.setTitulo(rs.getString("titulo"));
 				postagem.setConteudo(rs.getString("texto"));
 				postagem.setImgUrl(rs.getString("img_url"));

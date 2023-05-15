@@ -59,23 +59,19 @@ public class GovernancaDao {
 	            gov.setDtFim(rs.getDate("dt_fim"));
             	
             	//PEGANDO CADA PESSOA RELACIONADA A PESSOA GOVERNANÇA PELA TABELA POSSUI
-            	ArrayList<PessoaGovernanca> psList = new ArrayList<PessoaGovernanca>();
                 String psQuery = "SELECT * FROM possui WHERE fk_id_governanca = " 
             	+ gov.getId();
                 
                 Statement psStatement = conn.createStatement();
                 ResultSet psRs = psStatement.executeQuery(psQuery);
-               
-                PessoaGovernancaDao psdao = new PessoaGovernancaDao();
                 
                 while(psRs.next()) {
                     int psId = psRs.getInt("fk_pessoa_governanca");
                     // método para buscar a pessoa governanca na tabela governanca
-                    PessoaGovernanca ps = psdao.getPessoaGovernanca(psId); 
-                    psList.add(ps);
+                    PessoaGovernanca ps = pgdao.getPessoaGovernanca(psId); 
+                    gov.addPessoasGovernanca(ps);
                 }
-            	  
-                gov.setPessoasGovernanca(psList);
+                
                 list.add(gov);
             }
         }catch (Exception e){
@@ -107,22 +103,17 @@ public class GovernancaDao {
 	            governanca.setDtFim(rs.getDate("dt_fim"));
 	            
 	          //PEGANDO CADA PESSOA GOVERNANÇA RELACIONADA A GOVERNANÇA PELA TABELA POSSUI
-            	ArrayList<PessoaGovernanca> psList = new ArrayList<PessoaGovernanca>();
                 String psQuery = "SELECT * FROM possui WHERE fk_id_governanca = " 
             	+ governanca.getId();
                 
                 Statement psStatement = conn.createStatement();
                 ResultSet psRs = psStatement.executeQuery(psQuery);
-               
-                PessoaGovernancaDao psdao = new PessoaGovernancaDao();
                 
                 while(psRs.next()) {
                     int psId = psRs.getInt("fk_pessoa_governanca");
-                    PessoaGovernanca ps = psdao.getPessoaGovernanca(psId); 
-                    psList.add(ps);
+                    PessoaGovernanca ps = pgdao.getPessoaGovernanca(psId); 
+                    governanca.addPessoasGovernanca(ps);
                 }
-            	  
-                governanca.setPessoasGovernanca(psList);
 	        }
 	    } catch (Exception e){
 	        System.out.println("Erro ao buscar a governança por id! - " + e);

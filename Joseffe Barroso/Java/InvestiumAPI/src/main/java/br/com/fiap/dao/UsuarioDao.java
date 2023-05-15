@@ -53,7 +53,7 @@ public class UsuarioDao {
             	Usuario u = new Usuario();
             	u.setEmail(rs.getString("email"));
             	u.setNome(rs.getString("nome"));
-            	u.setDtNascimento(sdf.parse(rs.getString("d_nasc")));
+            	u.setDtNascimento((rs.getDate("d_nasc")));
             	u.setSenha(rs.getString("senha"));
             	u.setPapel(rs.getString("papel"));
             	
@@ -87,7 +87,7 @@ public class UsuarioDao {
             while(rs.next()){
             	usuario.setEmail(rs.getString("email"));
             	usuario.setNome(rs.getString("nome"));
-            	usuario.setDtNascimento(sdf.parse(rs.getString("d_nasc")));
+            	usuario.setDtNascimento(rs.getDate("d_nasc"));
             	usuario.setSenha(rs.getString("senha"));
             	usuario.setPapel(rs.getString("papel"));
             }

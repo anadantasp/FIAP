@@ -55,7 +55,7 @@ public class ComentarioDao {
 			while (rs.next()) {
 				Comentario c = new Comentario();
 				c.setId(Integer.parseInt(rs.getString("id_coment")));
-				c.setData(sdf.parse(rs.getString("data")));
+				c.setData(rs.getDate("data"));
 				c.setConteudo(rs.getString("conteudo"));
 				c.setPostagem(postagemDao.getPostagem(rs.getInt("fk_postagem")));
 				c.setUsuario(usuarioDao.getUsuario(rs.getString("fk_email")));
@@ -87,7 +87,7 @@ public class ComentarioDao {
 			while (rs.next()) {
 				comentario = new Comentario();
 				comentario.setId(Integer.parseInt(rs.getString("id_coment")));
-				comentario.setData(sdf.parse(rs.getString("data")));
+				comentario.setData(rs.getDate("data"));
 				comentario.setConteudo(rs.getString("conteudo"));
 				comentario.setPostagem(postagemDao.getPostagem(rs.getInt("fk_postagem")));
 				comentario.setUsuario(usuarioDao.getUsuario(rs.getString("fk_email")));
