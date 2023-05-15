@@ -25,6 +25,8 @@ public class PessoaGovernancaDao {
             statement = conn.createStatement();          
             statement.executeUpdate(query);
             
+            /*
+            
             for(Governanca g : ps.getGovernanca()) {
             	String query2 = String.format("INSERT INTO possui"
                 		+ "(fk_pessoa_governanca, fk_id_governanca) "
@@ -34,6 +36,7 @@ public class PessoaGovernancaDao {
                 statement = conn.createStatement();          
                 statement.executeUpdate(query2);
             }
+            */
             
         }catch (Exception e){
             System.out.println("Erro ao inserir na tabela pessoa governança! - " + e);
@@ -43,46 +46,32 @@ public class PessoaGovernancaDao {
         }
 	}
 
-	public ArrayList<PessoaGovernanca> getAll() throws SQLException {
+	public ArrayList<PessoaGovernanca> getAllGovernanca(int id) throws SQLException {
         Connection conn = ConnectionFactory.getConnection();
         Statement statement;
         ResultSet rs = null;
+        ResultSet rsPG = null;
         ArrayList<PessoaGovernanca> list = null;
        
         try {
-            String query = "SELECT * FROM pessoa_governanca ORDER BY id_pessoa_governanca";
+            String query = String.format("SELECT * FROM possui where fk_id_governanca = %s", id);
             
             statement = conn.createStatement();
             rs = statement.executeQuery(query);
-           
-            list = new ArrayList<PessoaGovernanca>(); 
             
+            list = new ArrayList<PessoaGovernanca>();
             while(rs.next()){
-            	PessoaGovernanca ps = new PessoaGovernanca();
-            	ps.setId(rs.getInt("id_pessoa_governanca"));
-            	ps.setNome(rs.getString("nome"));
-            	ps.setCargo(rs.getString("cargo"));
+            	String query2 = String.format("SELECT * FROM pessoa_governanca where id_pessoa_governanca = %s", rs.getInt("fk_pessoa_governanca"));
             	
+            	statement = conn.createStatement();
+                rsPG = statement.executeQuery(query2);
+                
+            	PessoaGovernanca pg = new PessoaGovernanca();
+            	pg.setId(rs.getInt("id_pessoa_governanca"));
+            	pg.setNome(rs.getString("nome"));
+            	pg.setCargo(rs.getString("cargo"));
             	
-            	//PEGANDO CADA GOVERNANÇA RELACIONADA A PESSOA GOVERNANÇA PELA TABELA POSSUI
-            	ArrayList<Governanca> governancaList = new ArrayList<Governanca>();
-                String governancaQuery = "SELECT * FROM possui WHERE fk_pessoa_governanca = " 
-            	+ ps.getId();
-                
-                Statement governancaStatement = conn.createStatement();
-                ResultSet governancaRs = governancaStatement.executeQuery(governancaQuery);
-               
-                GovernancaDao gdao = new GovernancaDao();
-                
-                while(governancaRs.next()) {
-                    int governancaId = governancaRs.getInt("fk_id_governanca");
-                    // método para buscar a governanca na tabela governanca
-                    Governanca governanca = gdao.getGovernanca(governancaId); 
-                    governancaList.add(governanca);
-                }
-            	  
-                ps.setGovernanca(governancaList);
-                list.add(ps);
+            	list.add(pg);
             }
         }catch (Exception e){
             System.out.println("Erro ao exibir da tabela pessoa governança! - " + e);
@@ -94,7 +83,7 @@ public class PessoaGovernancaDao {
         return list;
 	}
 
-	public PessoaGovernanca getPessoaGovernanca(int id) throws SQLException {
+	public PessoaGovernanca getPessoaGovernanca(int id_pessoa_governanca) throws SQLException {
 		Connection conn = ConnectionFactory.getConnection();
         Statement statement;
         ResultSet rs = null;
@@ -102,9 +91,7 @@ public class PessoaGovernancaDao {
         
         try {
         	
-        	String query = String.format("SELECT * FROM pessoa_governanca "
-        			+ "ORDER BY id_pessoa_governanca"
-        			+ "WHERE id_pessoa_governanca = %s", id);
+        	String query = String.format("SELECT * FROM pessoa_governanca WHERE id_pessoa_governanca = %s", id_pessoa_governanca);
             
             statement = conn.createStatement();
             rs = statement.executeQuery(query);
@@ -114,26 +101,6 @@ public class PessoaGovernancaDao {
             	ps.setId(rs.getInt("id_pessoa_governanca"));
             	ps.setNome(rs.getString("nome"));
             	ps.setCargo(rs.getString("cargo"));
-            	
-            	
-            	//PEGANDO CADA GOVERNANÇA RELACIONADA A PESSOA GOVERNANÇA PELA TABELA POSSUI
-            	ArrayList<Governanca> governancaList = new ArrayList<Governanca>();
-                String governancaQuery = "SELECT * FROM possui WHERE fk_pessoa_governanca = " 
-            	+ ps.getId();
-                
-                Statement governancaStatement = conn.createStatement();
-                ResultSet governancaRs = governancaStatement.executeQuery(governancaQuery);
-               
-                GovernancaDao gdao = new GovernancaDao();
-                
-                while(governancaRs.next()) {
-                    int governancaId = governancaRs.getInt("fk_id_governanca");
-                    // método para buscar a governanca na tabela governanca
-                    Governanca governanca = gdao.getGovernanca(governancaId); 
-                    governancaList.add(governanca);
-                }
-            	  
-                ps.setGovernanca(governancaList);
           
             }
         }catch (Exception e){
@@ -144,6 +111,41 @@ public class PessoaGovernancaDao {
         }
         
         return ps;
+	}
+	
+	public PessoaGovernanca getPessoaGovernanca(int idPessoaGovernanca, int idGovernanca) throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+        Statement statement;
+        ResultSet rs = null;
+        ResultSet rsPG = null;
+        PessoaGovernanca pg = null;
+        
+        try {
+            String query = String.format("SELECT * FROM possui where fk_id_governanca = %s", idGovernanca);
+            
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+            
+            pg = new PessoaGovernanca();
+            while(rs.next()){
+            	String query2 = String.format("SELECT * FROM pessoa_governanca where id_pessoa_governanca = %s", idPessoaGovernanca);
+            	
+            	statement = conn.createStatement();
+                rsPG = statement.executeQuery(query2);
+            	
+            	pg.setId(rs.getInt("id_pessoa_governanca"));
+            	pg.setNome(rs.getString("nome"));
+            	pg.setCargo(rs.getString("cargo"));
+            	
+            }
+        }catch (Exception e){
+            System.out.println("Erro ao exibir da tabela pessoa governança! - " + e);
+        }
+        finally {
+        	conn.close();
+        }
+        
+        return pg;
 	}
 	
 	public void delete(int id) throws SQLException {

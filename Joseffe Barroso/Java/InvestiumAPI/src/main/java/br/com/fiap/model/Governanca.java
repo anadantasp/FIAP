@@ -9,7 +9,7 @@ public class Governanca {
 	private Date dtInicio;
 	private Date dtFim;
 	private Empresa empresa;
-	private ArrayList <PessoaGovernanca> pessoasGovernanca;
+	private ArrayList <PessoaGovernanca> pessoasGovernanca = new ArrayList <PessoaGovernanca>();
 	
 	public Governanca() {
 		
@@ -26,8 +26,8 @@ public class Governanca {
 		return pessoasGovernanca;
 	}
 
-	public void setPessoasGovernanca(ArrayList<PessoaGovernanca> pessoasGovernanca) {
-		this.pessoasGovernanca = pessoasGovernanca;
+	public void addPessoasGovernanca(PessoaGovernanca pessoaGovernanca) {
+		this.pessoasGovernanca.add(pessoaGovernanca);
 	}
 
 	public Empresa getEmpresa() {
