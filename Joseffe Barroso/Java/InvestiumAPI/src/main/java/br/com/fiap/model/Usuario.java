@@ -12,7 +12,7 @@ public class Usuario {
 	private String papel;
 	
 	//private ArrayList<Postagem> postagens = new ArrayList<Postagem>();
-	//private ArrayList<Ipo>  ipos = new ArrayList<Ipo>();
+	private ArrayList<Empresa>  empresas = new ArrayList<Empresa>();
 	
 	public Usuario() {
 		
@@ -66,20 +66,21 @@ public class Usuario {
 	public void setPapel(String papel) {
 		this.papel = papel;
 	}
-	
-	/*
 
+	public ArrayList<Empresa> getEmpresas() {
+		return this.empresas;
+	}
+	
+	public void addEmpresa(Empresa empresa) {
+		this.empresas.add(empresa);
+	}
+
+	/*
+	
 	public ArrayList<Postagem> getPostagens() {
 		return postagens;
 	}
 
-	public ArrayList<Ipo> getIpos() {
-		return ipos;
-	}
-
-	public void addIpo(Ipo ipo) {
-		this.ipos.add(ipo);
-	}
 
 	public void addPostagem(Postagem postagem) {
 		postagens.add(postagem);

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import br.com.fiap.connection.ConnectionFactory;
@@ -12,22 +13,30 @@ import br.com.fiap.model.PessoaGovernanca;
 
 public class GovernancaDao {
 	PessoaGovernancaDao pgdao = new PessoaGovernancaDao();
+	EmpresaDao empresaDao = new EmpresaDao();
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 	
 	public void insert(Governanca gov) throws SQLException {
         Connection conn = ConnectionFactory.getConnection();
         Statement statement;
-       
+        
         try {
+        	
+        	System.out.println(gov.getEmpresa().getId());
+        	
             String query = String.format("INSERT INTO governanca"
             		+ "(id_gov, dt_inicio, dt_fim, fk_empresa) "
             		+ "VALUES (%s, '%s', '%s', %s)", 
-            		gov.getId(), gov.getDtInicio(), gov.getDtFim(), gov.getEmpresa().getId());
+            		gov.getId(), sdf.format(gov.getDtInicio()), sdf.format(gov.getDtFim()), gov.getEmpresa().getId());
            
             statement = conn.createStatement();          
             statement.executeUpdate(query);
             
             for(PessoaGovernanca ps : gov.getPessoasGovernanca()) {
             	pgdao.insert(ps);
+            	String queryRelacionamento = String.format("insert into possui (fk_pessoa_governanca, fk_id_governanca) values (%s, %s)", ps.getId(), gov.getId());
+            	statement.executeUpdate(queryRelacionamento);
             }
             
         }catch (Exception e){
@@ -41,7 +50,9 @@ public class GovernancaDao {
 	public ArrayList<Governanca> getAll() throws SQLException {
         Connection conn = ConnectionFactory.getConnection();
         Statement statement;
+        Statement psStatement;
         ResultSet rs = null;
+        ResultSet psRs = null;
         ArrayList<Governanca> list = null;
        
         try {
@@ -57,13 +68,14 @@ public class GovernancaDao {
             	gov.setId(rs.getInt("id_gov"));
             	gov.setDtInicio(rs.getDate("dt_inicio"));
 	            gov.setDtFim(rs.getDate("dt_fim"));
+	            gov.setEmpresa(empresaDao.getEmpresa(rs.getInt("fk_empresa")));
             	
             	//PEGANDO CADA PESSOA RELACIONADA A PESSOA GOVERNANÇA PELA TABELA POSSUI
                 String psQuery = "SELECT * FROM possui WHERE fk_id_governanca = " 
             	+ gov.getId();
                 
-                Statement psStatement = conn.createStatement();
-                ResultSet psRs = psStatement.executeQuery(psQuery);
+                psStatement = conn.createStatement();
+                psRs = psStatement.executeQuery(psQuery);
                 
                 while(psRs.next()) {
                     int psId = psRs.getInt("fk_pessoa_governanca");
@@ -101,6 +113,7 @@ public class GovernancaDao {
 	            governanca.setId(rs.getInt("id_gov"));
 	            governanca.setDtInicio(rs.getDate("dt_inicio"));
 	            governanca.setDtFim(rs.getDate("dt_fim"));
+	            governanca.setEmpresa(empresaDao.getEmpresa(rs.getInt("fk_empresa")));
 	            
 	          //PEGANDO CADA PESSOA GOVERNANÇA RELACIONADA A GOVERNANÇA PELA TABELA POSSUI
                 String psQuery = "SELECT * FROM possui WHERE fk_id_governanca = " 

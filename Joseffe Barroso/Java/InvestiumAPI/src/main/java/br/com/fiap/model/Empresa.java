@@ -1,5 +1,7 @@
 package br.com.fiap.model;
 
+import java.util.ArrayList;
+
 public class Empresa {
 	private int id;
 	private String nome;
@@ -11,7 +13,7 @@ public class Empresa {
 	private String linkProspecto;
 	private String imagem;
 	private Setor setor;
-	
+	private ArrayList<Governanca> governancas = new ArrayList<Governanca>();
 	//private ArrayList<Balanco> balancos = new ArrayList<>();
 	
 	public Empresa() {
@@ -136,5 +138,15 @@ public class Empresa {
 	public void setSetor(Setor setor) {
 		this.setor = setor;
 	}
+
+	public ArrayList<Governanca> getGovernancas() {
+		return governancas;
+	}
+
+	public void addGovernancas(Governanca governanca) {
+		this.governancas.add(governanca);
+	}
+	
+	
 
 }

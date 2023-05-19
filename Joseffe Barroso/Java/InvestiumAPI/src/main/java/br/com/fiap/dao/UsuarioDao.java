@@ -7,7 +7,11 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import br.com.fiap.bo.EmpresaBo;
+import br.com.fiap.bo.SetorBo;
 import br.com.fiap.connection.ConnectionFactory;
+import br.com.fiap.model.Empresa;
+import br.com.fiap.model.Setor;
 import br.com.fiap.model.Usuario;
 import br.com.fiap.model.UsuarioIpo;
 import br.com.fiap.model.UsuarioPostagem;
@@ -15,6 +19,9 @@ import br.com.fiap.model.UsuarioPostagem;
 public class UsuarioDao {
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+	
+	EmpresaBo empresaBo = new EmpresaBo();
+	SetorBo setorBo = new SetorBo();
 
 	public void insert(Usuario u) throws SQLException {
         Connection conn = ConnectionFactory.getConnection();
@@ -27,6 +34,7 @@ public class UsuarioDao {
            
             statement = conn.createStatement();          
             statement.executeUpdate(query);
+            System.out.printf("Usuário cadastrado com sucesso!\n\n");
         }catch (Exception e){
             System.out.println("Erro ao inserir o usuário! - " + e);
         }
@@ -131,6 +139,32 @@ public class UsuarioDao {
         
         return usuario;
 	}
+	
+	public Empresa getEmpresaSalva(int idEmpresa, String idUsuario) throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+        Statement statement;
+        ResultSet rs = null;
+        Empresa empresa = null;
+        
+        try {
+            String query = String.format("SELECT * FROM explora "
+            		+ "WHERE fk_empresa = %S and fk_usuario = '%S'", idEmpresa, idUsuario);
+            
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+           
+            while(rs.next()){
+            	empresa = empresaBo.getEmpresa(rs.getInt("fk_empresa"));
+            }
+        }catch (Exception e){
+            System.out.println("Erro ao exibir as empresas! - " + e);
+        }
+        finally {
+        	conn.close();
+        }
+        
+		return empresa;
+	}
 
 	public void delete(String email) throws SQLException {
         Connection conn = ConnectionFactory.getConnection();
@@ -180,6 +214,86 @@ public class UsuarioDao {
             statement.executeUpdate(query);
         }catch (Exception e){
             System.out.println("Erro ao salvar empresa/ipo! - " + e);
+        }
+        finally {
+        	conn.close();
+        }
+		
+	}
+
+	public ArrayList<Empresa> getEmpresasSalvas(String idUsuario) throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+        Statement statement;
+        ResultSet rs = null;
+        ArrayList<Empresa> list = null;
+        
+        try {
+            String query = String.format("SELECT * FROM explora "
+            		+ "WHERE fk_usuario = '%S'", idUsuario);
+            
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+           
+            list = new ArrayList<Empresa>();
+            while(rs.next()){
+            	Empresa e = new Empresa();
+            	e.setId(rs.getInt("id_empresa"));
+            	e.setNome(rs.getString("nome"));
+            	e.setDescricao(rs.getString("descricao_empresa"));
+            	
+            	String ativo = rs.getString("ativo_ipo");
+            	e.setAtivoIpo(ativo.contentEquals("S") ? true : false);
+            	
+            	e.setValorInicialIpo(rs.getDouble("valor_inicial_ipo"));
+            	e.setDescricaoIpo(rs.getString("descricao_ipo"));
+            	e.setLinkEmpresa(rs.getString("link_empresa"));
+            	e.setLinkProspecto(rs.getString("link_prospecto"));
+            	e.setImagem(rs.getString("img_empresa"));
+            	
+            	Setor s = setorBo.getSetor(rs.getInt("fk_setor"));
+            	e.setSetor(s);
+            	
+            	list.add(e);
+            }
+        }catch (Exception e){
+            System.out.println("Erro ao exibir as empresas! - " + e);
+        }
+        finally {
+        	conn.close();
+        }
+        
+		return list;
+        
+	}
+	
+	public void ExcluirEmpresaDosSalvos(int idEmpresa) throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+        Statement statement;
+       
+        try {
+            String query = String.format("delete from explora where fk_empresa = %s", idEmpresa);
+           
+            statement = conn.createStatement();          
+            statement.executeUpdate(query);
+        }catch (Exception e){
+            System.out.println("Erro ao excluir a empresa salva! - " + e);
+        }
+        finally {
+        	conn.close();
+        }
+	}
+
+	public void update(Usuario usuario) throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+        Statement statement;
+       
+        try {
+            String query = String.format("update usuario_java set senha = '%s' where email = '%s'", usuario.getSenha(), usuario.getEmail());
+           
+            statement = conn.createStatement();          
+            statement.executeUpdate(query);
+        }catch (Exception e){
+            System.out.println("Erro ao atualizar o usuário! - " + e);
         }
         finally {
         	conn.close();

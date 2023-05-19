@@ -101,4 +101,30 @@ public class ComentarioDao {
 
 		return comentario;
 	}
+
+	public int maiorId() throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+		Statement statement;
+		ResultSet rs = null;
+		int maiorId = 0;
+
+		try {
+			String query = "select max(id_coment) from comentario";
+
+			statement = conn.createStatement();
+
+			rs = statement.executeQuery(query);
+
+			while (rs.next()) {
+				maiorId = rs.getInt("id_coment");
+			}
+		} catch (Exception e) {
+			System.out.println("Erro ao exibir o usuário! - " + e);
+		} finally {
+			conn.close();
+		}
+		
+		return maiorId;
+	}
+
 }

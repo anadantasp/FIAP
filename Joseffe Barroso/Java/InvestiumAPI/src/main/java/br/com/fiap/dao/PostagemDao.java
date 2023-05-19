@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import br.com.fiap.bo.ComentarioBo;
 import br.com.fiap.connection.ConnectionFactory;
 import br.com.fiap.model.Categoria;
 import br.com.fiap.model.Postagem;
@@ -15,6 +16,7 @@ public class PostagemDao {
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 	CategoriaDao categoriaDao = new CategoriaDao();
+	ComentarioBo comentarioBo = new ComentarioBo();
 	Categoria categoria = null;
 
 	public void insert(Postagem p) throws SQLException {
@@ -81,6 +83,8 @@ public class PostagemDao {
 		Statement statement;
 		ResultSet rs = null;
 		Postagem postagem = null;
+		Statement comStatement;
+        ResultSet comRs = null;
 
 		try {
 			String query = String.format("select * from postagem where id_post = %s", id);
@@ -101,6 +105,17 @@ public class PostagemDao {
 				categoria = categoriaDao.getCategoria(Integer.parseInt(rs.getString("fk_cat")));
 
 				postagem.setCategoria(categoria);
+				
+				//PEGANDO CADA COMENTARIO RELACIONAD0 COM A POSTAGEM 
+                String psQuery = "SELECT * FROM comentario WHERE fk_postagem = " 
+            	+ id;
+                
+                comStatement = conn.createStatement();
+                comRs = comStatement.executeQuery(psQuery);
+                
+                while(comRs.next()) {
+                    postagem.addComentario(comentarioBo.getComentario(comRs.getInt("id_coment")));
+                }
 
 			}
 		} catch (Exception e) {
@@ -145,6 +160,25 @@ public class PostagemDao {
 		}
 
 		return list;
+	}
+
+	public void updateLikes(Postagem postagem) throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+        Statement statement;
+        
+        try {
+            String query = String.format("update postagem set likes = %s where id_post = %s", postagem.getLikes(), postagem.getId());
+           
+            statement = conn.createStatement();          
+            statement.executeUpdate(query);
+        }catch (Exception e){
+            System.out.println("Erro ao atualizar os likes da postagem! - " + e);
+        }
+        finally {
+        	conn.close();
+        }
+        
+		
 	}
 
 }

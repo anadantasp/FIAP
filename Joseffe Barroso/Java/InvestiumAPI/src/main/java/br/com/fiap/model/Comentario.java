@@ -10,9 +10,6 @@ import br.com.fiap.bo.UsuarioBo;
 public class Comentario {
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	
-	UsuarioBo usuarioBo = new UsuarioBo();
-	PostagemBo postagemBo = new PostagemBo();
 
 	private int id;
 	private String conteudo;

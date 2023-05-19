@@ -15,12 +15,14 @@ public class Governanca {
 		
 	}
 	
-	public Governanca(int id, Date dtInicio, Date dtFim, ArrayList <PessoaGovernanca> pessoasGovernanca) {
+	public Governanca(int id, Date dtInicio, Date dtFim, Empresa empresa, ArrayList <PessoaGovernanca> pessoasGovernanca) {
 		this.id = id;
 		this.dtInicio = dtInicio;
 		this.dtFim = dtFim;
+		this.empresa = empresa;
 		this.pessoasGovernanca = pessoasGovernanca;
 	}
+	
 
 	public ArrayList<PessoaGovernanca> getPessoasGovernanca() {
 		return pessoasGovernanca;

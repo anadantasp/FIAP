@@ -15,7 +15,7 @@ public class Postagem {
 	private int likes;
 	private Categoria categoria;
 	//private Usuario usuario;
-	//private ArrayList<Comentario> comentarios = new ArrayList<>();
+	private ArrayList<Comentario> comentarios = new ArrayList<>();
 	
 	public Postagem() {
 		
@@ -110,7 +110,6 @@ public class Postagem {
 		this.categoria = categoria;
 	}
 
-	/*
 	public ArrayList<Comentario> getComentarios() {
 		return comentarios;
 	}
@@ -118,5 +117,4 @@ public class Postagem {
 	public void addComentario(Comentario comentario) {
 		comentarios.add(comentario);
 	}
-	*/
 }

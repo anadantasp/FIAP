@@ -18,6 +18,10 @@ public class ComentarioBo {
 	public Comentario getComentario(int id) throws SQLException {
 		return comentarioDao.getComentario(id);
 	}
+	
+	public int maiorId() throws SQLException {
+		return comentarioDao.maiorId();
+	}
 
 	public void insert(Comentario comentario) throws SQLException {
 		comentarioDao.insert(comentario);

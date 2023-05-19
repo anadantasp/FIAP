@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.fiap.dao.UsuarioDao;
+import br.com.fiap.model.Empresa;
 import br.com.fiap.model.Usuario;
 import br.com.fiap.model.UsuarioIpo;
 import br.com.fiap.model.UsuarioPostagem;
@@ -28,10 +29,9 @@ public class UsuarioBo {
 		usuarioDao.insert(usuario);
 	}
 
-	/*
 	public void update(Usuario usuario) throws SQLException {
 		usuarioDao.update(usuario);
-	}*/
+	}
 
 	public void delete(String email) throws SQLException {
 		usuarioDao.delete(email);
@@ -44,4 +44,18 @@ public class UsuarioBo {
 	public void salvarIpo(UsuarioIpo usuarioIpo) throws SQLException{
 		usuarioDao.salvarIpo(usuarioIpo);
 	}
+	
+	public Empresa getEmpresaSalva(int idEmpresa, String idUsuario) throws SQLException {
+		return usuarioDao.getEmpresaSalva(idEmpresa, idUsuario);
+	}
+	
+	public ArrayList<Empresa> getEmpresasSalvas(String idUsuario) throws SQLException {
+		return usuarioDao.getEmpresasSalvas(idUsuario);
+	}
+	
+	public void ExcluirEmpresaDosSalvos(int idEmpresa) throws SQLException {
+		usuarioDao.ExcluirEmpresaDosSalvos(idEmpresa);
+	}
+	
+	
 }

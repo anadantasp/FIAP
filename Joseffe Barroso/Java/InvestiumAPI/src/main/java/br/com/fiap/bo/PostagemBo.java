@@ -22,11 +22,12 @@ public class PostagemBo {
 		postagemDao.insert(postagem);
 	}
 
-	/*
-	public void update(Postagem postagem) throws SQLException {
-		postagemDao.update(postagem);
+	
+	public void updateLikes(Postagem postagem) throws SQLException {
+		postagemDao.updateLikes(postagem);
 	}
 
+	/*
 	public void delete(int id) throws SQLException {
 		postagemDao.delete(id);
 	}
