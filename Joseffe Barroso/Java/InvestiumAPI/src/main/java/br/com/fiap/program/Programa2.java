@@ -351,6 +351,202 @@ public class Programa2 {
 
 					usuarioBo.insert(usuario);
 				}
+			}else if(opcao == 3) {
+				System.out.printf("--------------- MENU ---------------\n\n");
+				System.out.printf("1 - Acessar Blog\n" + "2 - Acessar empresas\n" + "3 - Sair\n");
+				System.out.printf("Digite a opção desejada: ");
+				opcao = scn.nextInt();
+
+				while (opcao != 1 && opcao != 2 && opcao != 3) {
+					System.out.printf("\nOpção Inválida!\n");
+					System.out.printf("Digite novamente: ");
+					opcao = scn.nextInt();
+				}
+				
+				if (opcao == 1) {
+					postagens = postagemBo.getAll();
+					if (postagens.size() > 0) {
+						for (Postagem p : postagens) {
+							System.out.printf("ID: " + p.getId() + "\tPostagem: " + p.getTitulo() + "\n");
+						}
+
+						System.out.printf("Informe o ID da postagem que deseja visualizar: ");
+						Postagem postagem = postagemBo.getPostagem(scn.nextInt());
+
+						if (postagem != null) {
+							System.out.printf(
+									"\n-------------------------------------------------------------------------------------------\n");
+							System.out.printf("\n\nTítulo: " + postagem.getTitulo() + "\n\nConteúdo: "
+									+ postagem.getConteudo() + "\n\nImagem URL: " + postagem.getImgUrl() + "\n\nData: "
+									+ sdf.format(postagem.getDate()) + "\tCategoria: " + postagem.getCategoria().getDescricao()
+									+ "\t\t\tLikes: " + postagem.getLikes());
+							System.out.printf(
+									"\n-------------------------------------------------------------------------------------------\n");
+
+							comentarios = comentarioBo.getComentariosPostagem(postagem.getId());
+							
+							if(comentarios.size() > 0) {
+								System.out.printf("Comentários:\n\n");
+								for (Comentario c : comentarios) {
+									System.out.printf(c.getUsuario().getNome() + ": " + c.getConteudo()
+											+ "\t\tData: " + sdf.format(c.getData()) + "\n");
+								}
+								System.out.printf(
+										"\n-------------------------------------------------------------------------------------------\n\n");
+							}else {
+								System.out.println("Não existe comentários existentes nessa postagem!\n\n");
+							}
+
+							System.out.printf("Para curtir e comentar é necessário estar logado!\n");
+							System.out.printf("Gostaria de realizar o login/cadastro?(S/N)");
+							resposta = scn.next().toUpperCase().charAt(0);
+
+							while (resposta != 'S' && resposta != 'N') {
+								System.out.printf("Utilizar padr�o S/N!\n");
+								System.out.printf("Digite novamente: ");
+								resposta = scn.next().toUpperCase().charAt(0);
+							}
+
+							if (resposta == 'S') {
+								System.out.printf("Já possui conta?(S/N)");
+								resposta = scn.next().toUpperCase().charAt(0);
+
+								while (resposta != 'S' && resposta != 'N') {
+									System.out.printf("Utilizar padrão S/N!\n");
+									System.out.printf("Digite novamente: ");
+									resposta = scn.next().toUpperCase().charAt(0);
+								}
+
+								if (resposta == 'S') {
+									System.out.printf("Informe o seu e-mail: ");
+									email = scn.next();
+									System.out.printf("Informe a sua senha: ");
+									senha = scn.next();
+
+									usuarioLogado = usuarioBo.getUsuario(email, senha);
+
+									if (usuarioLogado != null) {
+
+										System.out.printf("Curtiu essa postagem?(S/N)");
+										resposta = scn.next().toUpperCase().charAt(0);
+
+										while (resposta != 'S' && resposta != 'N') {
+											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Digite novamente: ");
+											resposta = scn.next().toUpperCase().charAt(0);
+										}
+
+										if (resposta == 'S') {
+											postagem.setLikes(postagem.getLikes() + 1);
+											postagemBo.updateLikes(postagem);
+										}
+
+										System.out.printf("\nGostaria de deixar um comentario nessa postagem?(S/N)");
+										resposta = scn.next().toUpperCase().charAt(0);
+
+										while (resposta != 'S' && resposta != 'N') {
+											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Digite novamente: ");
+											resposta = scn.next().toUpperCase().charAt(0);
+										}
+
+										if (resposta == 'S') {
+											Comentario novoComentario = new Comentario();
+
+											System.out.printf("Entre com o seu comentário: ");
+											novoComentario.setConteudo(scn.next());
+											novoComentario.setId(comentarioBo.maiorId() + 1);
+											novoComentario.setData(new Date());
+											novoComentario.setUsuario(usuarioLogado);
+											novoComentario.setPostagem(postagem);
+
+											comentarioBo.insert(novoComentario);
+											System.out.println("Comentário realizado com sucesso!\n\n");
+										}
+									} else {
+										System.out.printf("Usuário não encontrado");
+									}
+								} else {
+
+									System.out.printf("Digite seu e-mail: ");
+									email = scn.next();
+
+									Usuario usuario = usuarioBo.getUsuario(email);
+
+									if (usuario != null) {
+										System.out.println("Usuário já existente");
+									} else {
+										usuario = new Usuario();
+										usuario.setEmail(email);
+										System.out.println("Digite seu nome: ");
+										usuario.setNome(scn.next());
+										System.out.printf("Digite sua senha: ");
+										usuario.setSenha(scn.next());
+										System.out.printf("Digite sua data de nascimento(DD/MM/YYYY): ");
+										usuario.setDtNascimento(sdf.parse(scn.next()));
+
+										usuario.setPapel("comum");
+
+										usuarioBo.insert(usuario);
+										System.out.printf("Usuário cadastrado com sucesso!\n\n");
+									}
+
+									System.out.printf("Informe o seu e-mail: ");
+									email = scn.next();
+									System.out.printf("Informe a sua senha: ");
+									senha = scn.next();
+
+									usuarioLogado = usuarioBo.getUsuario(email, senha);
+
+									if (usuarioLogado != null) {
+
+										System.out.printf("Curtiu essa postagem?(S/N)");
+										resposta = scn.next().toUpperCase().charAt(0);
+
+										while (resposta != 'S' && resposta != 'N') {
+											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Digite novamente: ");
+											resposta = scn.next().toUpperCase().charAt(0);
+										}
+
+										if (resposta == 'S') {
+											postagem.setLikes(postagem.getLikes() + 1);
+											postagemBo.updateLikes(postagem);
+										}
+
+										System.out.printf("\nGostaria de deixar um comentario nessa postagem?(S/N)");
+										resposta = scn.next().toUpperCase().charAt(0);
+
+										while (resposta != 'S' && resposta != 'N') {
+											System.out.printf("Utilizar padrão S/N!\n");
+											System.out.printf("Digite novamente: ");
+											resposta = scn.next().toUpperCase().charAt(0);
+										}
+
+										if (resposta == 'S') {
+											Comentario novoComentario = new Comentario();
+
+											System.out.printf("Entre com o seu comentário: ");
+											novoComentario.setConteudo(scn.next());
+											novoComentario.setId(comentarioBo.maiorId() + 1);
+											novoComentario.setData(new Date());
+											novoComentario.setUsuario(usuarioLogado);
+											novoComentario.setPostagem(postagem);
+
+											comentarioBo.insert(novoComentario);
+											System.out.println("Comentário realizado com sucesso!\n\n");
+										}
+									} else {
+										System.out.printf("Usuário não encontrado");
+									}
+
+								}
+							}
+						}
+					}else {
+						System.out.println("Infelizmente não temos postagens disponíveis!");
+					}
+				}
 			}else if (opcao == 4) {
 				System.out.printf("Informe o seu email: ");
 				email = scn.next();
@@ -366,7 +562,7 @@ public class Programa2 {
 					System.out.printf("Senha atualizada com sucesso!\n\n");
 
 				} else {
-					System.out.println("Usuário não cadastrado no sistema!\n\n");
+					System.out.println("Usuário no cadastrado no sistema!\n\n");
 				}
 
 				System.in.read();
