@@ -7,16 +7,16 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import br.com.fiap.bo.PostagemBo;
+import br.com.fiap.bo.UsuarioBo;
 import br.com.fiap.connection.ConnectionFactory;
-import br.com.fiap.model.Categoria;
-import br.com.fiap.model.Comentario;
 import br.com.fiap.model.Comentario;
 
 public class ComentarioDao {
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-	PostagemDao postagemDao = new PostagemDao();
-	UsuarioDao usuarioDao = new UsuarioDao();
+	PostagemBo postagemBo = new PostagemBo();
+	UsuarioBo usuarioBo = new UsuarioBo();
 
 	public void insert(Comentario c) throws SQLException {
 		Connection conn = ConnectionFactory.getConnection();
@@ -57,8 +57,8 @@ public class ComentarioDao {
 				c.setId(Integer.parseInt(rs.getString("id_coment")));
 				c.setData(rs.getDate("data"));
 				c.setConteudo(rs.getString("conteudo"));
-				c.setPostagem(postagemDao.getPostagem(rs.getInt("fk_postagem")));
-				c.setUsuario(usuarioDao.getUsuario(rs.getString("fk_email")));
+				
+				c.setUsuario(usuarioBo.getUsuario(rs.getString("fk_email")));
 
 				list.add(c);
 			}
@@ -89,8 +89,8 @@ public class ComentarioDao {
 				comentario.setId(Integer.parseInt(rs.getString("id_coment")));
 				comentario.setData(rs.getDate("data"));
 				comentario.setConteudo(rs.getString("conteudo"));
-				comentario.setPostagem(postagemDao.getPostagem(rs.getInt("fk_postagem")));
-				comentario.setUsuario(usuarioDao.getUsuario(rs.getString("fk_email")));
+				
+				comentario.setUsuario(usuarioBo.getUsuario(rs.getString("fk_email")));
 
 			}
 		} catch (Exception e) {
@@ -100,6 +100,39 @@ public class ComentarioDao {
 		}
 
 		return comentario;
+	}
+	
+	public ArrayList<Comentario> getComentariosPostagem(int idPostagem) throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+		Statement statement;
+		ResultSet rs = null;
+		ArrayList<Comentario> list = null;
+
+		try {
+			String query = String.format("select * from comentario where fk_postagem = %s", idPostagem);
+
+			statement = conn.createStatement();
+
+			rs = statement.executeQuery(query);
+
+			list = new ArrayList<Comentario>();
+			while (rs.next()) {
+				Comentario comentario = new Comentario();
+				comentario.setId(rs.getInt("id_coment"));
+				comentario.setData(rs.getDate("data"));
+				comentario.setConteudo(rs.getString("conteudo"));
+				comentario.setPostagem(postagemBo.getPostagem(rs.getInt("fk_postagem")));
+				comentario.setUsuario(usuarioBo.getUsuario(rs.getString("fk_email")));
+
+				list.add(comentario);
+			}
+		} catch (Exception e) {
+			System.out.println("Erro ao exibir o postagem! - " + e);
+		} finally {
+			conn.close();
+		}
+
+		return list;
 	}
 
 	public int maiorId() throws SQLException {
@@ -116,7 +149,7 @@ public class ComentarioDao {
 			rs = statement.executeQuery(query);
 
 			while (rs.next()) {
-				maiorId = rs.getInt("id_coment");
+				maiorId = rs.getInt("max(id_coment)");
 			}
 		} catch (Exception e) {
 			System.out.println("Erro ao exibir o usuário! - " + e);

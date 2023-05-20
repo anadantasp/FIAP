@@ -8,16 +8,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+import br.com.fiap.bo.CategoriaBo;
 import br.com.fiap.bo.ComentarioBo;
 import br.com.fiap.bo.EmpresaBo;
 import br.com.fiap.bo.PostagemBo;
 import br.com.fiap.bo.UsuarioBo;
-import br.com.fiap.model.Ativo;
-import br.com.fiap.model.Balanco;
+import br.com.fiap.model.Categoria;
 import br.com.fiap.model.Comentario;
 import br.com.fiap.model.Empresa;
 import br.com.fiap.model.Governanca;
-import br.com.fiap.model.Passivo;
 import br.com.fiap.model.PessoaGovernanca;
 import br.com.fiap.model.Postagem;
 import br.com.fiap.model.Usuario;
@@ -26,7 +25,7 @@ public class Programa {
 
 	public static void main(String[] args) throws SQLException, IOException, ParseException {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
 		Scanner scn = new Scanner(System.in);
 
@@ -34,6 +33,7 @@ public class Programa {
 		PostagemBo postagemBo = new PostagemBo();
 		ComentarioBo comentarioBo = new ComentarioBo();
 		EmpresaBo empresaBo = new EmpresaBo();
+		CategoriaBo categoriaBo = new CategoriaBo();
 
 		Usuario usuarioLogado = null, usuario;
 		Postagem postagem = null;
@@ -314,9 +314,180 @@ public class Programa {
 							}
 
 						}
-					}
-				}
+					} else {
+						System.out.printf("-------------- MENU ADM -------------\n\n");
+						System.out.printf("--------------- BLOG ---------------\n");
+						System.out.printf("1 - Cadastrar postagem\n" + "2 - Atualizar postagem\n"
+								+ "3 - Excluir postagem\n" + "4 - Listar postagens\n" + "5 - Criar categoria\n"
+								+ "6 - Atualizar categoria\n" + "7 - Excluir categoria\n" + "8 - Listar categorias\n"
+								+ "9 - Listar coment�rios\n" + "10 - Excluir coment�rio\n\n");
+						System.out.printf("--------------- EMPRESAS ---------------\n");
+						System.out.printf("11 - Cadastrar empresa\n" + "12 - Atulaizar dados da empresa\n"
+								+ "13 - Excluir empresa\n" + "14 - Listar empresas\n\n");
+						System.out.printf("--------------- USUARIOS ---------------\n");
+						System.out.printf("15 - Listar usu�rios\n" + "16 - Editar usu�rio admin\n"
+								+ "17 - Excluir usu�rios\n" + "18 - Cadastrar usu�rio administrativo\n");
+						System.out.printf("19 - Sair\n");
+						System.out.printf("Informe a op��o desejada: ");
+						opcao = scn.nextInt();
 
+						if (opcao == 1) { // CRIAR POSTAGEM
+							postagem = new Postagem();
+
+							System.out.printf("\n------- CADASTRO DE POSTAGEM --------\n\n");
+							System.out.printf("Título da postagem: ");
+							postagem.setTitulo(scn.next());
+							System.out.printf("Conteúdo da postagem: ");
+							postagem.setConteudo(scn.next());
+							System.out.printf("URL da imagem: ");
+							postagem.setImgUrl(scn.next());
+							postagem.setDate(new Date());
+							postagem.setId(postagemBo.getMaiorIdPostagem() + 1);
+
+							for (Categoria c : categoriaBo.getAll()) {
+								System.out.printf("ID: " + c.getId() + "Categoria: " + c.getDescricao() + "\n");
+							}
+
+							System.out.printf("\nInforme o ID da categoria que deseja cadastrar a postagem: ");
+							postagem.setCategoria(categoriaBo.getCategoria(scn.nextInt()));
+
+							postagemBo.insert(postagem);
+							System.out.printf("Postagem cadastrada com sucesso!\n\n");
+
+						} else if (opcao == 2) {
+							for (Postagem p : postagemBo.getAll()) {
+								System.out.printf("ID: " + p.getId() + "\tPostagem: " + p.getTitulo() + "\tCategoria: "
+										+ p.getCategoria() + "\n");
+							}
+
+							System.out.printf("Informe o ID da postagem que deseja atualizar: ");
+							postagem = postagemBo.getPostagem(scn.nextInt());
+
+							if (postagem != null) {
+
+								System.out.printf("Digite o novo t�tulo: ");
+								postagem.setTitulo(scn.next());
+								System.out.printf("Digite o novo conte�do: ");
+								postagem.setConteudo(scn.next());
+								System.out.printf("Digite a nova url da imagem: ");
+								postagem.setImgUrl(scn.next());
+
+								System.out.printf("Gostaria de atualizar a categoria da postagem: ");
+								resposta = scn.next().toUpperCase().charAt(0);
+
+								while (resposta != 'S' && resposta != 'N') {
+									System.out.printf("Utilizar padr�o S/N!");
+									System.out.printf("Digite novamente: ");
+									resposta = scn.next().toUpperCase().charAt(0);
+								}
+
+								if (resposta == 'S') {
+									for (Categoria c : categoriaBo.getAll()) {
+										System.out.printf("ID: " + c.getId() + "Categoria: " + c.getDescricao() + "\n");
+									}
+
+									System.out.printf("\nInforme o ID da categoria que deseja cadastrar a postagem: ");
+									postagem.setCategoria(categoriaBo.getCategoria(scn.nextInt()));
+								}
+
+								postagemBo.update(postagem);
+								System.out.println("Postagem atualizada com sucesso");
+
+							} else {
+								System.out.println("Postagem não encontrada");
+							}
+
+						} else if (opcao == 3) {
+							for (Postagem p : postagemBo.getAll()) {
+								System.out.printf("ID: " + p.getId() + "\tPostagem: " + p.getTitulo() + "\tCategoria: "
+										+ p.getCategoria() + "\n");
+							}
+
+							System.out.printf("Informe o ID da postagem que deseja excluir: ");
+							postagemBo.delete(scn.nextInt());
+						} else if (opcao == 4) {
+							for (Postagem p : postagemBo.getAll()) {
+								System.out.printf("ID: " + p.getId() + "\tPostagem: " + p.getTitulo() + "\tCategoria: "
+										+ p.getCategoria() + "\n");
+							}
+
+							System.out.printf("Deseja ver uma postagem com mais detalhe?(S/N)");
+							resposta = scn.next().toUpperCase().charAt(0);
+
+							while (resposta != 'S' && resposta != 'N') {
+								System.out.printf("Utilizar padrão S/N!\n");
+								System.out.printf("Deseja ver uma postagem com mais detalhe?(S/N)");
+								resposta = scn.next().toUpperCase().charAt(0);
+							}
+							
+							if(resposta == 'S') {
+								System.out.printf("\nInforme o ID da postagem que deseja visualizar: ");
+								postagem = postagemBo.getPostagem(scn.nextInt());
+								
+								if(postagem != null) {
+									System.out.printf(
+											"\n-------------------------------------------------------------------------------------------\n");
+									System.out.printf("\n\nTítulo: " + postagem.getTitulo() + "\n\nConteúdo: "
+											+ postagem.getConteudo() + "\n\nImagem URL: " + postagem.getImgUrl()
+											+ "\n\nData: " + sdf.format(postagem.getDate()) + "\tCategoria: "
+											+ postagem.getCategoria() + "\t\t\tLikes: " + postagem.getLikes());
+									System.out.printf(
+											"\n-------------------------------------------------------------------------------------------\n");
+
+									if (postagem.getComentarios() != null && postagem.getComentarios().size() > 0) {
+										System.out.printf("Comentários:\n\n");
+										for (Comentario c : postagem.getComentarios()) {
+											System.out.printf(c.getUsuario().getNome() + ": " + c.getConteudo()
+													+ "\t\tData: " + sdf.format(c.getData()) + "\n");
+										}
+										System.out.printf(
+												"\n-------------------------------------------------------------------------------------------\n\n");
+									}
+								}else {
+									System.out.println("ID inválido!");
+								}
+								
+							}
+						}else if(opcao == 5) {
+							Categoria categoria = new Categoria();
+							
+							categoria.setId(categoriaBo.getMaiorIdCategoria() + 1);
+							System.out.println("Digite o nome da categoria");
+							categoria.setDescricao(scn.next());
+							
+							categoriaBo.insert(categoria);
+						}else if(opcao == 6) {
+							for (Categoria c : categoriaBo.getAll()) {
+								System.out.printf("ID: " + c.getId() + "Categoria: " + c.getDescricao() + "\n");
+							}
+
+							System.out.printf("\nInforme o ID da categoria que deseja atualizar: ");
+							Categoria categoria = categoriaBo.getCategoria(scn.nextInt());
+							
+							if(categoria != null) {
+								System.out.println("Digite uma nova categoria: ");
+								categoria.setDescricao(scn.next());
+								
+								categoriaBo.update(categoria);
+							}else {
+								System.out.println("ID inválido");
+							}
+							
+						}else if(opcao == 7) {
+							for (Categoria c : categoriaBo.getAll()) {
+								System.out.printf("ID: " + c.getId() + "Categoria: " + c.getDescricao() + "\n");
+							}
+
+							System.out.printf("\nInforme o ID da categoria que deseja excluir: ");
+							categoriaBo.delete(scn.nextInt());
+						}else if(opcao == 8) {
+							for (Categoria c : categoriaBo.getAll()) {
+								System.out.printf("ID: " + c.getId() + "Categoria: " + c.getDescricao() + "\n");
+							}
+						}
+
+					} // FIM MENU ADM
+				}
 			} else if (opcao == 2) {
 				usuario = null;
 

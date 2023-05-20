@@ -26,6 +26,10 @@ public class ComentarioBo {
 	public void insert(Comentario comentario) throws SQLException {
 		comentarioDao.insert(comentario);
 	}
+	
+	public ArrayList<Comentario> getComentariosPostagem(int postagemID) throws SQLException {
+		return comentarioDao.getComentariosPostagem(postagemID);
+	}
 
 	/*
 	public void update(Postagem postagem) throws SQLException {

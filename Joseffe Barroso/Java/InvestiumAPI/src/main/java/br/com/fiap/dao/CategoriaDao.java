@@ -22,6 +22,8 @@ public class CategoriaDao {
            
             statement = conn.createStatement();          
             statement.executeUpdate(query);
+            
+            System.out.println("Categoria inserida com sucesso!");
         }catch (Exception e){
             System.out.println("Erro ao inserir o usuário! - " + e);
         }
@@ -90,6 +92,32 @@ public class CategoriaDao {
         
         return categoria;
 	}
+	
+	public int getMaiorIdCategoria() throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+		Statement statement;
+		ResultSet rs = null;
+		int maiorId = 0;
+
+		try {
+			String query = "select max(id_categoria) from categoria_java";
+
+			statement = conn.createStatement();
+
+			rs = statement.executeQuery(query);
+
+			while (rs.next()) {
+				maiorId = rs.getInt("max(id_categoria)");
+			}
+		} catch (Exception e) {
+			System.out.println("Erro ao exibir o usuário! - " + e);
+		} finally {
+			conn.close();
+		}
+		
+		return maiorId;
+	}
+	
 	
 	public void delete(int id) throws SQLException {
         Connection conn = ConnectionFactory.getConnection();

@@ -3,8 +3,6 @@ package br.com.fiap.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-//import model.Comentario;
-
 public class Postagem {
 
 	private int id;
@@ -14,13 +12,13 @@ public class Postagem {
 	private Date date;
 	private int likes;
 	private Categoria categoria;
-	//private Usuario usuario;
-	private ArrayList<Comentario> comentarios = new ArrayList<>();
+	
 	
 	public Postagem() {
 		
 	}
 
+	/*
 	public Postagem(int id, String titulo, String conteudo, String imgUrl, Date date, Categoria categoria, Usuario usuario) {
 		this.id = id;
 		this.titulo = titulo;
@@ -31,6 +29,7 @@ public class Postagem {
 		this.categoria = categoria;
 		//this.usuario = usuario;
 	}
+	*/
 	
 	public Postagem(int id, String titulo, String conteudo, String imgUrl, Date date, Categoria categoria) {
 		this.id = id;
@@ -90,18 +89,6 @@ public class Postagem {
 		this.likes = likes;
 	}
 	
-	/*
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	
-	*/
-	
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -110,11 +97,5 @@ public class Postagem {
 		this.categoria = categoria;
 	}
 
-	public ArrayList<Comentario> getComentarios() {
-		return comentarios;
-	}
 
-	public void addComentario(Comentario comentario) {
-		comentarios.add(comentario);
-	}
 }

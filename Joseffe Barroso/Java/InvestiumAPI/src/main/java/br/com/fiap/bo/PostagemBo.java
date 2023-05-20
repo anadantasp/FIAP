@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.fiap.dao.PostagemDao;
+import br.com.fiap.model.Comentario;
 import br.com.fiap.model.Postagem;
 
 public class PostagemBo {
@@ -23,13 +24,21 @@ public class PostagemBo {
 	}
 
 	
+	public void update(Postagem postagem) throws SQLException {
+		postagemDao.update(postagem);
+	}
+	
 	public void updateLikes(Postagem postagem) throws SQLException {
 		postagemDao.updateLikes(postagem);
 	}
 
-	/*
+	
 	public void delete(int id) throws SQLException {
 		postagemDao.delete(id);
 	}
-	*/
+	
+	
+	public int getMaiorIdPostagem() throws SQLException {
+		return postagemDao.getMaiorIdPostagem();
+	}
 }

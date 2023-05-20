@@ -21,6 +21,9 @@ public class CategoriaBo {
 		return categoriaDao.getCategoria(id);
 	}
 	
+	public int getMaiorIdCategoria() throws SQLException {
+		return categoriaDao.getMaiorIdCategoria();
+	}
 	public void insert(Categoria categoria) throws SQLException {
 		categoriaDao.insert(categoria);
 	}
