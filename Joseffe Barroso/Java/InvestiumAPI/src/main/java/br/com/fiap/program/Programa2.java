@@ -48,7 +48,7 @@ public class Programa2 {
 			System.out.printf("Informe a opção desejada: ");
 			opcao = scn.nextInt();
 
-			while (opcao != 1 && opcao != 2 && opcao != 3 && opcao != 5) {
+			while (opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4 && opcao != 5) {
 				System.out.printf("\nOpção Inválida!\n");
 				System.out.printf("Digite novamente: ");
 				opcao = scn.nextInt();
@@ -328,6 +328,48 @@ public class Programa2 {
 						}
 					}
 				} while (opcao != 19);
+			}else if (opcao == 2) {
+
+				System.out.printf("Digite seu e-mail: ");
+				email = scn.next();
+
+				Usuario usuario = usuarioBo.getUsuario(email);
+
+				if (usuario != null) {
+					System.out.printf("Usuário já existente!\n\n");
+				} else if (usuario == null){
+					usuario = new Usuario();
+					usuario.setEmail(email);
+					System.out.printf("Digite seu nome: ");
+					usuario.setNome(scn.next());
+					System.out.printf("Digite sua data de nascimento(DD/MM/YYYY): ");
+					usuario.setDtNascimento(sdf.parse(scn.next()));
+					System.out.printf("Digite sua senha: ");
+					usuario.setSenha(scn.next());
+
+					usuario.setPapel("comum");
+
+					usuarioBo.insert(usuario);
+				}
+			}else if (opcao == 4) {
+				System.out.printf("Informe o seu email: ");
+				email = scn.next();
+
+				Usuario usuario = usuarioBo.getUsuario(email);
+
+				if (usuario != null) {
+					System.out.printf("Digite sua nova senha: ");
+					usuario.setSenha(scn.next());
+
+					usuarioBo.update(usuario);
+
+					System.out.printf("Senha atualizada com sucesso!\n\n");
+
+				} else {
+					System.out.println("Usuário não cadastrado no sistema!\n\n");
+				}
+
+				System.in.read();
 			}
 		} while (opcao <= 4);
 	}

@@ -122,8 +122,9 @@ public class UsuarioDao {
            
             rs = statement.executeQuery(query);
            
-            usuario = new Usuario();
+            
             while(rs.next()){
+            	usuario = new Usuario();
             	usuario.setEmail(rs.getString("email"));
             	usuario.setNome(rs.getString("nome"));
             	usuario.setDtNascimento(sdf.parse(rs.getString("d_nasc")));
@@ -131,7 +132,7 @@ public class UsuarioDao {
             	usuario.setPapel(rs.getString("papel"));
             }
         }catch (Exception e){
-            System.out.println("Erro ao exibir o usuário! - " + e);
+            System.out.println("Usuário não encontrado! - " + e);
         }
         finally {
         	conn.close();
