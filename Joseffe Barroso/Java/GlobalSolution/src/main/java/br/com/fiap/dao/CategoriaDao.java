@@ -17,7 +17,7 @@ public class CategoriaDao {
         int id = getMaiorIdCategoria() + 1;
        
         try {
-            String query = String.format("insert into categoria_java(id_categoria,descricao) values(%s,'%s')", id, c.getDescricao());
+            String query = String.format("insert into categoria_artigo(id_categoriaartigo,descricao) values(%s,'%s')", id, c.getDescricao());
            
             statement = conn.createStatement();          
             statement.executeUpdate(query);
@@ -38,7 +38,7 @@ public class CategoriaDao {
         ArrayList<Categoria> list = null;
        
         try {
-            String query= "select * from categoria_java order by id_categoria";
+            String query= "select * from categoria_artigo order by id_categoriaartigo";
             
             statement=conn.createStatement();
            
@@ -47,7 +47,7 @@ public class CategoriaDao {
             list = new ArrayList<Categoria>(); 
             while(rs.next()){
             	Categoria c = new Categoria();
-            	c.setId(Integer.parseInt(rs.getString("id_categoria")));
+            	c.setId(Integer.parseInt(rs.getString("id_categoriaartigo")));
             	c.setDescricao(rs.getString("descricao"));
             	
                 list.add(c);
@@ -69,7 +69,7 @@ public class CategoriaDao {
         Categoria categoria = null;
         
         try {
-            String query= String.format("select * from categoria_java where id_categoria = %s", id);
+            String query= String.format("select * from categoria_artigo where id_categoriaartigo = %s", id);
             
             statement=conn.createStatement();
            
@@ -78,7 +78,7 @@ public class CategoriaDao {
             
             while(rs.next()){
             	categoria = new Categoria();
-            	categoria.setId(Integer.parseInt(rs.getString("id_categoria")));
+            	categoria.setId(Integer.parseInt(rs.getString("id_categoriaartigo")));
             	categoria.setDescricao(rs.getString("descricao"));
           
             }
@@ -99,17 +99,17 @@ public class CategoriaDao {
 		int maiorId = 0;
 
 		try {
-			String query = "select max(id_categoria) from categoria_java";
+			String query = "select max(id_categoriaartigo) from categoria_artigo";
 
 			statement = conn.createStatement();
 
 			rs = statement.executeQuery(query);
 
 			while (rs.next()) {
-				maiorId = rs.getInt("max(id_categoria)");
+				maiorId = rs.getInt("max(id_categoriaartigo)");
 			}
 		} catch (Exception e) {
-			System.out.println("Erro ao exibir o usuário! - " + e);
+			System.out.println("Erro ao buscar o maior id! - " + e);
 		} finally {
 			conn.close();
 		}
@@ -123,7 +123,7 @@ public class CategoriaDao {
         Statement statement;
        
         try {
-            String query = String.format("delete from categoria_java where id_categoria = %s", id);
+            String query = String.format("delete from categoria_artigo where id_categoriaartigo = %s", id);
            
             statement = conn.createStatement();          
             statement.executeUpdate(query);
@@ -140,7 +140,7 @@ public class CategoriaDao {
         Statement statement;
        
         try {
-            String query = String.format("update categoria_java set descricao = '%s' where id_categoria = %s", c.getDescricao(), id);
+            String query = String.format("update categoria_artigo set descricao = '%s' where id_categoriaartigo = %s", c.getDescricao(), id);
            
             statement = conn.createStatement();          
             statement.executeUpdate(query);
