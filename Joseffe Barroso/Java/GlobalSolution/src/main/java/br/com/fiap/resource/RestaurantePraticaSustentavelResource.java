@@ -10,10 +10,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 
 import br.com.fiap.bo.RestaurantePraticaSustentavelBo;
 import br.com.fiap.model.RestaurantePraticaSustentavel;
@@ -39,7 +37,7 @@ public class RestaurantePraticaSustentavelResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	/*RESPONSE É CLASSE DO PACOTE JAVAX ELA GERA O HTTP COMO RETORNO*/
-	public Response insert(RestaurantePraticaSustentavel restaurantePraticaSustentavel, @Context UriInfo uriInfo) throws SQLException {
+	public Response insert(RestaurantePraticaSustentavel restaurantePraticaSustentavel) throws SQLException {
 		restaurantePraticaSustentavelBO.insert(restaurantePraticaSustentavel);;
 		return Response.status(Response.Status.CREATED).entity(restaurantePraticaSustentavel).build();
 	}

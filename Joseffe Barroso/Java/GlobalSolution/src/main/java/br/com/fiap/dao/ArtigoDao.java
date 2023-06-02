@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import br.com.fiap.bo.CategoriaBo;
 import br.com.fiap.connection.ConnectionFactory;
@@ -48,7 +49,7 @@ public class ArtigoDao {
 		Statement statement;
 
 		artigo.setId(getMaiorIdArtigo() + 1);
-		String dataArtigo = sdf.format(artigo.getData());
+		String dataArtigo = sdf.format(new Date());
 
 		try {
 			String query = String.format("insert into artigo(id_artigo, titulo, texto, imagem, data, fk_id_categoria_artigo) values(%s,'%s', '%s', '%s', '%s', %s)", artigo.getId(),
@@ -189,7 +190,7 @@ public class ArtigoDao {
 		Connection conn = ConnectionFactory.getConnection();
 		Statement statement;
 		
-		String dataArtigo = sdf.format(artigo.getData());
+		String dataArtigo = sdf.format(new Date());
 
 		try {
 			String query = String.format(

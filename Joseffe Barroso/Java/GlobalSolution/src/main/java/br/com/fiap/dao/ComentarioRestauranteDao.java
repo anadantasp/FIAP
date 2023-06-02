@@ -50,7 +50,7 @@ public class ComentarioRestauranteDao {
         
         int id = getMaiorIdComentarioRestaurante() + 1;
         
-        String data = sdf.format(comentarioRestaurante.getData());
+        String data = sdf.format(new Date());
        
         try {
             String query = String.format("insert into comentario_restaurante(id_comentario_restaurante, texto, data, fk_idusuario, fk_restaurante_cnpj) "

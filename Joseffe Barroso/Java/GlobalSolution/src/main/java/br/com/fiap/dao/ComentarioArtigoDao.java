@@ -50,7 +50,7 @@ public class ComentarioArtigoDao {
 
 		comentarioArtigo.setId(getMaiorIdComentarioArtigo() + 1);
 		
-		String data = sdf.format(comentarioArtigo.getData());
+		String data = sdf.format(new Date());
 
 		try {
 			String query = String.format(

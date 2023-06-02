@@ -51,7 +51,7 @@ public class AvaliacaoDao {
         
         int id = getMaiorIdAvaliacao() + 1;
         
-        String data = sdf.format(avaliacao.getMomento());
+        String data = sdf.format(new Date());
        
         try {
             String query = String.format("insert into avaliacao(id_avaliacao, valor, momento, fk_restaurante_cnpj, fk_idusuario) values(%s, %s, '%s', %s, %s)", id, 
