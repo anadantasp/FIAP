@@ -26,16 +26,13 @@ public class UsuarioBo {
 		usuarioDao.insert(usuario);
 	}
 
-	public void update(Usuario usuario, int id) throws SQLException {
+	public void atualizarSenha(Usuario usuario, int id) throws SQLException {
 		usuarioDao.updateSenha(usuario, id);
 	}
 	
-	
-	/*
-	public void atualizar(Usuario usuario, String email) throws SQLException {
+	public void atualizarUsuario(Usuario usuario, String email) throws SQLException {
 		usuarioDao.update(usuario, email);
 	}
-	*/
 
 	public void delete(int id) throws SQLException {
 		usuarioDao.delete(id);

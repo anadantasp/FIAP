@@ -18,7 +18,6 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
 import br.com.fiap.bo.UsuarioBo;
-import br.com.fiap.model.Categoria;
 import br.com.fiap.model.Usuario;
 
 
@@ -64,11 +63,18 @@ public class UsuarioResource {
 	@PUT
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(Usuario usuario, @PathParam("id") int id) throws SQLException {
-		usuarioBo.update(usuario, id);
+	public Response atualizarSenha(Usuario usuario, @PathParam("id") int id) throws SQLException {
+		usuarioBo.atualizarSenha(usuario, id);
 		return Response.ok().build();
 	}
 	
+	@PUT
+	@Path("atualizarusuario/{email}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response atualizarUsuario(Usuario usuario, @PathParam("email") String email) throws SQLException {
+		usuarioBo.atualizarUsuario(usuario, email);
+		return Response.ok().build();
+	}
 	
 	@DELETE
 	@Path("/{id}")
