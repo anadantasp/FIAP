@@ -136,6 +136,42 @@ public class AvaliacaoDao {
         return avaliacao;
 	}
 	
+	public ArrayList<Avaliacao> getAvaliacaoRestaurante(long cnpj) throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+        Statement statement;
+        ResultSet rs = null;
+        ArrayList<Avaliacao> list = null;
+        
+        try {
+            String query= String.format("select * from avaliacao where fk_restaurante_cnpj = %s", cnpj);
+            
+            statement=conn.createStatement();
+           
+            rs = statement.executeQuery(query);
+           
+            list = new ArrayList<Avaliacao>();
+            while(rs.next()){
+            	Avaliacao avaliacao = new Avaliacao();
+            	avaliacao = new Avaliacao();
+            	avaliacao.setId(rs.getInt("id_avaliacao"));
+            	avaliacao.setValor(rs.getInt("valor"));
+            	avaliacao.setMomento(rs.getDate("momento"));
+            	avaliacao.setRestaurante(restauranteBo.getRestaurante(rs.getLong("fk_restaurante_cnpj")));
+            	avaliacao.setUsuario(usuarioBo.getUsuario(rs.getInt("fk_idusuario")));
+            	
+            	list.add(avaliacao);
+          
+            }
+        }catch (Exception e){
+            System.out.println("Erro ao exibir avaliação! - " + e);
+        }
+        finally {
+        	conn.close();
+        }
+        
+        return list;
+	}
+	
 	public void delete(int id) throws SQLException {
         Connection conn = ConnectionFactory.getConnection();
         Statement statement;

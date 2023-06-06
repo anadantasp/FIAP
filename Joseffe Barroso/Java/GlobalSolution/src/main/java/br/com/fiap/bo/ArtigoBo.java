@@ -22,6 +22,18 @@ public class ArtigoBo {
 	public ArrayList<Artigo> getArtigoCategoria(int idCategoria) throws SQLException {
 		return artigoDao.getArtigoCategoria(idCategoria);
 	}
+	
+	public int getTotalCurtidasArtigo(int id) throws SQLException {
+		ArrayList<Curtida> curtidas = artigoDao.getCurtidasArtigo(id);
+		
+		int totalCurtidas = 0;
+		
+		for(Curtida curtida: curtidas) {
+			totalCurtidas++;
+		}
+		
+		return totalCurtidas;	 
+	}
 
 	public void insert(Artigo artigo) throws SQLException {
 		artigoDao.insert(artigo);

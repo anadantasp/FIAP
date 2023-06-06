@@ -34,8 +34,15 @@ public class AvaliacaoResource {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Avaliacao getCulinaria(@PathParam("id")int id) throws SQLException {
+	public Avaliacao getAvaliacao(@PathParam("id")int id) throws SQLException {
 		return avaliacaoBO.getAvaliacao(id);
+	}
+	
+	@GET
+	@Path("avaliacaorestaurante/{cnpj}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public double getMediaAvaliacaoRestaurante(@PathParam("cnpj")long cnpj) throws SQLException {
+		return avaliacaoBO.getMediaAvaliacaoRestaurante(cnpj);
 	}
 	
 	@POST

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import br.com.fiap.bo.CategoriaBo;
+import br.com.fiap.bo.UsuarioBo;
 import br.com.fiap.connection.ConnectionFactory;
 import br.com.fiap.model.Artigo;
 import br.com.fiap.model.Curtida;
@@ -16,6 +17,7 @@ import br.com.fiap.model.Curtida;
 public class ArtigoDao {
 	
 	CategoriaBo categoriaBo = new CategoriaBo();
+	UsuarioBo usuarioBo = new UsuarioBo();
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 	
@@ -83,6 +85,36 @@ public class ArtigoDao {
 		}
 
 	}
+	
+	public ArrayList<Curtida> getCurtidasArtigo(int idArtigo) throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+		Statement statement;
+		ResultSet rs = null;
+		ArrayList<Curtida> list = null;
+
+		try {
+			String query = String.format("select * from curte where fk_id_artigo = %s", idArtigo);
+
+			statement = conn.createStatement();
+
+			rs = statement.executeQuery(query);
+
+			list = new ArrayList<Curtida>();
+			while (rs.next()) {
+				Curtida curtida = new Curtida();
+				curtida.setArtigo(getArtigo(rs.getInt("fk_id_artigo")));
+				curtida.setUsuario(usuarioBo.getUsuario(rs.getInt("fk_id_usuario")));
+
+				list.add(curtida);
+			}
+		} catch (Exception e) {
+			System.out.println("Erro ao exibir curtidas relacionadas ao artigo!" + e);
+		} finally {
+			conn.close();
+		}
+
+		return list;
+	} 
 
 	public ArrayList<Artigo> getAll() throws SQLException {
 		Connection conn = ConnectionFactory.getConnection();

@@ -1,7 +1,6 @@
 package br.com.fiap.model;
 
 public class Curtida {
-	private int id;
 	private Usuario usuario;
 	private Artigo artigo;
 	
@@ -12,13 +11,6 @@ public class Curtida {
 	public Curtida(Usuario usuario, Artigo artigo) {
 		this.usuario = usuario;
 		this.artigo = artigo;
-	}
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public Usuario getUsuario() {

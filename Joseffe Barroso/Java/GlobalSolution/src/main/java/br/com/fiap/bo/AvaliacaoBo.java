@@ -18,6 +18,23 @@ public class AvaliacaoBo {
 		return avaliacaoDao.getAvaliacao(id);
 	}
 	
+	public double getMediaAvaliacaoRestaurante(long cnpj) throws SQLException {
+		double mediaAvaliacao = 0f;
+		double totalAvaliacoes = 0f;
+		int quantidadeAvaliacoes = 0;
+		
+		ArrayList<Avaliacao> avaliacoes = avaliacaoDao.getAvaliacaoRestaurante(cnpj);
+		
+		for(Avaliacao a: avaliacoes) {
+			totalAvaliacoes += a.getValor();
+			quantidadeAvaliacoes++;
+		}
+		
+		mediaAvaliacao = totalAvaliacoes / quantidadeAvaliacoes;
+		
+		return mediaAvaliacao;
+	}
+	
 	public void insert(Avaliacao avaliacao) throws SQLException {
 		avaliacaoDao.insert(avaliacao);
 	}
