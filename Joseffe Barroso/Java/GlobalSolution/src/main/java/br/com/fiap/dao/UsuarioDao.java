@@ -159,6 +159,24 @@ public class UsuarioDao {
         Statement statement;
        
         try {
+        	//EXCLUINDO DOS RELACIONAMENTOS
+        	String queryCurte = String.format("delete from curte where fk_id_usuario = %s", id);
+        	statement = conn.createStatement();          
+            statement.executeUpdate(queryCurte);
+            
+            String queryComentarioArtigo = String.format("delete from comentario_artigo where fk_id_usuario = %s", id);
+        	statement = conn.createStatement();          
+            statement.executeUpdate(queryComentarioArtigo);
+            
+            String queryComentarioRestaurante = String.format("delete from comentario_restaurante where fk_idusuario = %s", id);
+        	statement = conn.createStatement();          
+            statement.executeUpdate(queryComentarioRestaurante);
+            
+            String queryAvaliacao = String.format("delete from avaliacao where fk_idusuario = %s", id);
+        	statement = conn.createStatement();          
+            statement.executeUpdate(queryAvaliacao);
+        	
+        	
             String query = String.format("delete from usuario where id_usuario = %s", id);
            
             statement = conn.createStatement();          
@@ -195,8 +213,8 @@ public class UsuarioDao {
        
         try {
            
-            String query = String.format("update usuario set email = '%s', nome = '%s' where id_usuario = %s", 
-            		usuario.getEmail(), usuario.getNome(), id);
+            String query = String.format("update usuario set email = '%s', nome = '%s', senha = '%s' where id_usuario = %s", 
+            		usuario.getEmail(), usuario.getNome(), usuario.getSenha(), id);
            
             statement = conn.createStatement();          
             statement.executeUpdate(query);
