@@ -5,16 +5,18 @@ public class Restaurante {
 	private String nome;
 	private String descricao;
 	private Culinaria culinaria;
+	private String site;
 	
 	public Restaurante() {
 		
 	}
 
-	public Restaurante(long cnpj, String nome, String descricao, Culinaria culinaria) {
+	public Restaurante(long cnpj, String nome, String descricao, Culinaria culinaria, String site) {
 		this.cnpj = cnpj;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.culinaria = culinaria;
+		this.site = site;
 	}
 
 	public long getCnpj() {
@@ -48,5 +50,12 @@ public class Restaurante {
 	public void setCulinaria(Culinaria culinaria) {
 		this.culinaria = culinaria;
 	}
-	
+
+	public String getSite() {
+		return site;
+	}
+
+	public void setSite(String site) {
+		this.site = site;
+	}
 }

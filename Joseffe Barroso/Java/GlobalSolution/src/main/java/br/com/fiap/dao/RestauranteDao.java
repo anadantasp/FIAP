@@ -1,5 +1,6 @@
 package br.com.fiap.dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import br.com.fiap.bo.CulinariaBo;
 import br.com.fiap.connection.ConnectionFactory;
 import br.com.fiap.model.Restaurante;
+import br.com.fiap.service.DominioService;
 
 public class RestauranteDao {
 	
@@ -18,11 +20,33 @@ public class RestauranteDao {
         Connection conn = ConnectionFactory.getConnection();
         Statement statement;
         
+        String retorno;
+        String dataFormatada;
+        
+        DominioService dominioService = new DominioService();
+        
+        try {
+			retorno = dominioService.verificaDisponibilidadeDominio(restaurante.getSite());
+			
+			if(retorno == "") {
+				System.out.print("Domínio " + restaurante.getSite() + " disponível!");
+				restaurante.setSite(null);
+			}else {
+				System.out.println(retorno);
+				dataFormatada = retorno.substring(8,10) + "/" + retorno.substring(5,7) + "/"
+						+ retorno.substring(0, 4);
+				System.out.println("Domínio " + restaurante.getSite() + " já utilizado, porém expira em " + dataFormatada);
+			}
+			
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+        
        
        
         try {
-            String query = String.format("insert into restaurante(cnpj, nome, descricao, fk_id_culinaria) values(%s,'%s', '%s', %s)", restaurante.getCnpj(), 
-            		restaurante.getNome(), restaurante.getDescricao(), restaurante.getCulinaria().getId());
+            String query = String.format("insert into restaurante(cnpj, nome, descricao, site, fk_id_culinaria) values(%s,'%s', '%s', '%s', %s)", restaurante.getCnpj(), 
+            		restaurante.getNome(), restaurante.getDescricao(), restaurante.getSite(), restaurante.getCulinaria().getId());
            
             statement = conn.createStatement();          
             statement.executeUpdate(query);
@@ -55,6 +79,7 @@ public class RestauranteDao {
             	restaurante.setCnpj(rs.getLong("cnpj"));
             	restaurante.setNome(rs.getString("nome"));
             	restaurante.setDescricao(rs.getString("descricao"));
+            	restaurante.setSite(rs.getString("site"));
             	restaurante.setCulinaria(culinariaBo.getCulinaria(rs.getInt("fk_id_culinaria")));
             	
                 list.add(restaurante);
@@ -88,6 +113,7 @@ public class RestauranteDao {
             	restaurante.setCnpj(rs.getLong("cnpj"));
             	restaurante.setNome(rs.getString("nome"));
             	restaurante.setDescricao(rs.getString("descricao"));
+            	restaurante.setSite(rs.getString("site"));
             	restaurante.setCulinaria(culinariaBo.getCulinaria(rs.getInt("fk_id_culinaria")));
           
             }
@@ -120,6 +146,7 @@ public class RestauranteDao {
             	restaurante.setCnpj(rs.getLong("cnpj"));
             	restaurante.setNome(rs.getString("nome"));
             	restaurante.setDescricao(rs.getString("descricao"));
+            	restaurante.setSite(rs.getString("site"));
             	restaurante.setCulinaria(culinariaBo.getCulinaria(rs.getInt("fk_id_culinaria")));
             	
                 list.add(restaurante);
@@ -154,10 +181,32 @@ public class RestauranteDao {
 	public void update(Restaurante restaurante, long cnpj) throws SQLException {
         Connection conn = ConnectionFactory.getConnection();
         Statement statement;
+        
+        String retorno;
+        String dataFormatada;
+        
+        DominioService dominioService = new DominioService();
+        
+        try {
+			retorno = dominioService.verificaDisponibilidadeDominio(restaurante.getSite());
+			
+			if(retorno == "") {
+				System.out.print("Domínio " + restaurante.getSite() + " disponível!");
+				restaurante.setSite(null);
+			}else {
+				System.out.println(retorno);
+				dataFormatada = retorno.substring(8,10) + "/" + retorno.substring(5,7) + "/"
+						+ retorno.substring(0, 4);
+				System.out.println("Domínio " + restaurante.getSite() + " já utilizado, porém expira em " + dataFormatada);
+			}
+			
+		}catch(IOException e){
+			e.printStackTrace();
+		}
        
         try {
-            String query = String.format("update restaurante set nome = '%s', descricao = '%s', fk_id_culinaria = %s  where cnpj = %s", 
-            		restaurante.getNome(), restaurante.getDescricao(), restaurante.getCulinaria().getId(), cnpj);
+            String query = String.format("update restaurante set nome = '%s', descricao = '%s', site = '%s', fk_id_culinaria = %s  where cnpj = %s", 
+            		restaurante.getNome(), restaurante.getDescricao(), restaurante.getSite(),restaurante.getCulinaria().getId(), cnpj);
            
             statement = conn.createStatement();          
             statement.executeUpdate(query);
@@ -168,7 +217,5 @@ public class RestauranteDao {
         	conn.close();
         }
 	}
-	
-	
 
 }
