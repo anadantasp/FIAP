@@ -189,19 +189,14 @@ public class UsuarioDao {
 		
 	}
 	
-	public void update(Usuario usuario, String email) throws SQLException {
+	public void update(Usuario usuario, int id) throws SQLException {
 		Connection conn = ConnectionFactory.getConnection();
         Statement statement;
        
         try {
-        	/*
-        	//ATUALIZANDO NOS RELACIONAMENTOS
-        	String queryUsuarioPostagem = String.format("update usuario_postagem set fk_email = '%s' where fk_email = '%s'", usuario.getEmail(), email);
-        	statement = conn.createStatement();          
-            statement.executeUpdate(queryUsuarioPostagem);
-            */
-            String query = String.format("update usuario set email = '%s', nome = '%s' where email = '%s'", 
-            		usuario.getEmail(), usuario.getNome(), email);
+           
+            String query = String.format("update usuario set email = '%s', nome = '%s' where id_usuario = %s", 
+            		usuario.getEmail(), usuario.getNome(), id);
            
             statement = conn.createStatement();          
             statement.executeUpdate(query);

@@ -30,8 +30,8 @@ public class UsuarioBo {
 		usuarioDao.updateSenha(usuario, id);
 	}
 	
-	public void atualizarUsuario(Usuario usuario, String email) throws SQLException {
-		usuarioDao.update(usuario, email);
+	public void atualizarUsuario(Usuario usuario, int id) throws SQLException {
+		usuarioDao.update(usuario, id);
 	}
 
 	public void delete(int id) throws SQLException {

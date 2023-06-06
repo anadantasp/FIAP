@@ -69,10 +69,10 @@ public class UsuarioResource {
 	}
 	
 	@PUT
-	@Path("atualizarusuario/{email}")
+	@Path("atualizarusuario/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response atualizarUsuario(Usuario usuario, @PathParam("email") String email) throws SQLException {
-		usuarioBo.atualizarUsuario(usuario, email);
+	public Response atualizarUsuario(Usuario usuario, @PathParam("id") int id) throws SQLException {
+		usuarioBo.atualizarUsuario(usuario, id);
 		return Response.ok().build();
 	}
 	
