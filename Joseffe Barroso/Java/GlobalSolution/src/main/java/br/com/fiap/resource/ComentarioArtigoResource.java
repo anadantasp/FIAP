@@ -31,6 +31,13 @@ public class ComentarioArtigoResource {
 	}
 	
 	@GET
+	@Path("/comentariosartigo/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<ComentarioArtigo> getComentariosArtigo(@PathParam("id")int id) throws SQLException {
+		return comentarioArtigoBo.getComentariosArtigo(id);
+	}
+	
+	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ComentarioArtigo getComentarioArtigo(@PathParam("id")int id) throws SQLException {

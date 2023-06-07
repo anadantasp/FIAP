@@ -101,6 +101,39 @@ public class ComentarioArtigoDao {
 
 		return list;
 	}
+	
+	public ArrayList<ComentarioArtigo> getComentariosArtigo(int idArtigo) throws SQLException {
+		Connection conn = ConnectionFactory.getConnection();
+		Statement statement;
+		ResultSet rs = null;
+		ArrayList<ComentarioArtigo> list = null;
+
+		try {
+			String query = String.format("select * from comentario_artigo where fk_id_artigo = %s", idArtigo);
+
+			statement = conn.createStatement();
+
+			rs = statement.executeQuery(query);
+
+			list = new ArrayList<ComentarioArtigo>();
+			while (rs.next()) {
+				ComentarioArtigo c = new ComentarioArtigo();
+				c.setId(rs.getInt("id_comentario_artigo"));
+				c.setTexto(rs.getString("texto"));
+				c.setData(rs.getDate("data"));
+				c.setUsuario(usuarioBo.getUsuario(rs.getInt("fk_id_usuario")));
+				c.setArtigo(null);
+
+				list.add(c);
+			}
+		} catch (Exception e) {
+			System.out.println("Erro ao exibir comentarios artigo! - " + e);
+		} finally {
+			conn.close();
+		}
+
+		return list;
+	}
 
 	public ComentarioArtigo getComentarioArtigo(int id) throws SQLException {
 		Connection conn = ConnectionFactory.getConnection();
